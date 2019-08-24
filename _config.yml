@@ -78,4 +78,7 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: nagato1208@github.com:nagato1208/nagato1208.github.io.git
+  branch: master
+  message: 1st deploy
