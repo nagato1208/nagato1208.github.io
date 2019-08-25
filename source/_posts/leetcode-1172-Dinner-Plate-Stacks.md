@@ -1,12 +1,14 @@
 ---
-title: leetcode-1172-Dinner-Plate-Stacks
+title: leetcode-1172 Dinner Plate Stacks
 date: 2019-08-25 01:15:32
 categories: Leetcode
-tags: ['Leetcode', 'Data Structure Design']
+tags: ['Data Structure Design', 'Stack']
 keywords: ['stack']
 ---
+## 描述
 
-# LC 1172 Dinner-Plate-Stacks:
+原题在这: [https://leetcode.com/problems/dinner-plate-stacks/](https://leetcode.com/problems/dinner-plate-stacks/)
+
 You have an infinite number of stacks arranged in a row and numbered (left to right) from 0, each of the stacks has the same maximum capacity.
 
 Implement the DinnerPlates class:
@@ -16,8 +18,12 @@ Implement the DinnerPlates class:
 - `int pop()` returns the value at the top of the rightmost non-empty stack and removes it from that stack, and returns -1 if all stacks are empty.
 - `int popAtStack(int index)` returns the value at the top of the stack with the given index and removes it from that stack, and returns -1 if the stack with that given index is empty.
 
+## 思路
+大概是一个双层的复合stack, 因为`popAtStack()`可能会带来一些available空间, 以后的push要优先push进leftmost的inner stack,
+所以用一个最小堆来维护. 每次push之前check一下. \
+时间复杂度: `O(nlogn)`
 
-
+## 代码
 ```python
 class DinnerPlates(object):
 
