@@ -223,6 +223,116 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/25/leetcode-1172-Dinner-Plate-Stacks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Z">
+      <meta itemprop="description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+      <meta itemprop="image" content="/images/selfie.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nagato's blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/08/25/leetcode-1172-Dinner-Plate-Stacks/" class="post-title-link" itemprop="url">leetcode-1172-Dinner-Plate-Stacks</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-08-25 01:15:32 / Modified: 01:38:04" itemprop="dateCreated datePublished" datetime="2019-08-25T01:15:32-04:00">2019-08-25</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>原题在这: <a href="https://leetcode.com/problems/dinner-plate-stacks/" target="_blank" rel="noopener">https://leetcode.com/problems/dinner-plate-stacks/</a></p>
+<p>You have an infinite number of stacks arranged in a row and numbered (left to right) from 0, each of the stacks has the same maximum capacity.</p>
+<p>Implement the DinnerPlates class:</p>
+<ul>
+<li><code>DinnerPlates(int capacity)</code> Initializes the object with the maximum capacity of the stacks.</li>
+<li><code>void push(int val)</code> pushes the given positive integer val into the leftmost stack with size less than capacity.</li>
+<li><code>int pop()</code> returns the value at the top of the rightmost non-empty stack and removes it from that stack, and returns -1 if all stacks are empty.</li>
+<li><code>int popAtStack(int index)</code> returns the value at the top of the stack with the given index and removes it from that stack, and returns -1 if the stack with that given index is empty.</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>大概是一个双层的复合stack, 因为<code>popAtStack()</code>可能会带来一些available空间,以后的push要优先push进leftmost的inner stack,<br>所以用一个最小堆来维护.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DinnerPlates</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, capacity)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type capacity: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.a = []</span><br><span class="line">        self.limit = capacity</span><br><span class="line">        self.q = []</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type val: int</span></span><br><span class="line"><span class="string">        :rtype: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        i = self._get()</span><br><span class="line">        <span class="keyword">if</span> i != <span class="number">-1</span>:</span><br><span class="line">            self.a[i].append(val)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.a <span class="keyword">or</span> len(self.a[<span class="number">-1</span>]) == self.limit:</span><br><span class="line">                self.a.append([])</span><br><span class="line">            self.a[<span class="number">-1</span>].append(val)   </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">while</span> self.a:</span><br><span class="line">            <span class="keyword">if</span> self.a[<span class="number">-1</span>]:</span><br><span class="line">                v = self.a[<span class="number">-1</span>].pop()</span><br><span class="line">                <span class="keyword">while</span> self.a <span class="keyword">and</span> <span class="keyword">not</span> self.a[<span class="number">-1</span>]:</span><br><span class="line">                    self.a.pop()</span><br><span class="line">                <span class="keyword">return</span> v</span><br><span class="line">            self.a.pop()</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">popAtStack</span><span class="params">(self, index)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type index: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> index &gt;= len(self.a) <span class="keyword">or</span> <span class="keyword">not</span> self.a[index]:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        v = self.a[index].pop()</span><br><span class="line">        heapq.heappush(self.q, index)</span><br><span class="line">        <span class="keyword">return</span> v</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_get</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> self.q:</span><br><span class="line">            i = heapq.heappop(self.q)</span><br><span class="line">            <span class="keyword">if</span> i &lt; len(self.a) <span class="keyword">and</span> len(self.a[i]) &lt; self.limit:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">            </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your DinnerPlates object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = DinnerPlates(capacity)</span></span><br><span class="line"><span class="comment"># obj.push(val)</span></span><br><span class="line"><span class="comment"># param_2 = obj.pop()</span></span><br><span class="line"><span class="comment"># param_3 = obj.popAtStack(index)</span></span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -465,7 +575,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -482,7 +592,9 @@
         
           
         
-        <span class="site-state-item-count">1</span>
+          
+        
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -501,7 +613,11 @@
         
           
         
-        <span class="site-state-item-count">2</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
