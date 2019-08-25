@@ -79,6 +79,6 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: zichiang.ren@gmail.com:nagato1208/nagato1208.github.io.git
+  repo: https://github.com/nagato1208/nagato1208.github.io.git
   branch: master
   message: 1st deploy
