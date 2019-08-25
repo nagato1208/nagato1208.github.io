@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="描述给一个字符串,返回字典序最大的substring. 思路常规解法是后缀数组(倍增法), 然后拿到sa数组最后一个元素(最大substring起始点).  最优解是用类似字符串最小表示法的O(n)解, 维护两个指针i,j表示当前正在比较的两个substring的起始点, 另一个k表示substring长度. 每次比较发生在s[i+k]和s[j+k]之间. match就k+1否则更新i,j. 当k">
+<meta name="keywords" content="String,最小表示法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-1163 Last Substring in Lexicographical Order">
+<meta property="og:url" content="http://yoursite.com/2019/08/24/leetcode-1163-Last Substring-in-Lexicographical-Order/index.html">
+<meta property="og:site_name" content="Nagato&#39;s blog">
+<meta property="og:description" content="描述给一个字符串,返回字典序最大的substring. 思路常规解法是后缀数组(倍增法), 然后拿到sa数组最后一个元素(最大substring起始点).  最优解是用类似字符串最小表示法的O(n)解, 维护两个指针i,j表示当前正在比较的两个substring的起始点, 另一个k表示substring长度. 每次比较发生在s[i+k]和s[j+k]之间. match就k+1否则更新i,j. 当k">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-25T06:58:13.348Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode-1163 Last Substring in Lexicographical Order">
+<meta name="twitter:description" content="描述给一个字符串,返回字典序最大的substring. 思路常规解法是后缀数组(倍增法), 然后拿到sa数组最后一个元素(最大substring起始点).  最优解是用类似字符串最小表示法的O(n)解, 维护两个指针i,j表示当前正在比较的两个substring的起始点, 另一个k表示substring长度. 每次比较发生在s[i+k]和s[j+k]之间. match就k+1否则更新i,j. 当k">
+  <link rel="canonical" href="http://yoursite.com/2019/08/24/leetcode-1163-Last Substring-in-Lexicographical-Order/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>leetcode-1163 Last Substring in Lexicographical Order | Nagato's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nagato's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Random notes here</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+    </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    <div class="reading-progress-bar"></div>
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/leetcode-1163-Last Substring-in-Lexicographical-Order/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Z">
+      <meta itemprop="description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+      <meta itemprop="image" content="/images/selfie.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nagato's blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">leetcode-1163 Last Substring in Lexicographical Order
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-24 00:12:32" itemprop="dateCreated datePublished" datetime="2019-08-24T00:12:32-04:00">2019-08-24</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-25 02:58:13" itemprop="dateModified" datetime="2019-08-25T02:58:13-04:00">2019-08-25</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给一个字符串,返回字典序最大的substring.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>常规解法是后缀数组(倍增法), 然后拿到<code>sa</code>数组最后一个元素(最大substring起始点). </p>
+<p>最优解是用类似字符串最小表示法的<code>O(n)</code>解, 维护两个指针<code>i</code>,<code>j</code>表示当前正在比较的两个substring的起始点, 另一个<code>k</code>表示substring长度. 每次比较发生在<code>s[i+k]</code>和<code>s[j+k]</code>之间. match就k+1否则更新i,j.</p>
+<p>当<code>k</code>前进一段距离, <code>s[i+k]</code>和<code>s[j+k]</code>失配时有一个特征:</p>
+<ul>
+<li>如果当前<code>s[i+k]</code>更大, 需要更新<code>j</code>. (我们试图用<code>j</code>找一个更大的substring起始点, 然后替换<code>i</code>). 这个时候在<code>[j:j+k]</code>闭区间的所有字符都是不大于<code>s[i]</code>的.否则我们不会等到现在才更新j,之前只要遇到比<code>s[i]</code>大的就已经更新了.<br>这个时候可以直接<code>j = j + k + 1</code></li>
+<li>如果当前<code>s[j+k]</code>更大, 那么找到了一个更大的substring, 需要用<code>j</code>的值去更新<code>i</code>, 然后<code>j</code>移动到<code>i</code>的下一个位置. <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lastSubstring</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        i, j, k = <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">        n = len(s)</span><br><span class="line">        <span class="keyword">while</span> j + k &lt; n:</span><br><span class="line">            <span class="keyword">if</span> s[i+k] == s[j+k]:</span><br><span class="line">                k += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">elif</span> s[i+k] &gt; s[j+k]:</span><br><span class="line">                j = j + k + <span class="number">1</span> </span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                i = j</span><br><span class="line">                j = i + <span class="number">1</span></span><br><span class="line">            k = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> s[i:]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="倍增法-模板"><a href="#倍增法-模板" class="headerlink" title="倍增法(模板)"></a>倍增法(模板)</h2><p>这个题用python写倍增仍然会TLE, 可能是常数项比较大, 不是单纯的<code>O(nlogn)</code>了…</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lastSubstring</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># x,y分别是第一关键字和第二关键字的rank</span></span><br><span class="line">        <span class="comment"># rank[i]: Suffix[i]在所有后缀中的排名</span></span><br><span class="line">        <span class="comment"># sa[i]:在i位置排着的是从哪里开始的suffix,sa[-1]就是字典序最大的substring起始点</span></span><br><span class="line">        <span class="comment"># rank和sa互逆</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">da</span><span class="params">(s)</span>:</span></span><br><span class="line">            max_n = <span class="number">400000</span></span><br><span class="line">            buc = [<span class="number">0</span>]*max_n <span class="comment"># 桶</span></span><br><span class="line">            x = [<span class="number">0</span>]*max_n <span class="comment"># key1</span></span><br><span class="line">            y = [<span class="number">0</span>]*max_n <span class="comment"># key2</span></span><br><span class="line">            sa = [<span class="number">0</span>]*max_n</span><br><span class="line">            s = [ord(c) <span class="keyword">for</span> c <span class="keyword">in</span> s]</span><br><span class="line">            n = len(s)</span><br><span class="line">            max_v = max(s) + <span class="number">1</span> <span class="comment"># 最大的char + 1</span></span><br><span class="line">            <span class="comment"># 第一轮基数排序:一位</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">                x[i] = s[i] <span class="comment"># key1就是s里面的字符值本身</span></span><br><span class="line">                buc[s[i]] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, max_v):</span><br><span class="line">                buc[i] += buc[i<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">                buc[s[i]] -= <span class="number">1</span></span><br><span class="line">                sa[buc[s[i]]] = i</span><br><span class="line"></span><br><span class="line">            k = <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">                p = <span class="number">0</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n-k, n):</span><br><span class="line">                    y[p] = i</span><br><span class="line">                    p += <span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">                    <span class="comment"># sa其实是从小到大排列的后缀们,如果sa[i]&gt;=k说明可以作为拼接的后半段</span></span><br><span class="line">                    <span class="keyword">if</span> sa[i] &gt;= k:</span><br><span class="line">                        y[p] = sa[i] - k <span class="comment"># p作为指针引导y数组的填充</span></span><br><span class="line">                        p += <span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> xrange(max_v):</span><br><span class="line">                    buc[i] = <span class="number">0</span> <span class="comment"># clear</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">                    <span class="comment"># 有一种.sort(lambda suffix: (suffix.x, suffix.y))的感觉</span></span><br><span class="line">                    buc[x[y[i]]] += <span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, max_v):</span><br><span class="line">                    buc[i] += buc[i<span class="number">-1</span>]</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">                    buc[x[y[i]]] -= <span class="number">1</span></span><br><span class="line">                    sa[buc[x[y[i]]]] = y[i]</span><br><span class="line">                x, y = y[:], x[:]</span><br><span class="line">                p = <span class="number">1</span></span><br><span class="line">                x[sa[<span class="number">0</span>]] = <span class="number">0</span></span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, n):</span><br><span class="line">                    <span class="keyword">if</span> y[sa[i<span class="number">-1</span>]] == y[sa[i]] <span class="keyword">and</span> y[sa[i<span class="number">-1</span>] + k] == y[sa[i] + k]:</span><br><span class="line">                        x[sa[i]] = p - <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        x[sa[i]] = p</span><br><span class="line">                        p += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> p &gt;= n: <span class="comment"># 去重的时候没有发现重复元素,说明排序彻底完成了</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                max_v = p <span class="comment"># 下次基数排序的最大值</span></span><br><span class="line">                k &lt;&lt;= <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> sa[:n]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> s[da(s)[<span class="number">-1</span>]:]</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/String/" rel="tag"># String</a>
+          
+            <a href="/tags/最小表示法/" rel="tag"># 最小表示法</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+
+        
+
+        
+          <div class="social-share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2019/08/25/leetcode-1172-Dinner-Plate-Stacks/" rel="prev" title="leetcode-1172 Dinner Plate Stacks">
+                leetcode-1172 Dinner Plate Stacks <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/selfie.png"
+      alt="Z">
+  <p class="site-author-name" itemprop="name">Z</p>
+  <div class="site-description motion-element" itemprop="description">~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/yourname" title="GitHub &rarr; https://github.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:yourname@gmail.com" title="E-Mail &rarr; mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/yourname" title="Weibo &rarr; https://weibo.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://plus.google.com/yourname" title="Google &rarr; https://plus.google.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-google"></i>Google</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://twitter.com/yourname" title="Twitter &rarr; https://twitter.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#倍增法-模板"><span class="nav-number">4.</span> <span class="nav-text">倍增法(模板)</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Z</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+  
+  <div id="needsharebutton-float">
+    <span class="btn">
+      <i class="fa fa-share-alt" aria-hidden="true"></i>
+    </span>
+  </div>
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+    flOptions = {};
+      flOptions.iconStyle = "box";
+    
+      flOptions.boxForm = "horizontal";
+    
+      flOptions.position = "middleRight";
+    
+      flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-float', flOptions);
+</script>
+
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
