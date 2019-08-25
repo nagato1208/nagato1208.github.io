@@ -9,7 +9,7 @@ menu:
   archives: 归档
   categories: 分类
   tags: 标签
-  about: 关于
+  about: 关于Z
   search: 搜索
   schedule: 日程表
   sitemap: 站点地图
@@ -69,13 +69,13 @@ state:
 search:
   placeholder: 搜索...
 cheers:
-  um: 嗯..
-  ok: 还行
-  nice: 不错
-  good: 很好
-  great: 非常好
-  excellent: 太棒了
-keep_on: 继续努力。
+  um: あの...
+  ok: あの...
+  nice: あの...
+  good: あの...
+  great: あの...
+  excellent: あの...
+keep_on: 就算有更多,你也不会变强的:)
 symbol:
   comma: "，"
   period: "。"
