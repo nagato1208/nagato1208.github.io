@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="Nagato&#39;s blog">
 <meta property="og:description" content="描述实现一个数据结构, 支持对区间的动态tracking, 分别有以下三个操作:  addRange(int left, int right) 新增一个左闭右开的tracking区间[left, right). queryRange(int left, int right)check区间[left, right)是否正在被tracking, 返回布尔值. removeRange(int left,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-26T06:02:03.723Z">
+<meta property="og:updated_time" content="2019-08-26T06:49:57.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-715 Range Module">
 <meta name="twitter:description" content="描述实现一个数据结构, 支持对区间的动态tracking, 分别有以下三个操作:  addRange(int left, int right) 新增一个左闭右开的tracking区间[left, right). queryRange(int left, int right)check区间[left, right)是否正在被tracking, 返回布尔值. removeRange(int left,">
@@ -277,7 +277,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-26 02:02:03" itemprop="dateModified" datetime="2019-08-26T02:02:03-04:00">2019-08-26</time>
+                <time title="修改时间：2019-08-26 02:49:57" itemprop="dateModified" datetime="2019-08-26T02:49:57-04:00">2019-08-26</time>
               </span>
             
           
@@ -323,7 +323,7 @@
 <li><code>queryRange(int left, int right)</code>check区间<code>[left, right)</code>是否正在被tracking, 返回布尔值.</li>
 <li><code>removeRange(int left, int right)</code> 取消tracking这个区间.</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>(抄的答案) 维护一个list<code>index</code>存当前有效的离散点. 这样这个list有以下特征:</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>维护一个list<code>index</code>存当前有效的离散点. 这样这个list有以下特征:</p>
 <ul>
 <li><code>index</code>必然是坐标<code>left</code>和<code>right</code>两两成组的interval list, 在加入和删除的过程中, 会自动merge.</li>
 <li><code>addRange()</code>: <code>left</code>向左二分搜索插入点<code>l</code>(下标), <code>right</code>向右二分搜索插入点<code>r</code>. 如果<code>l</code>是偶数, 说明在它之前坐标们是两两成对的(可以在纸上画画), 当前点<code>left</code>没有落入任何一个已有的区间内, 对于<code>left</code>来说是一个独立点, 必然会存在与本轮更新后的<code>index</code><br>中, 那么加入<code>new_index</code>. <code>right</code>同理. 最后更新<code>index</code>的<code>[l:r]</code>段为<code>new_index</code>.</li>
