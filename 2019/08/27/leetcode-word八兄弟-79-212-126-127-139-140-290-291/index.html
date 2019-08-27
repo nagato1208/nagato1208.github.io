@@ -424,6 +424,9 @@
 
           </div>
           
+    
+    <div class="comments" id="gitalk-container"></div>
+  
   
 
         </div>
@@ -768,6 +771,26 @@
 
 
 
+
+    
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '60d19c0c9d847e353658',
+    clientSecret: '338814f8681c6c1c6151f82e093b595cc21e0f4c',
+    repo: 'nagato1208.github.io',
+    owner: 'nagato1208',
+    admin: ['nagato1208'],
+    id: md5(location.pathname),
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
 
 
 </body>
