@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="2019年8月27日CF群打卡题: 1208A, 1208B, 1208C, 1208D  https://codeforces.com/problemset/problem/1208/A/ https://codeforces.com/problemset/problem/1208/B/ https://codeforces.com/problemset/problem/1208/C/ http">
+<meta name="keywords" content="bit,math,two pointers">
+<meta property="og:type" content="article">
+<meta property="og:title" content="codeforces-1208-A-B-C-D总结">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/codeforces-1208-A-B-C/index.html">
+<meta property="og:site_name" content="Nagato&#39;s blog">
+<meta property="og:description" content="2019年8月27日CF群打卡题: 1208A, 1208B, 1208C, 1208D  https://codeforces.com/problemset/problem/1208/A/ https://codeforces.com/problemset/problem/1208/B/ https://codeforces.com/problemset/problem/1208/C/ http">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-28T04:06:55.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="codeforces-1208-A-B-C-D总结">
+<meta name="twitter:description" content="2019年8月27日CF群打卡题: 1208A, 1208B, 1208C, 1208D  https://codeforces.com/problemset/problem/1208/A/ https://codeforces.com/problemset/problem/1208/B/ https://codeforces.com/problemset/problem/1208/C/ http">
+  <link rel="canonical" href="http://yoursite.com/2019/08/27/codeforces-1208-A-B-C/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>codeforces-1208-A-B-C-D总结 | Nagato's blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nagato's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Random notes here</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于Z</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+    </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    <div class="reading-progress-bar"></div>
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/codeforces-1208-A-B-C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Z">
+      <meta itemprop="description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+      <meta itemprop="image" content="/images/selfie.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nagato's blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">codeforces-1208-A-B-C-D总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-27 22:36:52" itemprop="dateCreated datePublished" datetime="2019-08-27T22:36:52-04:00">2019-08-27</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-28 00:06:55" itemprop="dateModified" datetime="2019-08-28T00:06:55-04:00">2019-08-28</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>2019年8月27日CF群打卡题: 1208A, 1208B, 1208C, 1208D</p>
+<ul>
+<li><a href="https://codeforces.com/problemset/problem/1208/A/" target="_blank" rel="noopener">https://codeforces.com/problemset/problem/1208/A/</a></li>
+<li><a href="https://codeforces.com/problemset/problem/1208/B/" target="_blank" rel="noopener">https://codeforces.com/problemset/problem/1208/B/</a></li>
+<li><a href="https://codeforces.com/problemset/problem/1208/C/" target="_blank" rel="noopener">https://codeforces.com/problemset/problem/1208/C/</a></li>
+<li><a href="https://codeforces.com/problemset/problem/1208/D/" target="_blank" rel="noopener">https://codeforces.com/problemset/problem/1208/D/</a></li>
+</ul>
+<h2 id="1208A-XORinacci"><a href="#1208A-XORinacci" class="headerlink" title="1208A XORinacci"></a>1208A XORinacci</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>XOR版本的Fibonacci数列. 输入两个起始数<code>a</code>和<code>b</code>, 和要输出的第n个数(0-indexed). 输出该数. </p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>n的范围<code>[0, 10**9]</code>, 肯定不能常规解. 观察每一位可以发现bit<code>0</code>和<code>1</code>是循环的. 循环节永远是<code>1-1-0</code></p>
+<ul>
+<li>0 - 0 - 0 - 0 - 0 - 0 - 0 … (初始<code>a=0, b=0</code>)</li>
+<li>0 - 1 - 1 - 0 - 1 - 1 - 0 … (初始<code>a=0, b=1</code>)</li>
+<li>1 - 1 - 0 - 1 - 1 - 0 - 1 … (初始<code>a=1, b=1</code>)</li>
+<li>1 - 0 - 1 - 1 - 0 - 1 - 1 - 0 … (初始<code>a=1, b=0</code>)<br>结果是32位整数, 分别每一位处理.</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(a, b, n)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> n==<span class="number">0</span>: <span class="keyword">return</span> a</span><br><span class="line">    <span class="keyword">if</span> n==<span class="number">1</span>: <span class="keyword">return</span> b</span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">32</span>):</span><br><span class="line">        x = a &amp; (<span class="number">1</span>&lt;&lt;i)</span><br><span class="line">        y = b &amp; (<span class="number">1</span>&lt;&lt;i)</span><br><span class="line">        <span class="keyword">if</span> x:</span><br><span class="line">            <span class="keyword">if</span> y:</span><br><span class="line">                res |= ((n%<span class="number">3</span>!=<span class="number">2</span>)&lt;&lt;i)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res |= ((n%<span class="number">3</span>!=<span class="number">1</span>)&lt;&lt;i)</span><br><span class="line">        <span class="keyword">elif</span> y:</span><br><span class="line">                res |= ((n%<span class="number">3</span>!=<span class="number">0</span>)&lt;&lt;i)</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    n = int(input())</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(n):</span><br><span class="line">        a, b, n = map(int, input().split(<span class="string">" "</span>))</span><br><span class="line">        print(solve(a, b, n))</span><br><span class="line">do()</span><br></pre></td></tr></table></figure>
+
+<h2 id="1208B-Uniqueness"><a href="#1208B-Uniqueness" class="headerlink" title="1208B Uniqueness"></a>1208B Uniqueness</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>给一个<code>nums</code> array,允许最多删掉一段(连续的)subarray, 删掉的这段最短多长, 使得剩下的部分没有重复数字.</p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>因为允许删除中间的一段, 我一开始的思路是直接两个<code>nums</code>首尾相接, 这样跑一遍最长不重复子串就行. 用原始长度减掉最长子串长度就是要删去的最小长度. 然后WA了一(很多)发, 发现前面那样操作不是充要条件…<br>考虑这样一个<code>nums</code>: [1,1,1,2,3,4,5,6,6,6], 最长不重复子串在中间, 但是这样删掉首尾是删去了两段而题目要求一段. </p>
+<p>所以更新最长长度时要check: (<code>#</code>表示拼接点, 没有实际字符, 用字母表示的数字不过影响题意)</p>
+<ul>
+<li>左指针是否在<code>0</code>处:<code>[abcdef]ffffff#abcdefffffff</code></li>
+<li>右指针是否在<code>len(nums)-1</code>处: <code>aaaa[abcdef]#aaaaabcdef</code></li>
+<li>左右指针一个在左边一个在右边: <code>abccccc[cefg#ab]ccccccefg</code></li>
+<li>这三种以外的其他情况不可以更新最长子串长度</li>
+</ul>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    n = int(input())</span><br><span class="line">    nums = [int(i) <span class="keyword">for</span> i <span class="keyword">in</span> input().split(<span class="string">" "</span>)]</span><br><span class="line">    nums2 = nums + nums</span><br><span class="line">    d = collections.defaultdict(int)</span><br><span class="line">    l = <span class="number">0</span></span><br><span class="line">    max_unique = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> r, i <span class="keyword">in</span> enumerate(nums2):</span><br><span class="line">        d[i] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> d[i] &gt; <span class="number">1</span>:</span><br><span class="line">            d[nums2[l]] -= <span class="number">1</span></span><br><span class="line">            l += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> l == <span class="number">0</span> <span class="keyword">or</span> r == n<span class="number">-1</span> <span class="keyword">or</span> (l &lt; n <span class="keyword">and</span> r &gt;= n):</span><br><span class="line">            max_unique = max(max_unique, r - l + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> n - max_unique</span><br><span class="line">print(do())</span><br></pre></td></tr></table></figure>
+
+<h2 id="1208C-Magic-Grid"><a href="#1208C-Magic-Grid" class="headerlink" title="1208C Magic Grid"></a>1208C Magic Grid</h2><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><p>XOR版本的数独. 要求每行每列的XOR值是相同的. 输入矩阵边长n, 用<code>[0, n**2-1]</code>里面的数字填充出任意一个符合要求的矩阵.</p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>按照某种规律assign bit<code>0</code>或者<code>1</code>. 如果边长为2(这个题要求边长是4的倍数), 那么可以手算出一个结果:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00</span>, <span class="number">01</span></span><br><span class="line"><span class="number">10</span>, <span class="number">11</span></span><br></pre></td></tr></table></figure>
+
+<p>类似地, 如果边长是4, 可以把每个角落分割开, 然后扩增位数(divide and <del>conquer</del> fill):</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00</span>**, <span class="number">00</span>**,  <span class="number">01</span>**, <span class="number">01</span>**</span><br><span class="line"><span class="number">00</span>**, <span class="number">00</span>**,  <span class="number">01</span>**, <span class="number">01</span>**</span><br><span class="line"><span class="number">10</span>**, <span class="number">10</span>**,  <span class="number">11</span>**, <span class="number">11</span>**</span><br><span class="line"><span class="number">10</span>**, <span class="number">10</span>**,  <span class="number">11</span>**, <span class="number">11</span>**</span><br></pre></td></tr></table></figure>
+
+<p>然后对于每个角落角, 我们可以把(这个角落的)四组<code>**</code>分别替换成边长为2的那种情况, 例如右下角</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1100</span>, <span class="number">1101</span></span><br><span class="line"><span class="number">1110</span>, <span class="number">1111</span></span><br></pre></td></tr></table></figure>
+
+<p>这样扩增每次行上和列上的<code>0</code>,<code>1</code>都是成倍增长. 只要边长为2时满足XOR相等,以后都会相等.</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    n = int(input())</span><br><span class="line">    res = [[<span class="number">0</span>]*n <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line">    cur = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n, <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, n, <span class="number">2</span>):</span><br><span class="line">            <span class="keyword">for</span> ii <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">                <span class="keyword">for</span> jj <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">                    res[i + ii][j + jj] = cur</span><br><span class="line">                    cur += <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> res:</span><br><span class="line">        print(<span class="string">" "</span>.join(map(str, row)))</span><br><span class="line">do()</span><br></pre></td></tr></table></figure>
+
+<h2 id="1208D-Restore-Permutation"><a href="#1208D-Restore-Permutation" class="headerlink" title="1208D Restore Permutation"></a>1208D Restore Permutation</h2><p>[施工中]</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/bit/" rel="tag"># bit</a>
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+
+        
+
+        
+          <div class="social-share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/08/27/leetcode-word八兄弟-79-212-126-127-139-140-290-291/" rel="next" title="leetcode-[word八兄弟]-[79,212,126,127,139,140,290,291]">
+                <i class="fa fa-chevron-left"></i> leetcode-[word八兄弟]-[79,212,126,127,139,140,290,291]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/selfie.png"
+      alt="Z">
+  <p class="site-author-name" itemprop="name">Z</p>
+  <div class="site-description motion-element" itemprop="description">~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/nagato1208" title="GitHub &rarr; https://github.com/nagato1208" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:ren.ziq@husky.neu.edu" title="E-Mail &rarr; mailto:ren.ziq@husky.neu.edu" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/yourname" title="Weibo &rarr; https://weibo.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://plus.google.com/yourname" title="Google &rarr; https://plus.google.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-google"></i>Google</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://twitter.com/yourname" title="Twitter &rarr; https://twitter.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="/" title="Leetcode &rarr; "><i class="fa fa-fw fa-globe"></i>Leetcode</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1208A-XORinacci"><span class="nav-number">1.</span> <span class="nav-text">1208A XORinacci</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1208B-Uniqueness"><span class="nav-number">2.</span> <span class="nav-text">1208B Uniqueness</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-1"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1208C-Magic-Grid"><span class="nav-number">3.</span> <span class="nav-text">1208C Magic Grid</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-2"><span class="nav-number">3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1208D-Restore-Permutation"><span class="nav-number">4.</span> <span class="nav-text">1208D Restore Permutation</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Z</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+  
+  <div id="needsharebutton-float">
+    <span class="btn">
+      <i class="fa fa-share-alt" aria-hidden="true"></i>
+    </span>
+  </div>
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+    flOptions = {};
+      flOptions.iconStyle = "box";
+    
+      flOptions.boxForm = "horizontal";
+    
+      flOptions.position = "middleRight";
+    
+      flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-float', flOptions);
+</script>
+
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '60d19c0c9d847e353658',
+    clientSecret: '338814f8681c6c1c6151f82e093b595cc21e0f4c',
+    repo: 'nagato1208.github.io',
+    owner: 'nagato1208',
+    admin: ['nagato1208'],
+    id: md5(location.pathname),
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+
+</body>
+</html>
