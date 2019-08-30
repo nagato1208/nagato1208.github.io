@@ -58,19 +58,19 @@
   };
 </script>
 
-  <meta name="description" content="描述题目本身比较长, 大意是parse一个lisp like的语言. 可以从样例中get到信息:  (add 1 2) 返回1+2 =&amp;gt; 3. (mult 3 (add 2 3)) 先计算2+3, 返回的5再和3相乘 =&amp;gt; 15. (let x 2 (mult x 5)) x被赋值2, 然后x和5相乘等于10, 然后返回10. 注意let语句如果变量个数是奇数个, 那么最后一个是返回值">
-<meta name="keywords" content="stack,parser">
+  <meta name="description" content="描述对于[1, n]闭区间的所有整数的某个permutation permutation, 我们有数组nums. 定义nums的每个元素nums[i]表示在permutation的下标i之前的比permutation[i]小的所有数的和.例如如果nums是0 0 0, 那么permutation是[3,2,1]. 因为对于每个数, 没有在它之前的比它小的数. 如果nums是0 1 1 1 10,">
+<meta name="keywords" content="greedy,segment tree">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-736 Parse Lisp Expression">
-<meta property="og:url" content="http://yoursite.com/2019/08/25/leetcode-736-Parse-Lisp-Expression/index.html">
+<meta property="og:title" content="codeforces-1208D Restore Permutation">
+<meta property="og:url" content="http://yoursite.com/2019/08/30/codeforces-1208D-Restore-Permutation/index.html">
 <meta property="og:site_name" content="Nagato&#39;s blog">
-<meta property="og:description" content="描述题目本身比较长, 大意是parse一个lisp like的语言. 可以从样例中get到信息:  (add 1 2) 返回1+2 =&amp;gt; 3. (mult 3 (add 2 3)) 先计算2+3, 返回的5再和3相乘 =&amp;gt; 15. (let x 2 (mult x 5)) x被赋值2, 然后x和5相乘等于10, 然后返回10. 注意let语句如果变量个数是奇数个, 那么最后一个是返回值">
+<meta property="og:description" content="描述对于[1, n]闭区间的所有整数的某个permutation permutation, 我们有数组nums. 定义nums的每个元素nums[i]表示在permutation的下标i之前的比permutation[i]小的所有数的和.例如如果nums是0 0 0, 那么permutation是[3,2,1]. 因为对于每个数, 没有在它之前的比它小的数. 如果nums是0 1 1 1 10,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-25T19:22:41.414Z">
+<meta property="og:updated_time" content="2019-08-30T06:39:07.529Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-736 Parse Lisp Expression">
-<meta name="twitter:description" content="描述题目本身比较长, 大意是parse一个lisp like的语言. 可以从样例中get到信息:  (add 1 2) 返回1+2 =&amp;gt; 3. (mult 3 (add 2 3)) 先计算2+3, 返回的5再和3相乘 =&amp;gt; 15. (let x 2 (mult x 5)) x被赋值2, 然后x和5相乘等于10, 然后返回10. 注意let语句如果变量个数是奇数个, 那么最后一个是返回值">
-  <link rel="canonical" href="http://yoursite.com/2019/08/25/leetcode-736-Parse-Lisp-Expression/">
+<meta name="twitter:title" content="codeforces-1208D Restore Permutation">
+<meta name="twitter:description" content="描述对于[1, n]闭区间的所有整数的某个permutation permutation, 我们有数组nums. 定义nums的每个元素nums[i]表示在permutation的下标i之前的比permutation[i]小的所有数的和.例如如果nums是0 0 0, 那么permutation是[3,2,1]. 因为对于每个数, 没有在它之前的比它小的数. 如果nums是0 1 1 1 10,">
+  <link rel="canonical" href="http://yoursite.com/2019/08/30/codeforces-1208D-Restore-Permutation/">
 
 
 <script id="page.configurations">
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>leetcode-736 Parse Lisp Expression | Nagato's blog</title>
+  <title>codeforces-1208D Restore Permutation | Nagato's blog</title>
   
 
 
@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/25/leetcode-736-Parse-Lisp-Expression/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/codeforces-1208D-Restore-Permutation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Z">
@@ -244,7 +244,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">leetcode-736 Parse Lisp Expression
+          <h1 class="post-title" itemprop="name headline">codeforces-1208D Restore Permutation
 
               
             
@@ -264,7 +264,7 @@
                 
               
 
-              <time title="创建时间：2019-08-25 03:02:17 / 修改时间：15:22:41" itemprop="dateCreated datePublished" datetime="2019-08-25T03:02:17-04:00">2019-08-25</time>
+              <time title="创建时间：2019-08-30 02:28:41 / 修改时间：02:39:07" itemprop="dateCreated datePublished" datetime="2019-08-30T02:28:41-04:00">2019-08-30</time>
             </span>
           
             
@@ -279,7 +279,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
 
                 
                 
@@ -307,26 +307,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>题目本身比较长, 大意是parse一个lisp like的语言. 可以从样例中get到信息:</p>
-<ul>
-<li><code>(add 1 2)</code> 返回1+2 =&gt; 3.</li>
-<li><code>(mult 3 (add 2 3))</code> 先计算2+3, 返回的5再和3相乘 =&gt; 15.</li>
-<li><code>(let x 2 (mult x 5))</code> <code>x</code>被赋值2, 然后<code>x</code>和5相乘等于10, 然后返回10. 注意<code>let</code>语句如果变量个数是奇数个, 那么最后一个是返回值.</li>
-<li><code>(let x 3 x 2 x)</code> <code>x</code>先被赋值3, 再被赋值2, 最后返回<code>x</code>的值2.</li>
-<li><code>(let x 1 y 2 x (add x y) (add x y))</code> 在计算内层的<code>(add x y)</code>时用到了之前的赋值语句. </li>
-<li><code>(let x 1 y (let x 2 x) x)</code> 首先<code>x</code>被赋值1, 然后内层的<code>(let x 2 x)</code>给<code>x</code>赋值2并返回, 然后<code>y</code>被赋值2. 最后<code>x</code>的值应该是本层的值,与更深层的<code>x</code>无关.</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>这个题的重点感觉不仅仅是<code>stack</code>本身, 更多在于函数作用域的理解.</p>
-<p>首先我们需要用一个字典<code>token</code>来存变量和值. 例如<code>{x:12, y:34}</code>.</p>
-<p>通过观察可以得知以下几点: </p>
-<ul>
-<li>运算符只有三种<code>{add, mult, let}</code>, 其中<code>add</code>和<code>mult</code>只有两个操作数. <code>let</code>可以有<code>&gt;=1</code>个操作数,但是我们可以每次两两处理来赋值, 最后return剩余的那个.</li>
-<li>每次<code>let</code>的开始, 都会进入一个新的作用域. 外层的变量仍然有效, 并允许<strong>暂时</strong>覆盖外层的变量.</li>
-<li>每次遇到右括号<code>)</code>意味着可以开始计算本层语句的值, 对于<code>add</code>和<code>mult</code>来说计算完直接返回就行. 不影响变量<code>token</code>本身. 对于<code>let</code>来说,计算完返回上一层时,需要重置<code>token</code>.</li>
-<li>只有<code>let</code>语句有权更新<code>token</code>. 并且每次<code>let</code>后面积攒了两个操作数的时候, 需要及时更新<code>token</code>, 否则进入新的作用域时, 可能会出现需要retrieve某个变量值但是找不到的情况. 例如<code>(let x 2 (mult x 5))</code>. </li>
-</ul>
-<p>所以我们用一个<code>stack</code>来存当前读入的所有操作符和操作数(变量&amp;值). 用一个<code>token_stack</code>来存每个<code>let</code>语句对应的当前<code>token</code>. 遇到新的<code>let</code>时把当前<code>token</code>入栈, 遇到<code>)</code>并pop出某个内层<code>let</code>时,之前旧版本的<code>token</code>出栈.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">evaluate</span><span class="params">(self, expression)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type expression: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        expression = <span class="string">"(let x "</span> + expression + <span class="string">" x)"</span></span><br><span class="line">        stack = []</span><br><span class="line">        token_stack = [&#123;&#125;]</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">()</span>:</span></span><br><span class="line">            count = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> s <span class="keyword">in</span> stack[::<span class="number">-1</span>]:</span><br><span class="line">                <span class="keyword">if</span> s <span class="keyword">in</span> op_dict:</span><br><span class="line">                    <span class="keyword">if</span> s == <span class="string">"let"</span>:</span><br><span class="line">                        <span class="keyword">return</span> count</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">                count += <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">getval</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> token[x] <span class="keyword">if</span> x <span class="keyword">in</span> token <span class="keyword">else</span> x</span><br><span class="line">            </span><br><span class="line">        cur = <span class="string">""</span></span><br><span class="line">        token = &#123;&#125;</span><br><span class="line">        op_dict = &#123;<span class="string">"let"</span>, <span class="string">"add"</span>, <span class="string">"mult"</span>&#125;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">for</span> i,c <span class="keyword">in</span> enumerate(expression):</span><br><span class="line">            <span class="keyword">if</span> c == <span class="string">"("</span>:</span><br><span class="line">                <span class="keyword">continue</span>                    </span><br><span class="line">            <span class="keyword">elif</span> c == <span class="string">")"</span>:</span><br><span class="line">                data = []</span><br><span class="line">                <span class="keyword">while</span> stack <span class="keyword">and</span> stack[<span class="number">-1</span>] <span class="keyword">not</span> <span class="keyword">in</span> op_dict:</span><br><span class="line">                    data.append(stack.pop())</span><br><span class="line">                data = data[::<span class="number">-1</span>]</span><br><span class="line">                op = stack.pop()</span><br><span class="line">                <span class="keyword">if</span> op == <span class="string">"let"</span>:</span><br><span class="line">                    token_stack.pop()</span><br><span class="line">                    <span class="keyword">if</span> len(data) &gt; <span class="number">1</span>:</span><br><span class="line">                        token[data[<span class="number">0</span>]] = getval(data[<span class="number">1</span>])</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        stack.append(getval(data[<span class="number">0</span>]))</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    a = getval(data[<span class="number">0</span>])</span><br><span class="line">                    b = getval(data[<span class="number">1</span>])</span><br><span class="line">                    <span class="keyword">if</span> op == <span class="string">"add"</span>:</span><br><span class="line">                        stack.append(str(int(a) + int(b)))</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        stack.append(str(int(a) * int(b)))</span><br><span class="line">                token = dict(token_stack[<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> c != <span class="string">" "</span>:</span><br><span class="line">                    cur += c</span><br><span class="line">                    <span class="keyword">if</span> i + <span class="number">1</span> &lt; len(expression) <span class="keyword">and</span> expression[i+<span class="number">1</span>] <span class="keyword">in</span> <span class="string">"( )"</span>:</span><br><span class="line">                        <span class="keyword">if</span> cur <span class="keyword">in</span> op_dict:</span><br><span class="line">                            stack.append(cur)</span><br><span class="line">                            <span class="keyword">if</span> cur == <span class="string">"let"</span>:</span><br><span class="line">                                token_stack.append(dict(token))</span><br><span class="line">                        <span class="keyword">else</span>:</span><br><span class="line">                            stack.append(cur)</span><br><span class="line">                        cur = <span class="string">""</span></span><br><span class="line">            <span class="keyword">if</span> check() == <span class="number">2</span>:</span><br><span class="line">                b = stack.pop()</span><br><span class="line">                a = stack.pop() <span class="comment"># assign value reversely</span></span><br><span class="line">                token[a] = getval(b)</span><br><span class="line">                token_stack[<span class="number">-1</span>] = dict(token)</span><br><span class="line">                        </span><br><span class="line">        <span class="keyword">return</span> int(stack[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>对于<code>[1, n]</code>闭区间的所有整数的某个permutation <code>permutation</code>, 我们有数组<code>nums</code>. 定义<code>nums</code>的每个元素<code>nums[i]</code>表示在permutation的下标<code>i</code>之前的比<code>permutation[i]</code>小的所有数的和.<br>例如如果<code>nums</code>是<code>0 0 0</code>, 那么<code>permutation</code>是<code>[3,2,1]</code>. 因为对于每个数, 没有在它之前的比它小的数. 如果<code>nums</code>是<code>0 1 1 1 10</code>, <code>permutation</code>是<code>[1,4,3,2,5]</code>.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>考虑<code>nums</code>数组的最后一个元素. 因为这是数组的最后, 所有比它(放在这个位置的<code>[1,n]</code>内的某个数字)小的数字都会出现在它前面. (不可能出现在后面因为这已经是最后了). 假设这个最后应该放置的数字是<code>k</code>, 那么这些比它的小的数字之和必然是<code>sum([1...k-1])</code>.<br>对于上面的式子可能看做是一种前缀和. 所以通过搜索(这个前缀和在所有前缀和中的位置)可以找到到<code>k</code>的值. </p>
+<p>比如, 对于<code>[1,4,2,3]</code>这个<code>permutation</code>来说, <code>nums</code>是<code>[0,1,1,3]</code>. 最后一个值是<code>3</code>,由<code>1+2</code>得到, 那么放在这个位置的数一定是<code>1,2</code>后面的第一个数字<code>3</code>. 拿到<code>3</code>之后, 剩余的数字<code>1,2,4</code>起始也可以看做一个permutation, 只要有序无重复就行.(它仍然拥有一个对应的前缀和数组). 但是上一个前缀和数组含有<code>3</code>的影响, 现在已经找到了<code>3</code>,可以把它删掉(置为<code>0</code>).</p>
+<p>需要动态维护这样一个前缀和数组, 使用了线段树(权值线段树). 每个节点存的是<code>[l, r]</code>范围内的和. 首先把<code>[1,n]</code>所有数插入进去, 然后query当前<code>nums</code>数组的最后一个值. 返回的值就是应该放在这个位置的数字, 然后把这个数字置为<code>0</code>. 需要注意的是, 这样我们的前缀和数组的生成就会有很多<code>0</code>的影响, eg. <code>[1,3,3,3,3,3,6]</code>, 因为原始数组出现了多个0, 前缀和数组会有重复数字. 这个时候再查找目标前缀和, 我们需要找到尽量右侧的点(坐标).类似<code>bisect.bisect_right()</code>. </p>
+<p>所以实际query时, 参数是<code>nums[i]+1</code>, 保证不受<code>0</code>的干扰. (其实还有一种情况, <code>[1,2,3]</code>的前缀和是<code>[1,3,6]</code>) 搜<code>6</code>时会落到<code>3</code>上, 但和<code>6</code>对应的是<code>4</code>.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">segTree</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.t = [<span class="number">0</span>] * (n &lt;&lt; <span class="number">2</span>)</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self, node, l, r, index, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> l == r:</span><br><span class="line">            self.t[node] = value</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        mid = (l + r) &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> index &lt;= mid:</span><br><span class="line">            self.update(node*<span class="number">2</span>, l, mid, index, value)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.update(node*<span class="number">2</span> + <span class="number">1</span>, mid + <span class="number">1</span>, r, index, value)</span><br><span class="line">        self.t[node] = self.t[node*<span class="number">2</span>] + self.t[node*<span class="number">2</span> + <span class="number">1</span>]    <span class="comment"># 更新完两个子节点还要计算一下当前节点</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span><span class="params">(self, node, l, r, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> l == r:</span><br><span class="line">            <span class="keyword">return</span> self.t[node]</span><br><span class="line">        mid = (l + r) &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> self.t[node*<span class="number">2</span>] &gt;= value:</span><br><span class="line">            <span class="keyword">return</span> self.query(node*<span class="number">2</span>, l, mid, value)</span><br><span class="line">        <span class="keyword">return</span> self.query(node*<span class="number">2</span> + <span class="number">1</span>, mid + <span class="number">1</span>, r, value - self.t[node*<span class="number">2</span>])   <span class="comment"># 向右搜索时, 减掉左侧节点的值, 这样最终会落到目标点上</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    n = int(input())</span><br><span class="line">    nums = [int(i) <span class="keyword">for</span> i <span class="keyword">in</span> input().split(<span class="string">" "</span>)]</span><br><span class="line">    res = [<span class="number">0</span>]*n</span><br><span class="line">    weightTree = segTree(n)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        weightTree.update(<span class="number">1</span>, <span class="number">1</span>, n, i, i)</span><br><span class="line">    <span class="comment"># print(weightTree.t)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        res[i] = weightTree.query(<span class="number">1</span>, <span class="number">1</span>, n, nums[i] + <span class="number">1</span>)</span><br><span class="line">        weightTree.update(<span class="number">1</span>, <span class="number">1</span>, n, res[i], <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">" "</span>.join([str(c) <span class="keyword">for</span> c <span class="keyword">in</span> res])</span><br><span class="line"> </span><br><span class="line">print(do())</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -339,9 +325,9 @@
           
         
         <div class="post-tags">
-            <a href="/tags/stack/" rel="tag"># stack</a>
+            <a href="/tags/greedy/" rel="tag"># greedy</a>
           
-            <a href="/tags/parser/" rel="tag"># parser</a>
+            <a href="/tags/segment-tree/" rel="tag"># segment tree</a>
           
         </div>
         <div class="post-widgets">
@@ -365,8 +351,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/25/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/08/30/线段树系列/" rel="next" title="线段树系列[施工中]">
+                <i class="fa fa-chevron-left"></i> 线段树系列[施工中]
               </a>
             
           </div>
@@ -374,10 +360,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/08/25/leetcode-218-The-Skyline-Problem/" rel="prev" title="leetcode-218 The Skyline Problem">
-                leetcode-218 The Skyline Problem <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>

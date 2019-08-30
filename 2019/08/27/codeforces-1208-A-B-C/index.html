@@ -58,18 +58,18 @@
   };
 </script>
 
-  <meta name="description" content="2019年8月27日CF群打卡题: 1208A, 1208B, 1208C, 1208D  https://codeforces.com/problemset/problem/1208/A/ https://codeforces.com/problemset/problem/1208/B/ https://codeforces.com/problemset/problem/1208/C/ http">
+  <meta name="description" content="2019年8月27日CF群打卡题: 1208A, 1208B, 1208C  https://codeforces.com/problemset/problem/1208/A/ https://codeforces.com/problemset/problem/1208/B/ https://codeforces.com/problemset/problem/1208/C/  1208A XORi">
 <meta name="keywords" content="bit,math,two pointers">
 <meta property="og:type" content="article">
-<meta property="og:title" content="codeforces-1208-A-B-C-D总结">
+<meta property="og:title" content="codeforces-1208-A-B-C总结">
 <meta property="og:url" content="http://yoursite.com/2019/08/27/codeforces-1208-A-B-C/index.html">
 <meta property="og:site_name" content="Nagato&#39;s blog">
-<meta property="og:description" content="2019年8月27日CF群打卡题: 1208A, 1208B, 1208C, 1208D  https://codeforces.com/problemset/problem/1208/A/ https://codeforces.com/problemset/problem/1208/B/ https://codeforces.com/problemset/problem/1208/C/ http">
+<meta property="og:description" content="2019年8月27日CF群打卡题: 1208A, 1208B, 1208C  https://codeforces.com/problemset/problem/1208/A/ https://codeforces.com/problemset/problem/1208/B/ https://codeforces.com/problemset/problem/1208/C/  1208A XORi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-28T04:06:55.137Z">
+<meta property="og:updated_time" content="2019-08-30T06:33:52.870Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="codeforces-1208-A-B-C-D总结">
-<meta name="twitter:description" content="2019年8月27日CF群打卡题: 1208A, 1208B, 1208C, 1208D  https://codeforces.com/problemset/problem/1208/A/ https://codeforces.com/problemset/problem/1208/B/ https://codeforces.com/problemset/problem/1208/C/ http">
+<meta name="twitter:title" content="codeforces-1208-A-B-C总结">
+<meta name="twitter:description" content="2019年8月27日CF群打卡题: 1208A, 1208B, 1208C  https://codeforces.com/problemset/problem/1208/A/ https://codeforces.com/problemset/problem/1208/B/ https://codeforces.com/problemset/problem/1208/C/  1208A XORi">
   <link rel="canonical" href="http://yoursite.com/2019/08/27/codeforces-1208-A-B-C/">
 
 
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>codeforces-1208-A-B-C-D总结 | Nagato's blog</title>
+  <title>codeforces-1208-A-B-C总结 | Nagato's blog</title>
   
 
 
@@ -244,7 +244,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">codeforces-1208-A-B-C-D总结
+          <h1 class="post-title" itemprop="name headline">codeforces-1208-A-B-C总结
 
               
             
@@ -277,7 +277,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-28 00:06:55" itemprop="dateModified" datetime="2019-08-28T00:06:55-04:00">2019-08-28</time>
+                <time title="修改时间：2019-08-30 02:33:52" itemprop="dateModified" datetime="2019-08-30T02:33:52-04:00">2019-08-30</time>
               </span>
             
           
@@ -317,12 +317,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>2019年8月27日CF群打卡题: 1208A, 1208B, 1208C, 1208D</p>
+        <p>2019年8月27日CF群打卡题: 1208A, 1208B, 1208C</p>
 <ul>
 <li><a href="https://codeforces.com/problemset/problem/1208/A/" target="_blank" rel="noopener">https://codeforces.com/problemset/problem/1208/A/</a></li>
 <li><a href="https://codeforces.com/problemset/problem/1208/B/" target="_blank" rel="noopener">https://codeforces.com/problemset/problem/1208/B/</a></li>
 <li><a href="https://codeforces.com/problemset/problem/1208/C/" target="_blank" rel="noopener">https://codeforces.com/problemset/problem/1208/C/</a></li>
-<li><a href="https://codeforces.com/problemset/problem/1208/D/" target="_blank" rel="noopener">https://codeforces.com/problemset/problem/1208/D/</a></li>
 </ul>
 <h2 id="1208A-XORinacci"><a href="#1208A-XORinacci" class="headerlink" title="1208A XORinacci"></a>1208A XORinacci</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>XOR版本的Fibonacci数列. 输入两个起始数<code>a</code>和<code>b</code>, 和要输出的第n个数(0-indexed). 输出该数. </p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>n的范围<code>[0, 10**9]</code>, 肯定不能常规解. 观察每一位可以发现bit<code>0</code>和<code>1</code>是循环的. 循环节永远是<code>1-1-0</code></p>
@@ -336,7 +335,7 @@
 
 <h2 id="1208B-Uniqueness"><a href="#1208B-Uniqueness" class="headerlink" title="1208B Uniqueness"></a>1208B Uniqueness</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><p>给一个<code>nums</code> array,允许最多删掉一段(连续的)subarray, 删掉的这段最短多长, 使得剩下的部分没有重复数字.</p>
 <h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>因为允许删除中间的一段, 我一开始的思路是直接两个<code>nums</code>首尾相接, 这样跑一遍最长不重复子串就行. 用原始长度减掉最长子串长度就是要删去的最小长度. 然后WA了一(很多)发, 发现前面那样操作不是充要条件…<br>考虑这样一个<code>nums</code>: [1,1,1,2,3,4,5,6,6,6], 最长不重复子串在中间, 但是这样删掉首尾是删去了两段而题目要求一段. </p>
-<p>所以更新最长长度时要check: (<code>#</code>表示拼接点, 没有实际字符, 用字母表示的数字不过影响题意)</p>
+<p>所以更新最长长度时要check: (<code>#</code>表示拼接点, 没有实际字符; 用字母表示的数字,不会影响题意)</p>
 <ul>
 <li>左指针是否在<code>0</code>处:<code>[abcdef]ffffff#abcdefffffff</code></li>
 <li>右指针是否在<code>len(nums)-1</code>处: <code>aaaa[abcdef]#aaaaabcdef</code></li>
@@ -352,13 +351,12 @@
 <p>类似地, 如果边长是4, 可以把每个角落分割开, 然后扩增位数(divide and <del>conquer</del> fill):</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00</span>**, <span class="number">00</span>**,  <span class="number">01</span>**, <span class="number">01</span>**</span><br><span class="line"><span class="number">00</span>**, <span class="number">00</span>**,  <span class="number">01</span>**, <span class="number">01</span>**</span><br><span class="line"><span class="number">10</span>**, <span class="number">10</span>**,  <span class="number">11</span>**, <span class="number">11</span>**</span><br><span class="line"><span class="number">10</span>**, <span class="number">10</span>**,  <span class="number">11</span>**, <span class="number">11</span>**</span><br></pre></td></tr></table></figure>
 
-<p>然后对于每个角落角, 我们可以把(这个角落的)四组<code>**</code>分别替换成边长为2的那种情况, 例如右下角</p>
+<p>然后对于每个角落, 我们可以把(这个角落的)四组<code>**</code>分别替换成边长为2的那种情况, 例如右下角</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1100</span>, <span class="number">1101</span></span><br><span class="line"><span class="number">1110</span>, <span class="number">1111</span></span><br></pre></td></tr></table></figure>
 
 <p>这样扩增每次行上和列上的<code>0</code>,<code>1</code>都是成倍增长. 只要边长为2时满足XOR相等,以后都会相等.</p>
 <h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    n = int(input())</span><br><span class="line">    res = [[<span class="number">0</span>]*n <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line">    cur = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, n, <span class="number">2</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>, n, <span class="number">2</span>):</span><br><span class="line">            <span class="keyword">for</span> ii <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">                <span class="keyword">for</span> jj <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">                    res[i + ii][j + jj] = cur</span><br><span class="line">                    cur += <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> res:</span><br><span class="line">        print(<span class="string">" "</span>.join(map(str, row)))</span><br><span class="line">do()</span><br></pre></td></tr></table></figure>
 
-<h2 id="1208D-Restore-Permutation"><a href="#1208D-Restore-Permutation" class="headerlink" title="1208D Restore Permutation"></a>1208D Restore Permutation</h2><p>[施工中]</p>
 
     </div>
 
@@ -407,6 +405,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+              <a href="/2019/08/30/线段树系列/" rel="prev" title="线段树系列[施工中]">
+                线段树系列[施工中] <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
     </footer>
@@ -464,7 +466,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -536,7 +538,11 @@
         
           
         
-        <span class="site-state-item-count">18</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -625,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1208A-XORinacci"><span class="nav-number">1.</span> <span class="nav-text">1208A XORinacci</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1208B-Uniqueness"><span class="nav-number">2.</span> <span class="nav-text">1208B Uniqueness</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-1"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1208C-Magic-Grid"><span class="nav-number">3.</span> <span class="nav-text">1208C Magic Grid</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-2"><span class="nav-number">3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1208D-Restore-Permutation"><span class="nav-number">4.</span> <span class="nav-text">1208D Restore Permutation</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1208A-XORinacci"><span class="nav-number">1.</span> <span class="nav-text">1208A XORinacci</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">1.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1208B-Uniqueness"><span class="nav-number">2.</span> <span class="nav-text">1208B Uniqueness</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述-1"><span class="nav-number">2.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-1"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1208C-Magic-Grid"><span class="nav-number">3.</span> <span class="nav-text">1208C Magic Grid</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描述-2"><span class="nav-number">3.1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-2"><span class="nav-number">3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
             
 
           </div>
