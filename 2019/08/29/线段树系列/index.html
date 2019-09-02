@@ -58,19 +58,19 @@
   };
 </script>
 
-  <meta name="description" content="描述对于[1, n]闭区间的所有整数的某个permutation permutation, 我们有数组nums. 定义nums的每个元素nums[i]表示在permutation的下标i之前的比permutation[i]小的所有数的和.例如如果nums是0 0 0, 那么permutation是[3,2,1]. 因为对于每个数, 没有在它之前的比它小的数. 如果nums是0 1 1 1 10,">
-<meta name="keywords" content="greedy,segment tree">
+  <meta name="description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+<meta name="keywords" content="segment tree,BIT">
 <meta property="og:type" content="article">
-<meta property="og:title" content="codeforces-1208D Restore Permutation">
-<meta property="og:url" content="http://yoursite.com/2019/08/30/codeforces-1208D-Restore-Permutation/index.html">
+<meta property="og:title" content="线段树系列[施工中]">
+<meta property="og:url" content="http://yoursite.com/2019/08/29/线段树系列/index.html">
 <meta property="og:site_name" content="Nagato&#39;s blog">
-<meta property="og:description" content="描述对于[1, n]闭区间的所有整数的某个permutation permutation, 我们有数组nums. 定义nums的每个元素nums[i]表示在permutation的下标i之前的比permutation[i]小的所有数的和.例如如果nums是0 0 0, 那么permutation是[3,2,1]. 因为对于每个数, 没有在它之前的比它小的数. 如果nums是0 1 1 1 10,">
+<meta property="og:description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-30T06:39:07.529Z">
+<meta property="og:updated_time" content="2019-08-30T05:41:50.878Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="codeforces-1208D Restore Permutation">
-<meta name="twitter:description" content="描述对于[1, n]闭区间的所有整数的某个permutation permutation, 我们有数组nums. 定义nums的每个元素nums[i]表示在permutation的下标i之前的比permutation[i]小的所有数的和.例如如果nums是0 0 0, 那么permutation是[3,2,1]. 因为对于每个数, 没有在它之前的比它小的数. 如果nums是0 1 1 1 10,">
-  <link rel="canonical" href="http://yoursite.com/2019/08/30/codeforces-1208D-Restore-Permutation/">
+<meta name="twitter:title" content="线段树系列[施工中]">
+<meta name="twitter:description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+  <link rel="canonical" href="http://yoursite.com/2019/08/29/线段树系列/">
 
 
 <script id="page.configurations">
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>codeforces-1208D Restore Permutation | Nagato's blog</title>
+  <title>线段树系列[施工中] | Nagato's blog</title>
   
 
 
@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/30/codeforces-1208D-Restore-Permutation/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/29/线段树系列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Z">
@@ -244,7 +244,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">codeforces-1208D Restore Permutation
+          <h1 class="post-title" itemprop="name headline">线段树系列[施工中]
 
               
             
@@ -264,7 +264,7 @@
                 
               
 
-              <time title="创建时间：2019-08-30 02:28:41 / 修改时间：02:39:07" itemprop="dateCreated datePublished" datetime="2019-08-30T02:28:41-04:00">2019-08-30</time>
+              <time title="创建时间：2019-08-30 01:07:35 / 修改时间：01:41:50" itemprop="dateCreated datePublished" datetime="2019-08-30T01:07:35-04:00">2019-08-30</time>
             </span>
           
             
@@ -279,7 +279,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
 
                 
                 
@@ -307,14 +307,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>对于<code>[1, n]</code>闭区间的所有整数的某个permutation <code>permutation</code>, 我们有数组<code>nums</code>. 定义<code>nums</code>的每个元素<code>nums[i]</code>表示在permutation的下标<code>i</code>之前的比<code>permutation[i]</code>小的所有数的和.<br>例如如果<code>nums</code>是<code>0 0 0</code>, 那么<code>permutation</code>是<code>[3,2,1]</code>. 因为对于每个数, 没有在它之前的比它小的数. 如果<code>nums</code>是<code>0 1 1 1 10</code>, <code>permutation</code>是<code>[1,4,3,2,5]</code>.</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>考虑<code>nums</code>数组的最后一个元素. 因为这是数组的最后, 所有比它(放在这个位置的<code>[1,n]</code>内的某个数字)小的数字都会出现在它前面. (不可能出现在后面因为这已经是最后了). 假设这个最后应该放置的数字是<code>k</code>, 那么这些比它的小的数字之和必然是<code>sum([1...k-1])</code>.<br>对于上面的式子可能看做是一种前缀和. 所以通过搜索(这个前缀和在所有前缀和中的位置)可以找到到<code>k</code>的值. </p>
-<p>比如, 对于<code>[1,4,2,3]</code>这个<code>permutation</code>来说, <code>nums</code>是<code>[0,1,1,3]</code>. 最后一个值是<code>3</code>,由<code>1+2</code>得到, 那么放在这个位置的数一定是<code>1,2</code>后面的第一个数字<code>3</code>. 拿到<code>3</code>之后, 剩余的数字<code>1,2,4</code>起始也可以看做一个permutation, 只要有序无重复就行.(它仍然拥有一个对应的前缀和数组). 但是上一个前缀和数组含有<code>3</code>的影响, 现在已经找到了<code>3</code>,可以把它删掉(置为<code>0</code>).</p>
-<p>需要动态维护这样一个前缀和数组, 使用了线段树(权值线段树). 每个节点存的是<code>[l, r]</code>范围内的和. 首先把<code>[1,n]</code>所有数插入进去, 然后query当前<code>nums</code>数组的最后一个值. 返回的值就是应该放在这个位置的数字, 然后把这个数字置为<code>0</code>. 需要注意的是, 这样我们的前缀和数组的生成就会有很多<code>0</code>的影响, eg. <code>[1,3,3,3,3,3,6]</code>, 因为原始数组出现了多个0, 前缀和数组会有重复数字. 这个时候再查找目标前缀和, 我们需要找到尽量右侧的点(坐标).类似<code>bisect.bisect_right()</code>. </p>
-<p>所以实际query时, 参数是<code>nums[i]+1</code>, 保证不受<code>0</code>的干扰. (其实还有一种情况, <code>[1,2,3]</code>的前缀和是<code>[1,3,6]</code>) 搜<code>6</code>时会落到<code>3</code>上, 但和<code>6</code>对应的是<code>4</code>.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">segTree</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.t = [<span class="number">0</span>] * (n &lt;&lt; <span class="number">2</span>)</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self, node, l, r, index, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> l == r:</span><br><span class="line">            self.t[node] = value</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        mid = (l + r) &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> index &lt;= mid:</span><br><span class="line">            self.update(node*<span class="number">2</span>, l, mid, index, value)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.update(node*<span class="number">2</span> + <span class="number">1</span>, mid + <span class="number">1</span>, r, index, value)</span><br><span class="line">        self.t[node] = self.t[node*<span class="number">2</span>] + self.t[node*<span class="number">2</span> + <span class="number">1</span>]    <span class="comment"># 更新完两个子节点还要计算一下当前节点</span></span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span><span class="params">(self, node, l, r, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> l == r:</span><br><span class="line">            <span class="keyword">return</span> self.t[node]</span><br><span class="line">        mid = (l + r) &gt;&gt; <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> self.t[node*<span class="number">2</span>] &gt;= value:</span><br><span class="line">            <span class="keyword">return</span> self.query(node*<span class="number">2</span>, l, mid, value)</span><br><span class="line">        <span class="keyword">return</span> self.query(node*<span class="number">2</span> + <span class="number">1</span>, mid + <span class="number">1</span>, r, value - self.t[node*<span class="number">2</span>])   <span class="comment"># 向右搜索时, 减掉左侧节点的值, 这样最终会落到目标点上</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    n = int(input())</span><br><span class="line">    nums = [int(i) <span class="keyword">for</span> i <span class="keyword">in</span> input().split(<span class="string">" "</span>)]</span><br><span class="line">    res = [<span class="number">0</span>]*n</span><br><span class="line">    weightTree = segTree(n)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        weightTree.update(<span class="number">1</span>, <span class="number">1</span>, n, i, i)</span><br><span class="line">    <span class="comment"># print(weightTree.t)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        res[i] = weightTree.query(<span class="number">1</span>, <span class="number">1</span>, n, nums[i] + <span class="number">1</span>)</span><br><span class="line">        weightTree.update(<span class="number">1</span>, <span class="number">1</span>, n, res[i], <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">" "</span>.join([str(c) <span class="keyword">for</span> c <span class="keyword">in</span> res])</span><br><span class="line"> </span><br><span class="line">print(do())</span><br></pre></td></tr></table></figure>
-
-
+        
     </div>
 
     
@@ -325,9 +318,9 @@
           
         
         <div class="post-tags">
-            <a href="/tags/greedy/" rel="tag"># greedy</a>
-          
             <a href="/tags/segment-tree/" rel="tag"># segment tree</a>
+          
+            <a href="/tags/BIT/" rel="tag"># BIT</a>
           
         </div>
         <div class="post-widgets">
@@ -351,8 +344,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/30/线段树系列/" rel="next" title="线段树系列[施工中]">
-                <i class="fa fa-chevron-left"></i> 线段树系列[施工中]
+              <a href="/2019/08/27/codeforces-1208-A-B-C/" rel="next" title="codeforces-1208-A-B-C总结">
+                <i class="fa fa-chevron-left"></i> codeforces-1208-A-B-C总结
               </a>
             
           </div>
@@ -360,8 +353,8 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/08/30/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/29/codeforces-1208D-Restore-Permutation/" rel="prev" title="codeforces-1208D Restore Permutation">
+                codeforces-1208D Restore Permutation <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -396,17 +389,8 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -421,7 +405,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -503,7 +487,9 @@
         
           
         
-        <span class="site-state-item-count">23</span>
+          
+        
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -540,7 +526,7 @@
       
         
       
-        <a href="https://weibo.com/yourname" title="Weibo &rarr; https://weibo.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+        <a href="https://weibo.com/" title="Weibo &rarr; https://weibo.com/" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
       </span>
     
       <span class="links-of-author-item">
@@ -551,7 +537,7 @@
       
         
       
-        <a href="https://plus.google.com/yourname" title="Google &rarr; https://plus.google.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-google"></i>Google</a>
+        <a href="https://plus.google.com/" title="Google &rarr; https://plus.google.com/" rel="noopener" target="_blank"><i class="fa fa-fw fa-google"></i>Google</a>
       </span>
     
       <span class="links-of-author-item">
@@ -562,7 +548,7 @@
       
         
       
-        <a href="https://twitter.com/yourname" title="Twitter &rarr; https://twitter.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+        <a href="https://twitter.com/" title="Twitter &rarr; https://twitter.com/" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
       </span>
     
       <span class="links-of-author-item">
@@ -582,23 +568,6 @@
 
         </div>
       </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
 
     </div>
   </aside>
