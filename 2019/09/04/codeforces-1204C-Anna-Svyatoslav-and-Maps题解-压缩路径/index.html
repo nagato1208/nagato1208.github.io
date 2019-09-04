@@ -58,19 +58,19 @@
   };
 </script>
 
-  <meta name="description" content="描述实现一个数据结构, 支持对区间的动态tracking, 分别有以下三个操作:  addRange(int left, int right) 新增一个左闭右开的tracking区间[left, right). queryRange(int left, int right)check区间[left, right)是否正在被tracking, 返回布尔值. removeRange(int left,">
-<meta name="keywords" content="binary search,design">
+  <meta name="description" content="描述给一张邻接矩阵表示有向图, 和一条路径. 压缩这条路径(删除尽可能多的点), 使得压缩后的路径没有歧义. (本着找最短路径走的思想, 不会走出和原来不一样的路径) 思路先计算一遍多源最短路. 然后从起点开始走, 用一个变量cur表示当前走过的代价.  比如目前正在处理x点和y点: 对于已经放到结果中的最后一个点res[-1], 如果cur + dis[x][y]的值大于dis[res[-1][">
+<meta name="keywords" content="shortest path,graph,floyd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-715 Range Module">
-<meta property="og:url" content="http://yoursite.com/2019/08/25/leetcode-715-Range-Module/index.html">
+<meta property="og:title" content="codeforces-1204C-Anna, Svyatoslav and Maps题解[压缩路径]">
+<meta property="og:url" content="http://yoursite.com/2019/09/04/codeforces-1204C-Anna-Svyatoslav-and-Maps题解-压缩路径/index.html">
 <meta property="og:site_name" content="Nagato&#39;s blog">
-<meta property="og:description" content="描述实现一个数据结构, 支持对区间的动态tracking, 分别有以下三个操作:  addRange(int left, int right) 新增一个左闭右开的tracking区间[left, right). queryRange(int left, int right)check区间[left, right)是否正在被tracking, 返回布尔值. removeRange(int left,">
+<meta property="og:description" content="描述给一张邻接矩阵表示有向图, 和一条路径. 压缩这条路径(删除尽可能多的点), 使得压缩后的路径没有歧义. (本着找最短路径走的思想, 不会走出和原来不一样的路径) 思路先计算一遍多源最短路. 然后从起点开始走, 用一个变量cur表示当前走过的代价.  比如目前正在处理x点和y点: 对于已经放到结果中的最后一个点res[-1], 如果cur + dis[x][y]的值大于dis[res[-1][">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-26T06:49:57.781Z">
+<meta property="og:updated_time" content="2019-09-04T21:33:15.360Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-715 Range Module">
-<meta name="twitter:description" content="描述实现一个数据结构, 支持对区间的动态tracking, 分别有以下三个操作:  addRange(int left, int right) 新增一个左闭右开的tracking区间[left, right). queryRange(int left, int right)check区间[left, right)是否正在被tracking, 返回布尔值. removeRange(int left,">
-  <link rel="canonical" href="http://yoursite.com/2019/08/25/leetcode-715-Range-Module/">
+<meta name="twitter:title" content="codeforces-1204C-Anna, Svyatoslav and Maps题解[压缩路径]">
+<meta name="twitter:description" content="描述给一张邻接矩阵表示有向图, 和一条路径. 压缩这条路径(删除尽可能多的点), 使得压缩后的路径没有歧义. (本着找最短路径走的思想, 不会走出和原来不一样的路径) 思路先计算一遍多源最短路. 然后从起点开始走, 用一个变量cur表示当前走过的代价.  比如目前正在处理x点和y点: 对于已经放到结果中的最后一个点res[-1], 如果cur + dis[x][y]的值大于dis[res[-1][">
+  <link rel="canonical" href="http://yoursite.com/2019/09/04/codeforces-1204C-Anna-Svyatoslav-and-Maps题解-压缩路径/">
 
 
 <script id="page.configurations">
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>leetcode-715 Range Module | Nagato's blog</title>
+  <title>codeforces-1204C-Anna, Svyatoslav and Maps题解[压缩路径] | Nagato's blog</title>
   
 
 
@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/25/leetcode-715-Range-Module/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/04/codeforces-1204C-Anna-Svyatoslav-and-Maps题解-压缩路径/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Z">
@@ -244,7 +244,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">leetcode-715 Range Module
+          <h1 class="post-title" itemprop="name headline">codeforces-1204C-Anna, Svyatoslav and Maps题解[压缩路径]
 
               
             
@@ -264,21 +264,11 @@
                 
               
 
-              <time title="创建时间：2019-08-25 03:04:23" itemprop="dateCreated datePublished" datetime="2019-08-25T03:04:23-04:00">2019-08-25</time>
+              <time title="创建时间：2019-09-04 14:05:55 / 修改时间：17:33:15" itemprop="dateCreated datePublished" datetime="2019-09-04T14:05:55-04:00">2019-09-04</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-26 02:49:57" itemprop="dateModified" datetime="2019-08-26T02:49:57-04:00">2019-08-26</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -289,7 +279,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
 
                 
                 
@@ -317,20 +307,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>实现一个数据结构, 支持对区间的动态tracking, 分别有以下三个操作:</p>
-<ul>
-<li><code>addRange(int left, int right)</code> 新增一个左闭右开的tracking区间<code>[left, right)</code>.</li>
-<li><code>queryRange(int left, int right)</code>check区间<code>[left, right)</code>是否正在被tracking, 返回布尔值.</li>
-<li><code>removeRange(int left, int right)</code> 取消tracking这个区间.</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>维护一个list<code>index</code>存当前有效的离散点. 这样这个list有以下特征:</p>
-<ul>
-<li><code>index</code>必然是坐标<code>left</code>和<code>right</code>两两成组的interval list, 在加入和删除的过程中, 会自动merge.</li>
-<li><code>addRange()</code>: <code>left</code>向左二分搜索插入点<code>l</code>(下标), <code>right</code>向右二分搜索插入点<code>r</code>. 如果<code>l</code>是偶数, 说明在它之前坐标们是两两成对的(可以在纸上画画), 当前点<code>left</code>没有落入任何一个已有的区间内, 对于<code>left</code>来说是一个独立点, 必然会存在与本轮更新后的<code>index</code><br>中, 那么加入<code>new_index</code>. <code>right</code>同理. 最后更新<code>index</code>的<code>[l:r]</code>段为<code>new_index</code>.</li>
-<li><code>queryRange()</code>和<code>addRange()</code>稍有差别. <code>left</code>向右二分搜索插入点<code>l</code>(下标), <code>right</code>向左二分搜索插入点<code>r</code>. 如果<code>l == r</code>, 说明这个被query的区间落在了<code>index</code>的离散点们标示出的<strong>一个</strong>(而不是多个)区间内.同时<code>l</code>和<code>r</code>需要满足是奇数, 否则query区间实际落入的是gap,而不是<code>index</code>标识的tracking区间.</li>
-<li><code>removeRange()</code>基本是<code>addRange()</code>的逆操作. 当<code>r</code>是奇数,说明在它之前坐标们<strong>没有</strong>两两成对, 这个点落入了已有区间中, 那么它在删除操作后会是一个新的区间边界点. 需要加入新的<code>index</code>中. <code>right</code>同理.</li>
-</ul>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RangeModule</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.index = []</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addRange</span><span class="params">(self, left, right)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type left: int</span></span><br><span class="line"><span class="string">        :type right: int</span></span><br><span class="line"><span class="string">        :rtype: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        l = bisect.bisect_left(self.index, left)</span><br><span class="line">        r = bisect.bisect_right(self.index, right)</span><br><span class="line">        new_index = []</span><br><span class="line">        <span class="keyword">if</span> l%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">            new_index.append(left)</span><br><span class="line">        <span class="keyword">if</span> r%<span class="number">2</span>==<span class="number">0</span>:</span><br><span class="line">            new_index.append(right)</span><br><span class="line">        self.index[l:r] = new_index        </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">queryRange</span><span class="params">(self, left, right)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type left: int</span></span><br><span class="line"><span class="string">        :type right: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        l = bisect.bisect_right(self.index, left)</span><br><span class="line">        r = bisect.bisect_left(self.index, right)</span><br><span class="line">        <span class="keyword">return</span> l == r <span class="keyword">and</span> l%<span class="number">2</span>      </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeRange</span><span class="params">(self, left, right)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type left: int</span></span><br><span class="line"><span class="string">        :type right: int</span></span><br><span class="line"><span class="string">        :rtype: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        l = bisect.bisect_left(self.index, left)</span><br><span class="line">        r = bisect.bisect_right(self.index, right)</span><br><span class="line">        new_index = []</span><br><span class="line">        <span class="keyword">if</span> l%<span class="number">2</span>==<span class="number">1</span>:</span><br><span class="line">            new_index.append(left)</span><br><span class="line">        <span class="keyword">if</span> r%<span class="number">2</span>==<span class="number">1</span>:</span><br><span class="line">            new_index.append(right)</span><br><span class="line">        self.index[l:r] = new_index        </span><br><span class="line">        </span><br><span class="line"><span class="comment"># Your RangeModule object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = RangeModule()</span></span><br><span class="line"><span class="comment"># obj.addRange(left,right)</span></span><br><span class="line"><span class="comment"># param_2 = obj.queryRange(left,right)</span></span><br><span class="line"><span class="comment"># obj.removeRange(left,right)</span></span><br></pre></td></tr></table></figure>
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给一张邻接矩阵表示有向图, 和一条路径. 压缩这条路径(删除尽可能多的点), 使得压缩后的路径没有歧义. (本着找最短路径走的思想, 不会走出和原来不一样的路径)</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>先计算一遍多源最短路. 然后从起点开始走, 用一个变量<code>cur</code>表示当前走过的代价. </p>
+<p>比如目前正在处理<code>x</code>点和<code>y</code>点: 对于已经放到结果中的最后一个点<code>res[-1]</code>, 如果<code>cur + dis[x][y]</code>的值大于<code>dis[res[-1][y]</code>, 说明从<code>res</code>最后一个点<code>res[-1]</code>到<code>y</code>点, 存在不经过<code>x</code>点的最短路. 这个时候, 如果忽略<code>x</code>, 就会出现错误的解压缩路径(去走不经过<code>x</code>的更短的路径了), 所以必须把<code>x</code>放进结果中. 然后<code>x</code>成为了新的<code>res[-1]</code>, 以此类推. 最后把终点放入结果.</p>
+<p>换句话说, 一个点在什么情况下可以被删除? <strong>如果前面一个保留的点<code>res[-1]</code>到这个点(<code>x</code>)后一个点(<code>y</code>)的最短路径等于前面一个点经过这个点到这个点后面一个点的最短路径(太绕了, 其实是<code>res[-1] =&gt; x =&gt; y</code>)相等,那么这个点<code>x</code>可以被删除</strong>.</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    n = int(input())</span><br><span class="line">    graph = [[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        tmp = [int(c) <span class="keyword">for</span> c <span class="keyword">in</span> input()]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(len(tmp)):</span><br><span class="line">            graph[i][j] = <span class="number">1</span> <span class="keyword">if</span> tmp[j] == <span class="number">1</span> <span class="keyword">else</span> float(<span class="string">'inf'</span>)</span><br><span class="line">    n_path = int(input())</span><br><span class="line">    path = [int(c) - <span class="number">1</span> <span class="keyword">for</span> c <span class="keyword">in</span> input().split(<span class="string">" "</span>)]</span><br><span class="line">    dis = [[float(<span class="string">'inf'</span>)] * n <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> i == j:</span><br><span class="line">                dis[i][i] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dis[i][j] = graph[i][j]</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> i != k:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                    dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j])</span><br><span class="line">    res = [path[<span class="number">0</span>]]</span><br><span class="line">    cur = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n_path):</span><br><span class="line">        cur += dis[path[i<span class="number">-1</span>]][path[i]]</span><br><span class="line">        <span class="keyword">if</span> cur &gt; dis[res[<span class="number">-1</span>]][path[i]]:</span><br><span class="line">            res.append(path[i<span class="number">-1</span>])</span><br><span class="line">            cur = dis[res[<span class="number">-1</span>]][path[i]]</span><br><span class="line">    <span class="keyword">if</span> path[<span class="number">-1</span>] != res[<span class="number">-1</span>]:</span><br><span class="line">        res.append(path[<span class="number">-1</span>])</span><br><span class="line">    print(len(res))</span><br><span class="line">    print(<span class="string">" "</span>.join([str(c+<span class="number">1</span>) <span class="keyword">for</span> c <span class="keyword">in</span> res]))</span><br><span class="line"></span><br><span class="line">do()</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -341,9 +322,11 @@
           
         
         <div class="post-tags">
-            <a href="/tags/binary-search/" rel="tag"># binary search</a>
+            <a href="/tags/shortest-path/" rel="tag"># shortest path</a>
           
-            <a href="/tags/design/" rel="tag"># design</a>
+            <a href="/tags/graph/" rel="tag"># graph</a>
+          
+            <a href="/tags/floyd/" rel="tag"># floyd</a>
           
         </div>
         <div class="post-widgets">
@@ -367,8 +350,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/25/leetcode-218-The-Skyline-Problem/" rel="next" title="leetcode-218 The Skyline Problem">
-                <i class="fa fa-chevron-left"></i> leetcode-218 The Skyline Problem
+              <a href="/2019/09/04/codeforces-1205B-Shortest-Cycle/" rel="next" title="codeforces-1205B-Shortest Cycle题解">
+                <i class="fa fa-chevron-left"></i> codeforces-1205B-Shortest Cycle题解
               </a>
             
           </div>
@@ -376,10 +359,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/08/25/codeforces-399B-Red-and-Blue-Balls/" rel="prev" title="codeforces-399B Red and Blue Balls">
-                codeforces-399B Red and Blue Balls <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>
