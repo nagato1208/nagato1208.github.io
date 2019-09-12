@@ -58,18 +58,18 @@
   };
 </script>
 
-  <meta name="description" content="描述一张边长为n的二维矩阵, 0表示可走, -1表示障碍物(不可走), 1表示樱桃(可走, 走过之后变为0因为被摘掉了). 从0,0往返n-1,n-1的路上, 最多摘多少樱桃. 思路其实可以看做两个人同时从0,0出发, 同时到达n-1, n-1, 最多摘到多少樱桃. 如果两个人位置相同并且当前是樱桃, 那么只摘一次. 开一个三维dp数组, dp[r1][c1][r2]表示甲从r1, c1出发, 乙">
+  <meta name="description" content="描述一张边长为n的二维矩阵, 0表示可走, -1表示障碍物(不可走), 1表示樱桃(可走, 走过之后变为0因为被摘掉了). 从0,0往返n-1,n-1的路上, 最多摘多少樱桃. 思路其实可以看做两个人同时从0,0出发, 同时到达n-1, n-1, 最多摘到多少樱桃. 如果两个人位置相同并且当前是樱桃, 那么只摘一次. 开一个三维dp数组, dp[r1][c1][c2]表示甲从r1, c1出发, 乙">
 <meta name="keywords" content="DP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-741-Cherry-Pickup">
 <meta property="og:url" content="http://yoursite.com/2019/09/12/leetcode-741-Cherry-Pickup/index.html">
 <meta property="og:site_name" content="Nagato&#39;s blog">
-<meta property="og:description" content="描述一张边长为n的二维矩阵, 0表示可走, -1表示障碍物(不可走), 1表示樱桃(可走, 走过之后变为0因为被摘掉了). 从0,0往返n-1,n-1的路上, 最多摘多少樱桃. 思路其实可以看做两个人同时从0,0出发, 同时到达n-1, n-1, 最多摘到多少樱桃. 如果两个人位置相同并且当前是樱桃, 那么只摘一次. 开一个三维dp数组, dp[r1][c1][r2]表示甲从r1, c1出发, 乙">
+<meta property="og:description" content="描述一张边长为n的二维矩阵, 0表示可走, -1表示障碍物(不可走), 1表示樱桃(可走, 走过之后变为0因为被摘掉了). 从0,0往返n-1,n-1的路上, 最多摘多少樱桃. 思路其实可以看做两个人同时从0,0出发, 同时到达n-1, n-1, 最多摘到多少樱桃. 如果两个人位置相同并且当前是樱桃, 那么只摘一次. 开一个三维dp数组, dp[r1][c1][c2]表示甲从r1, c1出发, 乙">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-12T21:28:51.459Z">
+<meta property="og:updated_time" content="2019-09-12T21:32:24.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-741-Cherry-Pickup">
-<meta name="twitter:description" content="描述一张边长为n的二维矩阵, 0表示可走, -1表示障碍物(不可走), 1表示樱桃(可走, 走过之后变为0因为被摘掉了). 从0,0往返n-1,n-1的路上, 最多摘多少樱桃. 思路其实可以看做两个人同时从0,0出发, 同时到达n-1, n-1, 最多摘到多少樱桃. 如果两个人位置相同并且当前是樱桃, 那么只摘一次. 开一个三维dp数组, dp[r1][c1][r2]表示甲从r1, c1出发, 乙">
+<meta name="twitter:description" content="描述一张边长为n的二维矩阵, 0表示可走, -1表示障碍物(不可走), 1表示樱桃(可走, 走过之后变为0因为被摘掉了). 从0,0往返n-1,n-1的路上, 最多摘多少樱桃. 思路其实可以看做两个人同时从0,0出发, 同时到达n-1, n-1, 最多摘到多少樱桃. 如果两个人位置相同并且当前是樱桃, 那么只摘一次. 开一个三维dp数组, dp[r1][c1][c2]表示甲从r1, c1出发, 乙">
   <link rel="canonical" href="http://yoursite.com/2019/09/12/leetcode-741-Cherry-Pickup/">
 
 
@@ -264,7 +264,7 @@
                 
               
 
-              <time title="创建时间：2019-09-12 14:03:01 / 修改时间：17:28:51" itemprop="dateCreated datePublished" datetime="2019-09-12T14:03:01-04:00">2019-09-12</time>
+              <time title="创建时间：2019-09-12 14:03:01 / 修改时间：17:32:24" itemprop="dateCreated datePublished" datetime="2019-09-12T14:03:01-04:00">2019-09-12</time>
             </span>
           
             
@@ -308,7 +308,7 @@
 
       
         <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>一张边长为<code>n</code>的二维矩阵, <code>0</code>表示可走, <code>-1</code>表示障碍物(不可走), <code>1</code>表示樱桃(可走, 走过之后变为<code>0</code>因为被摘掉了). 从<code>0,0</code>往返<code>n-1,n-1</code>的路上, 最多摘多少樱桃.</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>其实可以看做两个人同时从<code>0,0</code>出发, 同时到达<code>n-1, n-1</code>, 最多摘到多少樱桃. 如果两个人位置相同并且当前是樱桃, 那么只摘一次. 开一个三维<code>dp</code>数组, <code>dp[r1][c1][r2]</code>表示甲从<code>r1, c1</code>出发, 乙从<code>r2, c2</code>出发, 最多摘的数量. 因为到达当前状态的步数是相同的, 所以<code>r1+c1 == r2+c2</code>, <code>c2</code>的值可以用前三个变量表示出来.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>其实可以看做两个人同时从<code>0,0</code>出发, 同时到达<code>n-1, n-1</code>, 最多摘到多少樱桃. 如果两个人位置相同并且当前是樱桃, 那么只摘一次. 开一个三维<code>dp</code>数组, <code>dp[r1][c1][c2]</code>表示甲从<code>r1, c1</code>出发, 乙从<code>r2, c2</code>出发, 最多摘的数量. 因为到达当前状态的步数是相同的, 所以<code>r1+c1 == r2+c2</code>, <code>r2</code>的值可以用前三个变量表示出来.</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cherryPickup</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type grid: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        N = len(grid)</span><br><span class="line">        memo = [[[<span class="number">-1</span>] * N <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(N)] <span class="keyword">for</span> __ <span class="keyword">in</span> xrange(N)]</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dp</span><span class="params">(r1, c1, c2)</span>:</span></span><br><span class="line">            r2 = r1 + c1 - c2</span><br><span class="line">            <span class="keyword">if</span> (N == r1 <span class="keyword">or</span> N == r2 <span class="keyword">or</span> N == c1 <span class="keyword">or</span> N == c2 <span class="keyword">or</span></span><br><span class="line">                    grid[r1][c1] == <span class="number">-1</span> <span class="keyword">or</span> grid[r2][c2] == <span class="number">-1</span>):</span><br><span class="line">                <span class="keyword">return</span> float(<span class="string">'-inf'</span>)</span><br><span class="line">            <span class="keyword">if</span> r1 == c1 == N<span class="number">-1</span>:</span><br><span class="line">                <span class="keyword">return</span> grid[r1][c1]</span><br><span class="line">            <span class="keyword">if</span> memo[r1][c1][c2] == <span class="number">-1</span>:</span><br><span class="line">                res = grid[r1][c1] + (c1 != c2) * grid[r2][c2]</span><br><span class="line">                res += max(dp(r1, c1+<span class="number">1</span>, c2+<span class="number">1</span>), dp(r1+<span class="number">1</span>, c1, c2+<span class="number">1</span>),</span><br><span class="line">                           dp(r1, c1+<span class="number">1</span>, c2), dp(r1+<span class="number">1</span>, c1, c2))</span><br><span class="line"></span><br><span class="line">                memo[r1][c1][c2] = res</span><br><span class="line">            <span class="keyword">return</span> memo[r1][c1][c2]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max(<span class="number">0</span>, dp(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
 
 
