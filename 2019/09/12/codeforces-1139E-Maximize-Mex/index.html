@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="Nagato&#39;s blog">
 <meta property="og:description" content="描述(复制粘贴的) 在一所学校中有 n 个学生和 m 个俱乐部。俱乐部从 1 到 m 标号。每个学生拥有一个潜力值 pi，且属于第 ci 个俱乐部。 刚开始每个学生都恰好属于一个俱乐部，后来学校举办了一次技能测试，这场测试持续了 d 天。每天上午都会有恰好一个学生离开他的俱乐部。一个学生一旦离开就不会再次加入任何一个俱乐部。每天下午，每个俱乐部需要选出一个人，以此组成一个 m 个人的队伍来参加比赛">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-13T08:13:26.319Z">
+<meta property="og:updated_time" content="2019-09-13T08:28:05.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="codeforces-1139E-Maximize Mex[二分图]">
 <meta name="twitter:description" content="描述(复制粘贴的) 在一所学校中有 n 个学生和 m 个俱乐部。俱乐部从 1 到 m 标号。每个学生拥有一个潜力值 pi，且属于第 ci 个俱乐部。 刚开始每个学生都恰好属于一个俱乐部，后来学校举办了一次技能测试，这场测试持续了 d 天。每天上午都会有恰好一个学生离开他的俱乐部。一个学生一旦离开就不会再次加入任何一个俱乐部。每天下午，每个俱乐部需要选出一个人，以此组成一个 m 个人的队伍来参加比赛">
@@ -264,7 +264,7 @@
                 
               
 
-              <time title="创建时间：2019-09-13 00:52:38 / 修改时间：04:13:26" itemprop="dateCreated datePublished" datetime="2019-09-13T00:52:38-04:00">2019-09-13</time>
+              <time title="创建时间：2019-09-13 00:52:38 / 修改时间：04:28:05" itemprop="dateCreated datePublished" datetime="2019-09-13T00:52:38-04:00">2019-09-13</time>
             </span>
           
             
@@ -311,49 +311,8 @@
 <p>刚开始每个学生都恰好属于一个俱乐部，后来学校举办了一次技能测试，这场测试持续了 d 天。每天上午都会有恰好一个学生离开他的俱乐部。一个学生一旦离开就不会再次加入任何一个俱乐部。每天下午，每个俱乐部需要选出一个人，以此组成一个 m 个人的队伍来参加比赛。一支队伍的能力为队员潜力值的 mex（mex指在一个序列中没有出现的最小自然数）。学校想知道每一天能组成的队伍的能力最大值。</p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>(并不是很容易想到的)匹配问题. 首先query是基于删除边的, 删除操作不好处理, 离线一下改成添加边. 然后对于潜力值-&gt;俱乐部的二分图(映射的中间变量学生可以被忽略), 找到(从<code>0</code>开始的)最大的匹配值<code>mex</code>. 注意因为我们在不断添加边, 等于是增加候选边, 从后向前的<code>mex</code>值是<strong>非递减</strong>的. 所以每次匈牙利算法的起点都是上一轮的<code>mex</code>值. 初始为<code>0</code>. </p>
 <p>总之实际在完成的任务是<strong>为从0开始的潜力值依次分配俱乐部, 找到尽可能多的俱乐部来匹配潜力值</strong>, 潜力值不能再增加(没有俱乐部可以提供/匹配这个潜力值)时, 就是本轮的结果. </p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="python"><span class="comment"># 1139E</span>
-<span class="keyword">import</span> collections
-<span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span>
-    students, clubs = map(int, input().split(<span class="string">" "</span>))
-    p = [int(i) <span class="keyword">for</span> i <span class="keyword">in</span> input().split(<span class="string">" "</span>)]
-    stu2club = [int(i) - <span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> input().split(<span class="string">" "</span>)]
-    g = collections.defaultdict(set)
-    days = int(input())
-    delete = [<span class="literal">False</span>] * students
-    query = [<span class="number">0</span>] * days
-    res = [<span class="number">0</span>] * (days + <span class="number">1</span>)
-    match = [<span class="number">-1</span>] * clubs
-    <span class="keyword">for</span> _ <span class="keyword">in</span> range(days):
-        i = int(input()) - <span class="number">1</span>
-        delete[i] = <span class="literal">True</span>
-        query[_] = i
-    <span class="keyword">for</span> i <span class="keyword">in</span> range(students):
-        <span class="keyword">if</span> <span class="keyword">not</span> delete[i]:
-            g[p[i]].add(stu2club[i]) <span class="comment"># p -&gt; club</span>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1139E</span></span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    students, clubs = map(int, input().split(<span class="string">" "</span>))</span><br><span class="line">    p = [int(i) <span class="keyword">for</span> i <span class="keyword">in</span> input().split(<span class="string">" "</span>)]</span><br><span class="line">    stu2club = [int(i) - <span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> input().split(<span class="string">" "</span>)]</span><br><span class="line">    g = collections.defaultdict(set)</span><br><span class="line">    days = int(input())</span><br><span class="line">    delete = [<span class="literal">False</span>] * students</span><br><span class="line">    query = [<span class="number">0</span>] * days</span><br><span class="line">    res = [<span class="number">0</span>] * (days + <span class="number">1</span>)</span><br><span class="line">    match = [<span class="number">-1</span>] * clubs</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(days):</span><br><span class="line">        i = int(input()) - <span class="number">1</span></span><br><span class="line">        delete[i] = <span class="literal">True</span></span><br><span class="line">        query[_] = i</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(students):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> delete[i]:</span><br><span class="line">            g[p[i]].add(stu2club[i]) <span class="comment"># p -&gt; club</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(mex)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> club <span class="keyword">in</span> g[mex]:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> seen[club]:</span><br><span class="line">                seen[club] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> match[club] == <span class="number">-1</span> <span class="keyword">or</span> dfs(match[club]):</span><br><span class="line">                    match[club] = mex</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(days - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">        res[i] = res[i + <span class="number">1</span>]</span><br><span class="line">        seen = [<span class="number">0</span>] * clubs</span><br><span class="line">        <span class="keyword">while</span> dfs(res[i]):</span><br><span class="line">            res[i] += <span class="number">1</span></span><br><span class="line">            seen = [<span class="number">0</span>] * clubs</span><br><span class="line">        new_student = query[i]</span><br><span class="line">        g[p[new_student]].add(stu2club[new_student])</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(days):</span><br><span class="line">        print(res[i])</span><br><span class="line"></span><br><span class="line">do()</span><br></pre></td></tr></table></figure>
 
-    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(mex)</span>:</span>
-        <span class="keyword">for</span> club <span class="keyword">in</span> g[mex]:
-            <span class="keyword">if</span> <span class="keyword">not</span> seen[club]:
-                seen[club] = <span class="number">1</span>
-                <span class="keyword">if</span> match[club] == <span class="number">-1</span> <span class="keyword">or</span> dfs(match[club]):
-                    match[club] = mex
-                    <span class="keyword">return</span> <span class="literal">True</span>
-        <span class="keyword">return</span> <span class="literal">False</span>
-
-    <span class="keyword">for</span> i <span class="keyword">in</span> range(days - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):
-        res[i] = res[i + <span class="number">1</span>]
-        seen = [<span class="number">0</span>] * clubs
-        <span class="keyword">while</span> dfs(res[i]):
-            res[i] += <span class="number">1</span>
-            seen = [<span class="number">0</span>] * clubs
-        new_student = query[i]
-        g[p[new_student]].add(stu2club[new_student])
-
-    <span class="keyword">for</span> i <span class="keyword">in</span> range(days):
-        print(res[i])
-
-do()
-</code></pre>
 
     </div>
 
