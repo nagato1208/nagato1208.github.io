@@ -58,19 +58,19 @@
   };
 </script>
 
-  <meta name="description" content="描述给定一个n个点，m条边, 用邻接表表示的无向连通图. 每个点i都和点1有一个最短距离. 现在需要删去一些边，让剩余的边数最多为k，并且让尽量多的到节点1的最短距离保持不变. 给定的边编号1~m，找到最佳删边方案，打印保留的边的编号. 思路dijkstra长时间不写还给WA了几发… 直接从起点1开始遍历最短路, 把找到的前min(n-1, k)条unique的边加入结果. 代码123456789">
-<meta name="keywords" content="graph,shortest path,dijkstra">
+  <meta name="description" content="描述(复制粘贴的) 在一所学校中有 n 个学生和 m 个俱乐部。俱乐部从 1 到 m 标号。每个学生拥有一个潜力值 pi，且属于第 ci 个俱乐部。 刚开始每个学生都恰好属于一个俱乐部，后来学校举办了一次技能测试，这场测试持续了 d 天。每天上午都会有恰好一个学生离开他的俱乐部。一个学生一旦离开就不会再次加入任何一个俱乐部。每天下午，每个俱乐部需要选出一个人，以此组成一个 m 个人的队伍来参加比赛">
+<meta name="keywords" content="graph,hungarian,math,离线算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="codeforces-1076D-Edge Deletion">
-<meta property="og:url" content="http://yoursite.com/2019/09/06/codeforces-1076D-Edge-Deletion/index.html">
+<meta property="og:title" content="codeforces-1139E-Maximize Mex[二分图]">
+<meta property="og:url" content="http://yoursite.com/2019/09/12/codeforces-1139E-Maximize-Mex/index.html">
 <meta property="og:site_name" content="Nagato&#39;s blog">
-<meta property="og:description" content="描述给定一个n个点，m条边, 用邻接表表示的无向连通图. 每个点i都和点1有一个最短距离. 现在需要删去一些边，让剩余的边数最多为k，并且让尽量多的到节点1的最短距离保持不变. 给定的边编号1~m，找到最佳删边方案，打印保留的边的编号. 思路dijkstra长时间不写还给WA了几发… 直接从起点1开始遍历最短路, 把找到的前min(n-1, k)条unique的边加入结果. 代码123456789">
+<meta property="og:description" content="描述(复制粘贴的) 在一所学校中有 n 个学生和 m 个俱乐部。俱乐部从 1 到 m 标号。每个学生拥有一个潜力值 pi，且属于第 ci 个俱乐部。 刚开始每个学生都恰好属于一个俱乐部，后来学校举办了一次技能测试，这场测试持续了 d 天。每天上午都会有恰好一个学生离开他的俱乐部。一个学生一旦离开就不会再次加入任何一个俱乐部。每天下午，每个俱乐部需要选出一个人，以此组成一个 m 个人的队伍来参加比赛">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-07T01:59:18.240Z">
+<meta property="og:updated_time" content="2019-09-13T08:13:26.319Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="codeforces-1076D-Edge Deletion">
-<meta name="twitter:description" content="描述给定一个n个点，m条边, 用邻接表表示的无向连通图. 每个点i都和点1有一个最短距离. 现在需要删去一些边，让剩余的边数最多为k，并且让尽量多的到节点1的最短距离保持不变. 给定的边编号1~m，找到最佳删边方案，打印保留的边的编号. 思路dijkstra长时间不写还给WA了几发… 直接从起点1开始遍历最短路, 把找到的前min(n-1, k)条unique的边加入结果. 代码123456789">
-  <link rel="canonical" href="http://yoursite.com/2019/09/06/codeforces-1076D-Edge-Deletion/">
+<meta name="twitter:title" content="codeforces-1139E-Maximize Mex[二分图]">
+<meta name="twitter:description" content="描述(复制粘贴的) 在一所学校中有 n 个学生和 m 个俱乐部。俱乐部从 1 到 m 标号。每个学生拥有一个潜力值 pi，且属于第 ci 个俱乐部。 刚开始每个学生都恰好属于一个俱乐部，后来学校举办了一次技能测试，这场测试持续了 d 天。每天上午都会有恰好一个学生离开他的俱乐部。一个学生一旦离开就不会再次加入任何一个俱乐部。每天下午，每个俱乐部需要选出一个人，以此组成一个 m 个人的队伍来参加比赛">
+  <link rel="canonical" href="http://yoursite.com/2019/09/12/codeforces-1139E-Maximize-Mex/">
 
 
 <script id="page.configurations">
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>codeforces-1076D-Edge Deletion | Nagato's blog</title>
+  <title>codeforces-1139E-Maximize Mex[二分图] | Nagato's blog</title>
   
 
 
@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/06/codeforces-1076D-Edge-Deletion/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/12/codeforces-1139E-Maximize-Mex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Z">
@@ -244,7 +244,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">codeforces-1076D-Edge Deletion
+          <h1 class="post-title" itemprop="name headline">codeforces-1139E-Maximize Mex[二分图]
 
               
             
@@ -264,7 +264,7 @@
                 
               
 
-              <time title="创建时间：2019-09-06 18:38:00 / 修改时间：21:59:18" itemprop="dateCreated datePublished" datetime="2019-09-06T18:38:00-04:00">2019-09-06</time>
+              <time title="创建时间：2019-09-13 00:52:38 / 修改时间：04:13:26" itemprop="dateCreated datePublished" datetime="2019-09-13T00:52:38-04:00">2019-09-13</time>
             </span>
           
             
@@ -307,11 +307,54 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给定一个<code>n</code>个点，<code>m</code>条边, 用邻接表表示的无向连通图. 每个点<code>i</code>都和点<code>1</code>有一个最短距离.</p>
-<p>现在需要删去一些边，让剩余的边数最多为<code>k</code>，并且让尽量多的到节点<code>1</code>的最短距离保持不变.</p>
-<p>给定的边编号<code>1~m</code>，找到最佳删边方案，打印保留的边的编号.</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><code>dijkstra</code>长时间不写还给WA了几发… 直接从起点<code>1</code>开始遍历最短路, 把找到的前<code>min(n-1, k)</code>条unique的边加入结果.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    nodes, edges, k = map(int, input().split(<span class="string">" "</span>))</span><br><span class="line">    graph = collections.defaultdict(dict)</span><br><span class="line">    es = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(edges):</span><br><span class="line">        x, y, w = map(int, input().split(<span class="string">" "</span>))</span><br><span class="line">        graph[x][y] = w</span><br><span class="line">        graph[y][x] = w</span><br><span class="line">        es[(x, y)] = es[(y, x)] = i + <span class="number">1</span></span><br><span class="line"> </span><br><span class="line">    seen = set()</span><br><span class="line">    seen.add(<span class="number">1</span>)</span><br><span class="line">    hp = []</span><br><span class="line">    <span class="keyword">for</span> nei <span class="keyword">in</span> graph[<span class="number">1</span>]:</span><br><span class="line">        heapq.heappush(hp, (graph[<span class="number">1</span>][nei], nei, es[(<span class="number">1</span>, nei)]))</span><br><span class="line"> </span><br><span class="line">    rl = min(k, nodes - <span class="number">1</span>)</span><br><span class="line">    res = set()</span><br><span class="line">    <span class="keyword">while</span> len(res) &lt; rl:</span><br><span class="line">        cost, cur, edge = heapq.heappop(hp)</span><br><span class="line">        <span class="keyword">if</span> cur <span class="keyword">in</span> seen:   <span class="comment"># 有一次WA是因为这里忘了check了...</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        seen.add(cur)</span><br><span class="line">        res.add(edge)</span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[cur]:</span><br><span class="line">            <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">                heapq.heappush(hp, (cost + graph[cur][nei], nei, es[(cur, nei)]))</span><br><span class="line"> </span><br><span class="line">    print(rl)</span><br><span class="line">    print(<span class="string">" "</span>.join(str(n) <span class="keyword">for</span> n <span class="keyword">in</span> list(res)))</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"> </span><br><span class="line">do()</span><br></pre></td></tr></table></figure>
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>(复制粘贴的) 在一所学校中有 n 个学生和 m 个俱乐部。俱乐部从 1 到 m 标号。每个学生拥有一个潜力值 pi，且属于第 ci 个俱乐部。</p>
+<p>刚开始每个学生都恰好属于一个俱乐部，后来学校举办了一次技能测试，这场测试持续了 d 天。每天上午都会有恰好一个学生离开他的俱乐部。一个学生一旦离开就不会再次加入任何一个俱乐部。每天下午，每个俱乐部需要选出一个人，以此组成一个 m 个人的队伍来参加比赛。一支队伍的能力为队员潜力值的 mex（mex指在一个序列中没有出现的最小自然数）。学校想知道每一天能组成的队伍的能力最大值。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>(并不是很容易想到的)匹配问题. 首先query是基于删除边的, 删除操作不好处理, 离线一下改成添加边. 然后对于潜力值-&gt;俱乐部的二分图(映射的中间变量学生可以被忽略), 找到(从<code>0</code>开始的)最大的匹配值<code>mex</code>. 注意因为我们在不断添加边, 等于是增加候选边, 从后向前的<code>mex</code>值是<strong>非递减</strong>的. 所以每次匈牙利算法的起点都是上一轮的<code>mex</code>值. 初始为<code>0</code>. </p>
+<p>总之实际在完成的任务是<strong>为从0开始的潜力值依次分配俱乐部, 找到尽可能多的俱乐部来匹配潜力值</strong>, 潜力值不能再增加(没有俱乐部可以提供/匹配这个潜力值)时, 就是本轮的结果. </p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="python"><span class="comment"># 1139E</span>
+<span class="keyword">import</span> collections
+<span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span>
+    students, clubs = map(int, input().split(<span class="string">" "</span>))
+    p = [int(i) <span class="keyword">for</span> i <span class="keyword">in</span> input().split(<span class="string">" "</span>)]
+    stu2club = [int(i) - <span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> input().split(<span class="string">" "</span>)]
+    g = collections.defaultdict(set)
+    days = int(input())
+    delete = [<span class="literal">False</span>] * students
+    query = [<span class="number">0</span>] * days
+    res = [<span class="number">0</span>] * (days + <span class="number">1</span>)
+    match = [<span class="number">-1</span>] * clubs
+    <span class="keyword">for</span> _ <span class="keyword">in</span> range(days):
+        i = int(input()) - <span class="number">1</span>
+        delete[i] = <span class="literal">True</span>
+        query[_] = i
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(students):
+        <span class="keyword">if</span> <span class="keyword">not</span> delete[i]:
+            g[p[i]].add(stu2club[i]) <span class="comment"># p -&gt; club</span>
+
+    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(mex)</span>:</span>
+        <span class="keyword">for</span> club <span class="keyword">in</span> g[mex]:
+            <span class="keyword">if</span> <span class="keyword">not</span> seen[club]:
+                seen[club] = <span class="number">1</span>
+                <span class="keyword">if</span> match[club] == <span class="number">-1</span> <span class="keyword">or</span> dfs(match[club]):
+                    match[club] = mex
+                    <span class="keyword">return</span> <span class="literal">True</span>
+        <span class="keyword">return</span> <span class="literal">False</span>
+
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(days - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):
+        res[i] = res[i + <span class="number">1</span>]
+        seen = [<span class="number">0</span>] * clubs
+        <span class="keyword">while</span> dfs(res[i]):
+            res[i] += <span class="number">1</span>
+            seen = [<span class="number">0</span>] * clubs
+        new_student = query[i]
+        g[p[new_student]].add(stu2club[new_student])
+
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(days):
+        print(res[i])
+
+do()
+</code></pre>
+
     </div>
 
     
@@ -324,9 +367,11 @@
         <div class="post-tags">
             <a href="/tags/graph/" rel="tag"># graph</a>
           
-            <a href="/tags/shortest-path/" rel="tag"># shortest path</a>
+            <a href="/tags/hungarian/" rel="tag"># hungarian</a>
           
-            <a href="/tags/dijkstra/" rel="tag"># dijkstra</a>
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+            <a href="/tags/离线算法/" rel="tag"># 离线算法</a>
           
         </div>
         <div class="post-widgets">
@@ -350,8 +395,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/09/05/codeforces-295B-Greg-and-Graph/" rel="next" title="codeforces-295B-Greg and Graph">
-                <i class="fa fa-chevron-left"></i> codeforces-295B-Greg and Graph
+              <a href="/2019/09/12/HDOJ-2063-hungarian-algorithm/" rel="next" title="HDOJ-2063-hungarian-algorithm">
+                <i class="fa fa-chevron-left"></i> HDOJ-2063-hungarian-algorithm
               </a>
             
           </div>
@@ -359,10 +404,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/09/08/leetcode-1187-Make-Array-Strictly-Increasing-DP/" rel="prev" title="leetcode-1187-Make Array Strictly Increasing-[DP]">
-                leetcode-1187-Make Array Strictly Increasing-[DP] <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>
