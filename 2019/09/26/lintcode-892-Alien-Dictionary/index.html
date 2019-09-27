@@ -58,19 +58,19 @@
   };
 </script>
 
-  <meta name="description" content="描述有n个数据中心, m个客户, 一天有h小时, 每个数据中心在每天的一个特定小时宕机, 每个用户的数据保存在两个数据中心上, 数据保证每个用户在每个小时都可以访问到数据, 也就是不存在一个用户保存数据的两个中心宕机时间相同. 现要选出一部分中心将他们的宕机时间向后推迟1h, 且还要保证用户对数据的随时访问, 问最少要选几个机器(不能选0个). 思路对于同一个客户的两台机器, 如果宕机时间(其实原">
-<meta name="keywords" content="graph,dfs">
+  <meta name="description" content="描述There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you. You receive a list of non-empty words from the dictionary, where words are sorted le">
+<meta name="keywords" content="bfs,dfs,topological sort">
 <meta property="og:type" content="article">
-<meta property="og:title" content="codeforces-949C-Data Center Maintenance[最小强连通分量]">
-<meta property="og:url" content="http://yoursite.com/2019/09/12/codeforces-949C-Data-Center-Maintenance/index.html">
+<meta property="og:title" content="lintcode-892 Alien Dictionary">
+<meta property="og:url" content="http://yoursite.com/2019/09/26/lintcode-892-Alien-Dictionary/index.html">
 <meta property="og:site_name" content="Nagato&#39;s blog">
-<meta property="og:description" content="描述有n个数据中心, m个客户, 一天有h小时, 每个数据中心在每天的一个特定小时宕机, 每个用户的数据保存在两个数据中心上, 数据保证每个用户在每个小时都可以访问到数据, 也就是不存在一个用户保存数据的两个中心宕机时间相同. 现要选出一部分中心将他们的宕机时间向后推迟1h, 且还要保证用户对数据的随时访问, 问最少要选几个机器(不能选0个). 思路对于同一个客户的两台机器, 如果宕机时间(其实原">
+<meta property="og:description" content="描述There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you. You receive a list of non-empty words from the dictionary, where words are sorted le">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-13T00:06:17.400Z">
+<meta property="og:updated_time" content="2019-09-27T00:17:24.421Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="codeforces-949C-Data Center Maintenance[最小强连通分量]">
-<meta name="twitter:description" content="描述有n个数据中心, m个客户, 一天有h小时, 每个数据中心在每天的一个特定小时宕机, 每个用户的数据保存在两个数据中心上, 数据保证每个用户在每个小时都可以访问到数据, 也就是不存在一个用户保存数据的两个中心宕机时间相同. 现要选出一部分中心将他们的宕机时间向后推迟1h, 且还要保证用户对数据的随时访问, 问最少要选几个机器(不能选0个). 思路对于同一个客户的两台机器, 如果宕机时间(其实原">
-  <link rel="canonical" href="http://yoursite.com/2019/09/12/codeforces-949C-Data-Center-Maintenance/">
+<meta name="twitter:title" content="lintcode-892 Alien Dictionary">
+<meta name="twitter:description" content="描述There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you. You receive a list of non-empty words from the dictionary, where words are sorted le">
+  <link rel="canonical" href="http://yoursite.com/2019/09/26/lintcode-892-Alien-Dictionary/">
 
 
 <script id="page.configurations">
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>codeforces-949C-Data Center Maintenance[最小强连通分量] | Nagato's blog</title>
+  <title>lintcode-892 Alien Dictionary | Nagato's blog</title>
   
 
 
@@ -228,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/12/codeforces-949C-Data-Center-Maintenance/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/26/lintcode-892-Alien-Dictionary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Z">
@@ -242,7 +242,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">codeforces-949C-Data Center Maintenance[最小强连通分量]
+          <h1 class="post-title" itemprop="name headline">lintcode-892 Alien Dictionary
 
               
             
@@ -262,7 +262,7 @@
                 
               
 
-              <time title="创建时间：2019-09-12 16:41:44 / 修改时间：20:06:17" itemprop="dateCreated datePublished" datetime="2019-09-12T16:41:44-04:00">2019-09-12</time>
+              <time title="创建时间：2019-09-26 17:13:01 / 修改时间：20:17:24" itemprop="dateCreated datePublished" datetime="2019-09-26T17:13:01-04:00">2019-09-26</time>
             </span>
           
             
@@ -277,7 +277,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Lintcode/" itemprop="url" rel="index"><span itemprop="name">Lintcode</span></a></span>
 
                 
                 
@@ -305,11 +305,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>有n个数据中心, m个客户, 一天有h小时, 每个数据中心在每天的一个特定小时宕机, 每个用户的数据保存在两个数据中心上, 数据保证每个用户在每个小时都可以访问到数据, 也就是不存在一个用户保存数据的两个中心宕机时间相同. 现要选出一部分中心将他们的宕机时间向后推迟1h, 且还要保证用户对数据的随时访问, 问最少要选几个机器(不能选0个).</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>对于同一个客户的两台机器, 如果宕机时间(其实原文是维护时间…)间隔是1, 那么前一个机器推迟, 后一个必然也要推迟.(另外考虑24h-1h)这种情况, 需要取模.</p>
-<p>对于<code>机器A推迟, 机器B也要推迟</code>的情况, 我们在A-&gt;B之间建边. 这样形成一张有向图, 原题转化成了求<strong>最小强连通分量</strong>(每一个连通块推迟了一个点，则整个块都需要被推迟).<br>另外对于size为<code>1</code>的情况, 特判一下出度是否为<code>0</code>.</p>
-<p>关于<code>kosaraju</code>算法求强连通分量: <a href="https://oi-wiki.org/graph/scc/#kosaraju" target="_blank" rel="noopener">https://oi-wiki.org/graph/scc/#kosaraju</a></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 949C</span></span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    nodes, clients, h = map(int, input().split(<span class="string">" "</span>))</span><br><span class="line">    times = [int(t) <span class="keyword">for</span> t <span class="keyword">in</span> input().split(<span class="string">" "</span>)]</span><br><span class="line">    g = collections.defaultdict(list)</span><br><span class="line">    g2 = collections.defaultdict(list) <span class="comment"># 反向图</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(clients):</span><br><span class="line">        x, y = map(int, input().split(<span class="string">" "</span>))</span><br><span class="line">        tx = times[x - <span class="number">1</span>]</span><br><span class="line">        ty = times[y - <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> (tx + <span class="number">1</span>) % h == ty:</span><br><span class="line">            g[x].append(y)</span><br><span class="line">            g2[y].append(x)</span><br><span class="line">        <span class="keyword">if</span> (ty + <span class="number">1</span>) % h == tx:</span><br><span class="line">            g[y].append(x)</span><br><span class="line">            g2[x].append(y)</span><br><span class="line">    seen = [<span class="number">0</span>] * (<span class="number">1</span> + nodes)</span><br><span class="line">    colors = [<span class="number">0</span>] * (<span class="number">1</span> + nodes)</span><br><span class="line">    post_stack = []</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs1</span><span class="params">(entry)</span>:</span></span><br><span class="line">        seen[entry] = <span class="number">1</span></span><br><span class="line">        stack = [[entry, <span class="literal">True</span>]]</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            cur, first = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> first:</span><br><span class="line">                stack.append([cur, <span class="keyword">not</span> first])</span><br><span class="line">                <span class="keyword">for</span> nei <span class="keyword">in</span> g[cur]:</span><br><span class="line">                    <span class="keyword">if</span> <span class="keyword">not</span> seen[nei]:</span><br><span class="line">                        seen[nei] = <span class="number">1</span></span><br><span class="line">                        stack.append([nei, <span class="literal">True</span>])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                post_stack.append(cur)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs2</span><span class="params">(entry, color)</span>:</span></span><br><span class="line">        stack = [entry]</span><br><span class="line">        colors[entry] = color</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            cur = stack.pop()</span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> g2[cur]:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> colors[nei]:</span><br><span class="line">                    colors[nei] = color</span><br><span class="line">                    stack.append(nei)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, nodes + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> seen[i]:</span><br><span class="line">            dfs1(i)</span><br><span class="line">    cur_color = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> post_stack:</span><br><span class="line">        i = post_stack.pop()</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> colors[i]:</span><br><span class="line">            dfs2(i, cur_color)</span><br><span class="line">            cur_color += <span class="number">1</span></span><br><span class="line">            </span><br><span class="line">    d = collections.defaultdict(list)</span><br><span class="line">    <span class="keyword">for</span> i, c <span class="keyword">in</span> enumerate(colors):</span><br><span class="line">        d[c].append(i)</span><br><span class="line">    d.pop(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> can <span class="keyword">in</span> sorted(d.keys(), key=<span class="keyword">lambda</span> x:len(d[x])):</span><br><span class="line">        <span class="keyword">if</span> len(d[can]) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> len(g[d[can][<span class="number">0</span>]]) == <span class="number">0</span>:</span><br><span class="line">                print(<span class="number">1</span>)</span><br><span class="line">                print(d[can][<span class="number">0</span>])</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(len(d[can]))</span><br><span class="line">            print(<span class="string">" "</span>.join([str(c) <span class="keyword">for</span> c <span class="keyword">in</span> d[can]]))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">do()</span><br></pre></td></tr></table></figure>
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you. You receive a list of non-empty words from the dictionary, where words are sorted lexicographically by the rules of this new language. Derive the order of letters in this language.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">You may assume all letters are in lowercase.</span><br><span class="line">You may assume that if a is a prefix of b, then a must appear before b in the given dictionary.</span><br><span class="line">If the order is invalid, return an empty string.</span><br><span class="line">There may be multiple valid order of letters, return **the smallest in normal lexicographical order**</span><br></pre></td></tr></table></figure>
+
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input：[&quot;wrt&quot;,&quot;wrf&quot;,&quot;er&quot;,&quot;ett&quot;,&quot;rftt&quot;]</span><br><span class="line">Output：&quot;wertf&quot;</span><br><span class="line">Explanation：</span><br><span class="line">from &quot;wrt&quot;and&quot;wrf&quot; ,we can get &apos;t&apos;&lt;&apos;f&apos;</span><br><span class="line">from &quot;wrt&quot;and&quot;er&quot; ,we can get &apos;w&apos;&lt;&apos;e&apos;</span><br><span class="line">from &quot;er&quot;and&quot;ett&quot; ,we can get &apos;r&apos;&lt;&apos;t&apos;</span><br><span class="line">from &quot;ett&quot;and&quot;rtff&quot; ,we can get &apos;e&apos;&lt;&apos;r&apos;</span><br><span class="line">So return &quot;wertf&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>典型拓扑排序. 因为返回可能的结果中字典序最小的, 在建立<code>res</code>数组时, 队列的pop顺序要从小到大. 所以队列用pq(heap).</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    @param words: a list of words</span></span><br><span class="line"><span class="string">    @return: a string which is correct order</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">alienOrder</span><span class="params">(self, words)</span>:</span></span><br><span class="line">        <span class="comment"># Write your code here</span></span><br><span class="line">        g = collections.defaultdict(set)</span><br><span class="line">        ind = collections.defaultdict(int)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, len(words)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(min(len(words[i<span class="number">-1</span>]), len(words[i]))):</span><br><span class="line">                <span class="keyword">if</span> words[i<span class="number">-1</span>][j] != words[i][j]:</span><br><span class="line">                    g[words[i<span class="number">-1</span>][j]].add(words[i][j])</span><br><span class="line">                    ind[words[i][j]] += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        hp = []</span><br><span class="line">        res = []</span><br><span class="line">        char_set = set(<span class="string">""</span>.join(w <span class="keyword">for</span> w <span class="keyword">in</span> words))</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> char_set:</span><br><span class="line">            <span class="keyword">if</span> ind[c] == <span class="number">0</span>:</span><br><span class="line">                heapq.heappush(hp, c)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> hp:</span><br><span class="line">            cur = heapq.heappop(hp)</span><br><span class="line">            res.append(cur)</span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> g[cur]:</span><br><span class="line">                ind[nei] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> ind[nei] == <span class="number">0</span>:</span><br><span class="line">                    heapq.heappush(hp, nei)</span><br><span class="line">                    </span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>.join(res) <span class="keyword">if</span> len(res) == len(char_set) <span class="keyword">else</span> <span class="string">""</span></span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -322,9 +325,11 @@
           
         
         <div class="post-tags">
-            <a href="/tags/graph/" rel="tag"># graph</a>
+            <a href="/tags/bfs/" rel="tag"># bfs</a>
           
             <a href="/tags/dfs/" rel="tag"># dfs</a>
+          
+            <a href="/tags/topological-sort/" rel="tag"># topological sort</a>
           
         </div>
         <div class="post-widgets">
@@ -348,8 +353,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/09/12/leetcode-741-Cherry-Pickup/" rel="next" title="leetcode-741-Cherry-Pickup">
-                <i class="fa fa-chevron-left"></i> leetcode-741-Cherry-Pickup
+              <a href="/2019/09/21/leetcode-1199-Minimum-Time-to-Build-Blocks/" rel="next" title="leetcode-1199. Minimum Time to Build Blocks">
+                <i class="fa fa-chevron-left"></i> leetcode-1199. Minimum Time to Build Blocks
               </a>
             
           </div>
@@ -357,8 +362,8 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/09/12/HDOJ-2063-hungarian-algorithm/" rel="prev" title="HDOJ-2063-hungarian-algorithm">
-                HDOJ-2063-hungarian-algorithm <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/26/lintcode-126-Max-Tree/" rel="prev" title="lintcode-126. Max Tree">
+                lintcode-126. Max Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
