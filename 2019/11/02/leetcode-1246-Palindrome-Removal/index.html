@@ -58,19 +58,19 @@
   };
 </script>
 
-  <meta name="description" content="描述There are n houses in a village. We want to supply water for all the houses by building wells and laying pipes. For each house i, we can either build a well inside it directly with cost wells[i], or">
-<meta name="keywords" content="Graph">
+  <meta name="description" content="描述(搬运)Given an integer array arr, in one move you can select a palindromic subarray arr[i], arr[i+1], ..., arr[j] where i &amp;lt;= j, and remove that subarray from the given array. Note that after removi">
+<meta name="keywords" content="dp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-1168 Optimize Water Distribution in a Village">
-<meta property="og:url" content="http://yoursite.com/2019/08/24/leetcode-1168-Optimize-Water-Distribution-in-a-Village/index.html">
+<meta property="og:title" content="leetcode-1246-Palindrome Removal">
+<meta property="og:url" content="http://yoursite.com/2019/11/02/leetcode-1246-Palindrome-Removal/index.html">
 <meta property="og:site_name" content="Nagato&#39;s blog">
-<meta property="og:description" content="描述There are n houses in a village. We want to supply water for all the houses by building wells and laying pipes. For each house i, we can either build a well inside it directly with cost wells[i], or">
+<meta property="og:description" content="描述(搬运)Given an integer array arr, in one move you can select a palindromic subarray arr[i], arr[i+1], ..., arr[j] where i &amp;lt;= j, and remove that subarray from the given array. Note that after removi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-25T19:46:47.444Z">
+<meta property="og:updated_time" content="2019-11-02T18:44:39.116Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-1168 Optimize Water Distribution in a Village">
-<meta name="twitter:description" content="描述There are n houses in a village. We want to supply water for all the houses by building wells and laying pipes. For each house i, we can either build a well inside it directly with cost wells[i], or">
-  <link rel="canonical" href="http://yoursite.com/2019/08/24/leetcode-1168-Optimize-Water-Distribution-in-a-Village/">
+<meta name="twitter:title" content="leetcode-1246-Palindrome Removal">
+<meta name="twitter:description" content="描述(搬运)Given an integer array arr, in one move you can select a palindromic subarray arr[i], arr[i+1], ..., arr[j] where i &amp;lt;= j, and remove that subarray from the given array. Note that after removi">
+  <link rel="canonical" href="http://yoursite.com/2019/11/02/leetcode-1246-Palindrome-Removal/">
 
 
 <script id="page.configurations">
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>leetcode-1168 Optimize Water Distribution in a Village | Nagato's blog</title>
+  <title>leetcode-1246-Palindrome Removal | Nagato's blog</title>
   
 
 
@@ -228,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/leetcode-1168-Optimize-Water-Distribution-in-a-Village/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/02/leetcode-1246-Palindrome-Removal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Z">
@@ -242,7 +242,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">leetcode-1168 Optimize Water Distribution in a Village
+          <h1 class="post-title" itemprop="name headline">leetcode-1246-Palindrome Removal
 
               
             
@@ -262,7 +262,7 @@
                 
               
 
-              <time title="创建时间：2019-08-25 01:47:14 / 修改时间：15:46:47" itemprop="dateCreated datePublished" datetime="2019-08-25T01:47:14-04:00">2019-08-25</time>
+              <time title="创建时间：2019-11-02 11:09:29 / 修改时间：14:44:39" itemprop="dateCreated datePublished" datetime="2019-11-02T11:09:29-04:00">2019-11-02</time>
             </span>
           
             
@@ -305,16 +305,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>There are <code>n</code> houses in a village. We want to supply water for all the houses by building wells and laying pipes.</p>
-<p>For each house <code>i</code>, we can either build a well inside it directly with cost <code>wells[i]</code>, or pipe in water from another well to it. The costs to lay pipes between houses are given by the array <code>pipes</code>, where each <code>pipes[i] = [house1, house2, cost]</code> represents the cost to connect <code>house1</code> and <code>house2</code> together using a pipe. Connections are bidirectional.</p>
-<p>Find the minimum total cost to supply water to all houses.</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>每次我们需要一个<code>well</code>时(修建在某个<code>house</code>上), 它带来的<code>cost</code>在数值相当于这个<code>house</code>连接到一个<code>well</code>的<code>cost</code>, 那么其实我们可以只用一个总的<code>well</code>(<del>中央空调?</del>), 每个house在自己的位置修建<code>well</code>, 都相当于连接唯一的中央<code>well</code>到当前点.<br>所以分为两步:</p>
-<ul>
-<li>在邻接表加入<code>well</code>和<code>house</code>和<code>cost</code>组成的虚拟edge.</li>
-<li>常规MST. (比赛时用的Prim, 还可以用Kruskal) </li>
-</ul>
-<p>时间复杂度: <code>O(elog2v)</code></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minCostToSupplyWater</span><span class="params">(self, n, wells, pipes)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :type wells: List[int]</span></span><br><span class="line"><span class="string">        :type pipes: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        d = collections.defaultdict(list)</span><br><span class="line">        <span class="keyword">for</span> i,w <span class="keyword">in</span> enumerate(wells):</span><br><span class="line">            pipes.append([<span class="number">0</span>, i+<span class="number">1</span>, w])</span><br><span class="line">        <span class="keyword">for</span> s,e,w <span class="keyword">in</span> pipes:</span><br><span class="line">            d[s].append((w,s,e))</span><br><span class="line">            d[e].append((w,e,s))</span><br><span class="line">        seen = set()</span><br><span class="line">        seen.add(<span class="number">0</span>)</span><br><span class="line">        usable = d[<span class="number">0</span>][:]</span><br><span class="line">        heapq.heapify(usable)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> usable <span class="keyword">and</span> len(seen) &lt; <span class="number">1</span> + n:</span><br><span class="line">            w,s,e = heapq.heappop(usable)</span><br><span class="line">            <span class="keyword">if</span> e <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">                seen.add(e)</span><br><span class="line">                res += w</span><br><span class="line">                <span class="keyword">for</span> nei <span class="keyword">in</span> d[e]:</span><br><span class="line">                    <span class="keyword">if</span> nei[<span class="number">2</span>] <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">                        heapq.heappush(usable, nei)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>(搬运)<br>Given an integer array <code>arr</code>, in one move you can select a <strong>palindromic</strong> subarray <code>arr[i], arr[i+1], ..., arr[j]</code> where i &lt;= j, and remove that subarray from the given array. Note that after removing a subarray, the elements on the left and on the right of that subarray move to fill the gap left by the removal.</p>
+<p>Return the minimum number of moves needed to remove all numbers from the array.</p>
+<p>Examples:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [1,2]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [1,3,4,1,5]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Remove [4] then remove [1,3,1] then remove [5].</span><br></pre></td></tr></table></figure>
+
+<p>Constraints</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 &lt;= arr.length &lt;= 100</span><br><span class="line">1 &lt;= arr[i] &lt;= 20</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>性质题, 对于每一个数字都有两种选择: 1) 选一个和它一样的数字消去, 如果这两个数字的位置之间有其他数字, 当前消去的过程不增加remove的次数 2) 直接消去它自己, remove的次数+1.<br>区间DP或者DFS+记忆</p>
+<p>DP pattern: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = min(dp[i][j], dp[i][k<span class="number">-1</span>] + dp[k+<span class="number">1</span>][j]), where arr[k]==arr[i]</span><br></pre></td></tr></table></figure>
+
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>DFS</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minimumMoves</span><span class="params">(self, arr)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type arr: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        memo = &#123;&#125;</span><br><span class="line">        d = collections.defaultdict(list)</span><br><span class="line">        <span class="keyword">for</span> i,c <span class="keyword">in</span> enumerate(arr):</span><br><span class="line">            d[c].append(i)</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dp</span><span class="params">(i,j)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> i == j:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> i &gt; j:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> (i,j) <span class="keyword">not</span> <span class="keyword">in</span> memo:</span><br><span class="line">                res = <span class="number">1</span> + dp(i+<span class="number">1</span>, j)</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> d[arr[i]]:</span><br><span class="line">                    <span class="keyword">if</span> k == i + <span class="number">1</span>:</span><br><span class="line">                        res = min(res, <span class="number">1</span> + dp(k+<span class="number">1</span>, j))</span><br><span class="line">                    <span class="keyword">elif</span> i + <span class="number">1</span> &lt; k &lt;= j:</span><br><span class="line">                        res = min(res, dp(i+<span class="number">1</span>, k<span class="number">-1</span>) + dp(k+<span class="number">1</span>, j))</span><br><span class="line">                memo[i,j] = res</span><br><span class="line">            <span class="keyword">return</span> memo[i,j]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> dp(<span class="number">0</span>, len(arr)<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Bottom-up DP:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minimumMoves</span><span class="params">(self, arr)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type arr: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        n = len(arr)</span><br><span class="line">        dp = [[<span class="number">100</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line">                </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            dp[i][i] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, n):</span><br><span class="line">                <span class="keyword">if</span> j == n:</span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                dp[i][j] = <span class="number">1</span> + (dp[i+<span class="number">1</span>][j] <span class="keyword">if</span> i+<span class="number">1</span>&lt;n <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(i+<span class="number">1</span>, j+<span class="number">1</span>):</span><br><span class="line">                    <span class="keyword">if</span> arr[i] == arr[k]:</span><br><span class="line">                        <span class="keyword">if</span> k == i + <span class="number">1</span>:</span><br><span class="line">                            dp[i][j] = min(dp[i][j], <span class="number">1</span> + (dp[k+<span class="number">1</span>][j] <span class="keyword">if</span> k+<span class="number">1</span>&lt;=j <span class="keyword">else</span> <span class="number">0</span>))</span><br><span class="line">                        <span class="keyword">else</span>:</span><br><span class="line">                            dp[i][j] = min(dp[i][j], dp[i+<span class="number">1</span>][k<span class="number">-1</span>] + (dp[k+<span class="number">1</span>][j] <span class="keyword">if</span> k+<span class="number">1</span>&lt;=j <span class="keyword">else</span> <span class="number">0</span>))</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][n<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -327,9 +336,7 @@
           
         
         <div class="post-tags">
-            <a href="/tags/graph/" rel="tag"># graph</a>
-          
-            <a href="/tags/MST/" rel="tag"># MST</a>
+            <a href="/tags/dp/" rel="tag"># dp</a>
           
         </div>
         <div class="post-widgets">
@@ -353,8 +360,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/24/leetcode-1172-Dinner-Plate-Stacks/" rel="next" title="leetcode-1172 Dinner Plate Stacks">
-                <i class="fa fa-chevron-left"></i> leetcode-1172 Dinner Plate Stacks
+              <a href="/2019/09/26/lintcode-126-Max-Tree/" rel="next" title="lintcode-126. Max Tree">
+                <i class="fa fa-chevron-left"></i> lintcode-126. Max Tree
               </a>
             
           </div>
@@ -362,10 +369,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/08/25/leetcode-736-Parse-Lisp-Expression/" rel="prev" title="leetcode-736 Parse Lisp Expression">
-                leetcode-736 Parse Lisp Expression <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>
