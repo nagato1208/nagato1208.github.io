@@ -58,19 +58,19 @@
   };
 </script>
 
-  <meta name="description" content="描述原题在这: https://codeforces.com/problemset/problem/399/B给一个用字符串表示的栈, R表示红球, B表示蓝球. 按照以下规则按顺序操作(循环), 直到不含B:  如果栈顶是R,持续pop 如果栈顶是B, 替换成R 如果栈不满, 补上B直到栈满  思路乍一看是一道简单的implement的题, 于是单纯的implement一下, TLE.观察(或者">
-<meta name="keywords" content="math,stack">
+  <meta name="description" content="3. Longest Substring Without Repeating Characters给定一个字符串，返回其中不含有重复字符的最长子串的长度。 1234567891011121314151617class Solution(object):    def lengthOfLongestSubstring(self, s):        &quot;&quot;&quot;        :type s: str">
+<meta name="keywords" content="two pointers">
 <meta property="og:type" content="article">
-<meta property="og:title" content="codeforces-399B Red and Blue Balls">
-<meta property="og:url" content="http://yoursite.com/2019/08/25/codeforces-399B-Red-and-Blue-Balls/index.html">
+<meta property="og:title" content="Leetcode-two pointers &amp; sliding window on subarray &amp; substring">
+<meta property="og:url" content="http://yoursite.com/2019/11/26/two-pointers-sliding-window-on-subarray-substring/index.html">
 <meta property="og:site_name" content="Nagato&#39;s blog">
-<meta property="og:description" content="描述原题在这: https://codeforces.com/problemset/problem/399/B给一个用字符串表示的栈, R表示红球, B表示蓝球. 按照以下规则按顺序操作(循环), 直到不含B:  如果栈顶是R,持续pop 如果栈顶是B, 替换成R 如果栈不满, 补上B直到栈满  思路乍一看是一道简单的implement的题, 于是单纯的implement一下, TLE.观察(或者">
+<meta property="og:description" content="3. Longest Substring Without Repeating Characters给定一个字符串，返回其中不含有重复字符的最长子串的长度。 1234567891011121314151617class Solution(object):    def lengthOfLongestSubstring(self, s):        &quot;&quot;&quot;        :type s: str">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-26T06:43:29.584Z">
+<meta property="og:updated_time" content="2019-11-26T23:22:44.071Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="codeforces-399B Red and Blue Balls">
-<meta name="twitter:description" content="描述原题在这: https://codeforces.com/problemset/problem/399/B给一个用字符串表示的栈, R表示红球, B表示蓝球. 按照以下规则按顺序操作(循环), 直到不含B:  如果栈顶是R,持续pop 如果栈顶是B, 替换成R 如果栈不满, 补上B直到栈满  思路乍一看是一道简单的implement的题, 于是单纯的implement一下, TLE.观察(或者">
-  <link rel="canonical" href="http://yoursite.com/2019/08/25/codeforces-399B-Red-and-Blue-Balls/">
+<meta name="twitter:title" content="Leetcode-two pointers &amp; sliding window on subarray &amp; substring">
+<meta name="twitter:description" content="3. Longest Substring Without Repeating Characters给定一个字符串，返回其中不含有重复字符的最长子串的长度。 1234567891011121314151617class Solution(object):    def lengthOfLongestSubstring(self, s):        &quot;&quot;&quot;        :type s: str">
+  <link rel="canonical" href="http://yoursite.com/2019/11/26/two-pointers-sliding-window-on-subarray-substring/">
 
 
 <script id="page.configurations">
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>codeforces-399B Red and Blue Balls | Nagato's blog</title>
+  <title>Leetcode-two pointers & sliding window on subarray & substring | Nagato's blog</title>
   
 
 
@@ -228,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/25/codeforces-399B-Red-and-Blue-Balls/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/26/two-pointers-sliding-window-on-subarray-substring/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Z">
@@ -242,7 +242,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">codeforces-399B Red and Blue Balls
+          <h1 class="post-title" itemprop="name headline">Leetcode-two pointers & sliding window on subarray & substring
 
               
             
@@ -262,21 +262,11 @@
                 
               
 
-              <time title="创建时间：2019-08-25 03:07:46" itemprop="dateCreated datePublished" datetime="2019-08-25T03:07:46-04:00">2019-08-25</time>
+              <time title="创建时间：2019-11-26 15:10:28 / 修改时间：18:22:44" itemprop="dateCreated datePublished" datetime="2019-11-26T15:10:28-05:00">2019-11-26</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-26 02:43:29" itemprop="dateModified" datetime="2019-08-26T02:43:29-04:00">2019-08-26</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -287,7 +277,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
 
                 
                 
@@ -315,21 +305,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>原题在这: <a href="https://codeforces.com/problemset/problem/399/B" target="_blank" rel="noopener">https://codeforces.com/problemset/problem/399/B</a><br>给一个用字符串表示的栈, <code>R</code>表示红球, <code>B</code>表示蓝球. 按照以下规则按顺序操作(循环), 直到不含<code>B</code>:</p>
-<ul>
-<li>如果栈顶是<code>R</code>,持续pop</li>
-<li>如果栈顶是<code>B</code>, 替换成<code>R</code></li>
-<li>如果栈不满, 补上<code>B</code>直到栈满</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>乍一看是一道简单的implement的题, 于是单纯的implement一下, TLE.<br>观察(或者手算):</p>
-<ul>
-<li>最终状态必然是<code>RRRRRR</code>这种.</li>
-<li>如果当前栈顶连续的<code>B</code>只有一个, like <code>RRRRRB</code>, 那么本轮完成后是<code>RRRRRR</code>. 过渡到结束点用了<code>1</code>步.</li>
-<li>如果当前栈顶是两个连续的<code>B</code>, like <code>RRRRBB</code>, 那么状态会是<code>RRRRBR</code> -&gt; <code>RRRRRB</code> -&gt; (第一种情况). 过渡到第一种情况用了<code>2</code>步.</li>
-<li>如果当前栈顶是三个连续的<code>B</code>, like <code>RRRBBB</code>, 状态分别是<code>RRRBBR</code> -&gt; <code>RRRBRB</code> -&gt; <code>RRRBRR</code> -&gt; <code>RRRRBB</code> -&gt; (第二种情况). 过渡到第二种情况用了<code>4</code>步.</li>
-<li>归纳可知对于末尾连续<code>n</code>个<code>B</code>, 会给结果带来<code>2^n - 1</code>的贡献.</li>
-</ul>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    n = int(input())</span><br><span class="line">    stack = [s <span class="keyword">for</span> s <span class="keyword">in</span> input()][::<span class="number">-1</span>]</span><br><span class="line">    b = stack.count(<span class="string">"B"</span>)</span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> b &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">while</span> stack <span class="keyword">and</span> stack[<span class="number">-1</span>] == <span class="string">"R"</span>:</span><br><span class="line">            stack.pop()</span><br><span class="line">        stack[<span class="number">-1</span>] = <span class="string">"R"</span></span><br><span class="line">        b -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> len(stack) &lt; n:</span><br><span class="line">            res += (<span class="number">1</span> &lt;&lt; (n - len(stack))) - <span class="number">1</span></span><br><span class="line">            stack += [<span class="string">"R"</span>] * (n - len(stack))</span><br><span class="line">        res += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">print(do())</span><br></pre></td></tr></table></figure>
+        <h2 id="3-Longest-Substring-Without-Repeating-Characters"><a href="#3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="3. Longest Substring Without Repeating Characters"></a>3. Longest Substring Without Repeating Characters</h2><p>给定一个字符串，返回其中不含有重复字符的<strong>最长子串</strong>的长度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type s: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        count = collections.defaultdict(int)</span><br><span class="line">        <span class="keyword">for</span> right, char <span class="keyword">in</span> enumerate(s):</span><br><span class="line">            count[char] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> count[char] &gt; <span class="number">1</span>:</span><br><span class="line">                count[s[left]] -= <span class="number">1</span></span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="comment"># right - left +_1 表示以当前的right下标结尾的substring中,满足条件的最长长度</span></span><br><span class="line">            res = max(res, right - left + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<h2 id="159-Longest-Substring-with-At-Most-Two-Distinct-Characters"><a href="#159-Longest-Substring-with-At-Most-Two-Distinct-Characters" class="headerlink" title="159. Longest Substring with At Most Two Distinct Characters"></a>159. Longest Substring with At Most Two Distinct Characters</h2><p>给定一个字符串，找出最长子串<code>T</code>的长度，<code>T</code>最多包含2个不同的字符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    @param s: a string</span></span><br><span class="line"><span class="string">    @return: the length of the longest substring T that contains at most 2 distinct characters</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstringTwoDistinct</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="comment"># Write your code here</span></span><br><span class="line">        count = collections.defaultdict(int)</span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> right,char <span class="keyword">in</span> enumerate(s):</span><br><span class="line">            count[char] += <span class="number">1</span>   </span><br><span class="line">            <span class="keyword">while</span> len(count) &gt; <span class="number">2</span>:</span><br><span class="line">                count[s[left]] -= <span class="number">1</span> </span><br><span class="line">                <span class="keyword">if</span> count[s[left]] == <span class="number">0</span>:</span><br><span class="line">                    count.pop(s[left])</span><br><span class="line">                left += <span class="number">1</span>   </span><br><span class="line">            <span class="comment"># right - left + 1 表示以当前的right下标结尾的substring中,满足条件的最长长度</span></span><br><span class="line">            res = max(res, right - left + <span class="number">1</span>)     </span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<h2 id="340-Longest-Substring-with-At-Most-K-Distinct-Characters"><a href="#340-Longest-Substring-with-At-Most-K-Distinct-Characters" class="headerlink" title="340. Longest Substring with At Most K Distinct Characters"></a>340. Longest Substring with At Most K Distinct Characters</h2><p>把上一题的<code>2</code>改成<code>k</code>就是本题. 同样,代码也只需把<code>2</code>改成<code>k</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    @param s: A string</span></span><br><span class="line"><span class="string">    @param k: An integer</span></span><br><span class="line"><span class="string">    @return: An integer</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstringKDistinct</span><span class="params">(self, s, k)</span>:</span></span><br><span class="line">        <span class="comment"># write your code here</span></span><br><span class="line">        count = collections.defaultdict(int)</span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> right,char <span class="keyword">in</span> enumerate(s):</span><br><span class="line">            count[char] += <span class="number">1</span>   </span><br><span class="line">            <span class="keyword">while</span> len(count) &gt; k:</span><br><span class="line">                count[s[left]] -= <span class="number">1</span> </span><br><span class="line">                <span class="keyword">if</span> count[s[left]] == <span class="number">0</span>:</span><br><span class="line">                    count.pop(s[left])</span><br><span class="line">                left += <span class="number">1</span>   </span><br><span class="line">            <span class="comment"># right - left + 1 表示以当前的right下标结尾的substring中,满足条件的最长长度</span></span><br><span class="line">            res = max(res, right - left + <span class="number">1</span>)     </span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -340,9 +325,7 @@
           
         
         <div class="post-tags">
-            <a href="/tags/math/" rel="tag"># math</a>
-          
-            <a href="/tags/stack/" rel="tag"># stack</a>
+            <a href="/tags/two-pointers/" rel="tag"># two pointers</a>
           
         </div>
         <div class="post-widgets">
@@ -366,8 +349,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/08/25/leetcode-715-Range-Module/" rel="next" title="leetcode-715 Range Module">
-                <i class="fa fa-chevron-left"></i> leetcode-715 Range Module
+              <a href="/2019/11/02/leetcode-1246-Palindrome-Removal/" rel="next" title="leetcode-1246-Palindrome Removal">
+                <i class="fa fa-chevron-left"></i> leetcode-1246-Palindrome Removal
               </a>
             
           </div>
@@ -375,10 +358,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/08/25/leetcode-1157-Online-Majority-Element-In-Subarray/" rel="prev" title="leetcode-1157 Online Majority Element In Subarray">
-                leetcode-1157 Online Majority Element In Subarray <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>
@@ -649,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Longest-Substring-Without-Repeating-Characters"><span class="nav-number">1.</span> <span class="nav-text">3. Longest Substring Without Repeating Characters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#159-Longest-Substring-with-At-Most-Two-Distinct-Characters"><span class="nav-number">2.</span> <span class="nav-text">159. Longest Substring with At Most Two Distinct Characters</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#340-Longest-Substring-with-At-Most-K-Distinct-Characters"><span class="nav-number">3.</span> <span class="nav-text">340. Longest Substring with At Most K Distinct Characters</span></a></li></ol></div>
             
 
           </div>
