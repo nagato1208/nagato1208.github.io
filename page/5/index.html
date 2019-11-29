@@ -60,13 +60,13 @@
 
   <meta name="description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nagato&#39;s blog">
+<meta property="og:title" content="Nagato at sea">
 <meta property="og:url" content="http://yoursite.com/page/5/index.html">
-<meta property="og:site_name" content="Nagato&#39;s blog">
+<meta property="og:site_name" content="Nagato at sea">
 <meta property="og:description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nagato&#39;s blog">
+<meta name="twitter:title" content="Nagato at sea">
 <meta name="twitter:description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
   <link rel="canonical" href="http://yoursite.com/page/5/">
 
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>Nagato's blog</title>
+  <title>Nagato at sea</title>
   
 
 
@@ -126,7 +126,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Nagato's blog</span>
+        <span class="site-title">Nagato at sea</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -233,7 +233,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -308,13 +308,7 @@
             <p>
               描述实现一个数据结构, 支持对区间的动态tracking, 分别有以下三个操作:
 
-addRange(int left, int right) 新增一个左闭右开的tracking区间[left, right).
-queryRange(int left, int right)check区间[left, right)是否正在被tracking, 返回布尔值.
-removeRange(int left, int right) 取消tracking这个区间.
-
-思路维护一个listindex存当前有效的离散点. 这样这个list有以下特征:
-
-index必然是坐标left和right两两成组的inte
+addRange(int left, int right) 新增一个左闭右开的tracking区间[left, ri
               ...
             </p>
           <!--noindex-->
@@ -360,7 +354,7 @@ index必然是坐标left和right两两成组的inte
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -434,12 +428,7 @@ index必然是坐标left和right两两成组的inte
           
             <p>
               描述原题在这: https://leetcode.com/problems/the-skyline-problem/
-思路分治分为divide和merge两部分, divide比较简单, 一直对半分, 直到len(buildings) &lt;= 1. 
-对于merge阶段, 首先这个时候左侧和右侧的list都是要返回的结果的格式即[index, height]. 现在要做的是merge为一组:
-
-用两个变量l, r分别表示正在处理的左侧和右侧list的下标.
-用两个变量h1, h2分别表示左侧和右侧的当前高度.
-对于左侧和右侧各自的[index, height], 谁的index更小, 就在
+思路分治分为divide和merge两部分, divide比较简单, 一直对半分,
               ...
             </p>
           <!--noindex-->
@@ -485,7 +474,7 @@ index必然是坐标left和right两两成组的inte
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -551,10 +540,7 @@ index必然是坐标left和right两两成组的inte
               描述题目本身比较长, 大意是parse一个lisp like的语言. 可以从样例中get到信息:
 
 (add 1 2) 返回1+2 =&gt; 3.
-(mult 3 (add 2 3)) 先计算2+3, 返回的5再和3相乘 =&gt; 15.
-(let x 2 (mult x 5)) x被赋值2, 然后x和5相乘等于10, 然后返回10. 注意let语句如果变量个数是奇数个, 那么最后一个是返回值.
-(let x 3 x 2 x) x先被赋值3, 再被赋值2, 最后返回x的值2.
-(let x 1 y 2 x (add x y) (add x y)) 在计算内层的(add x y)时用到了之前
+(mult 3 (add 2 3)) 先计算2+3
               ...
             </p>
           <!--noindex-->
@@ -600,7 +586,7 @@ index必然是坐标left和right两两成组的inte
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -663,8 +649,7 @@ index必然是坐标left和right两两成组的inte
       
           
             <p>
-              描述There are n houses in a village. We want to supply water for all the houses by building wells and laying pipes.
-For each house i, we can either build a well inside it directly with cost wells[i], or pipe in water from another well to it. The costs to lay pipes between houses are given by the array
+              描述There are n houses in a village. We want to supply water for all the houses by building wells and 
               ...
             </p>
           <!--noindex-->
@@ -710,7 +695,7 @@ For each house i, we can either build a well inside it directly with cost wells[
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -784,10 +769,7 @@ For each house i, we can either build a well inside it directly with cost wells[
           
             <p>
               描述原题在这: https://leetcode.com/problems/dinner-plate-stacks/
-You have an infinite number of stacks arranged in a row and numbered (left to right) from 0, each of the stacks has the same maximum capacity.
-Implement the DinnerPlates class:
-
-DinnerPlates(int capacity) Initializes the object with the maxi
+You have an infinite number of stacks arr
               ...
             </p>
           <!--noindex-->
@@ -833,7 +815,7 @@ DinnerPlates(int capacity) Initializes the object with the maxi
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -908,10 +890,7 @@ DinnerPlates(int capacity) Initializes the object with the maxi
             <p>
               描述给一个字符串,返回字典序最大的substring.
 思路常规解法是后缀数组(倍增法), 然后拿到sa数组最后一个元素(最大substring起始点). 
-最优解是用类似字符串最小表示法的O(n)解, 维护两个指针i,j表示当前正在比较的两个substring的起始点, 另一个k表示substring长度. 每次比较发生在s[i+k]和s[j+k]之间. match就k+1否则更新i,j.
-当k前进一段距离, s[i+k]和s[j+k]失配时有一个特征:
-
-如果当前s[i+k]更大, 需要更新j. (我们试图用j找一个更大的substring起始点, 然后替换i). 这个时候在[j:j+k]
+最优解是用类似字符串最小表示法的O(n)解
               ...
             </p>
           <!--noindex-->

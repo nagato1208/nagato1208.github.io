@@ -60,13 +60,13 @@
 
   <meta name="description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Nagato&#39;s blog">
+<meta property="og:title" content="Nagato at sea">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Nagato&#39;s blog">
+<meta property="og:site_name" content="Nagato at sea">
 <meta property="og:description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nagato&#39;s blog">
+<meta name="twitter:title" content="Nagato at sea">
 <meta name="twitter:description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
   <link rel="canonical" href="http://yoursite.com/page/2/">
 
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>Nagato's blog</title>
+  <title>Nagato at sea</title>
   
 
 
@@ -126,7 +126,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Nagato's blog</span>
+        <span class="site-title">Nagato at sea</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -233,7 +233,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -297,7 +297,7 @@
           
             <p>
               http://acm.hdu.edu.cn/showproblem.php?pid=2063匈牙利算法模板题, 直接贴代码好了…
-# HDOJ 2063import collectionsdef do():    edges, girls, boys = map(int, input().split(" "))    graph = collections.defaultdict(list)    for _ in range(edges):        girl, boy = map(int, input().split(" "))        graph[girl - 1].appen
+# HDOJ 2063import collectionsdef do
               ...
             </p>
           <!--noindex-->
@@ -343,7 +343,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -406,9 +406,7 @@
       
           
             <p>
-              描述有n个数据中心, m个客户, 一天有h小时, 每个数据中心在每天的一个特定小时宕机, 每个用户的数据保存在两个数据中心上, 数据保证每个用户在每个小时都可以访问到数据, 也就是不存在一个用户保存数据的两个中心宕机时间相同. 现要选出一部分中心将他们的宕机时间向后推迟1h, 且还要保证用户对数据的随时访问, 问最少要选几个机器(不能选0个).
-思路对于同一个客户的两台机器, 如果宕机时间(其实原文是维护时间…)间隔是1, 那么前一个机器推迟, 后一个必然也要推迟.(另外考虑24h-1h)这种情况, 需要取模.
-对于机器A推迟, 机器B也要推迟的情况, 我们在A-&gt;B之间建边. 这样形成
+              描述有n个数据中心, m个客户, 一天有h小时, 每个数据中心在每天的一个特定小时宕机, 每个用户的数据保存在两个数据中心上, 数据保证每个用户在每个小时都可以访问到数据, 也就是不存在一个用户保存数
               ...
             </p>
           <!--noindex-->
@@ -454,7 +452,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -518,8 +516,7 @@
           
             <p>
               描述一张边长为n的二维矩阵, 0表示可走, -1表示障碍物(不可走), 1表示樱桃(可走, 走过之后变为0因为被摘掉了). 从0,0往返n-1,n-1的路上, 最多摘多少樱桃.
-思路其实可以看做两个人同时从0,0出发, 同时到达n-1, n-1, 最多摘到多少樱桃. 如果两个人位置相同并且当前是樱桃, 那么只摘一次. 开一个三维dp数组, dp[r1][c1][c2]表示甲从r1, c1出发, 乙从r2, c2出发, 最多摘的数量. 因为到达当前状态的步数是相同的, 所以r1+c1 == r2+c2, r2的值可以用前三个变量表示出来.
-代码class Solution(object):   
+思路其实可以看做两个人
               ...
             </p>
           <!--noindex-->
@@ -565,7 +562,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -628,11 +625,7 @@
       
           
             <p>
-              描述给一个任意图, 一个先手的起始点. 两个人按顺序走子, 第一个不能再前进的人输. 具体描述去官网看. 因为可能有环, (预料到自己要输的那个人)可以无限次在环上移动, 这个时候判平局Draw.判断先手的结果(Win, Draw, Lose).
-思路
-先手胜利的条件是, 从起点开始可以走奇数步到达一个出度为0的点. (这时轮到后手走, 但是她已经不能再动了).
-如果存在奇数长度的环, 走一遍环, 步数的奇偶性也会改变
-因为上一点, 访问过的节点还可以再访问一遍, 当且仅当到达这个节点的步数奇偶性不同. 所以要开一个2*nodes的dp或者seen二维数组. dp[i][0]表示是否偶数步走到
+              描述给一个任意图, 一个先手的起始点. 两个人按顺序走子, 第一个不能再前进的人输. 具体描述去官网看. 因为可能有环, (预料到自己要输的那个人)可以无限次在环上移动, 这个时候判平局Draw.判断
               ...
             </p>
           <!--noindex-->
@@ -678,7 +671,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -751,22 +744,7 @@
 
 餐馆会优先选择适合当前Party最小的空桌
 
-请实现Restaurant Class, hints: findTable(), takeOrder(), checkOut().
-
-
-思路感觉OOD主要就是脑洞啊…尽量往实际场景中靠拢.
-需要考虑实现的对象:
-
-Meal  -price (lunch or dinner)  -available_time
-Order
-List&lt;Meal&gt; meals
-mergeOrder() (客人要求加菜)
-getMeals()
-getBill()
-
-
-Table
-si
+请实现Restaurant Class, hints: findTable
               ...
             </p>
           <!--noindex-->
@@ -812,7 +790,7 @@ si
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -876,9 +854,7 @@ si
           
             <p>
               描述又是一个讲故事的题…  
-本质是有一棵(颠倒的)树, 除了根节点, 每个节点有(唯一一个)子节点. 初始时刻, 每个节点都有一颗苹果, 然后每过一个时间单位, 所有苹果都会坠落到它的子节点. 如果同时有n个苹果坠落到同一个节点, 那么这些苹果会两两抵消(消失). 也就是n为偶数, 结果是0,否则为1. 问最终(从根节点)可以收集到多少个苹果.
-思路所有苹果同步下降, 对于每个节点, 我们只关心它的所有父节点的贡献. 这样可以bfs层序遍历一下, 统计每层的苹果数量, 奇数对应1, 偶数对应0.
-代码import collectionsdef do():    n = int(input()
+本质是有一棵(颠倒的)树, 除了根节点, 每个节点有(唯一一个)子节点. 初始时刻, 每个节点都有一颗苹果, 然后每过一个时间单位, 所有苹果都会坠落到它的子节点. 如果
               ...
             </p>
           <!--noindex-->
@@ -924,7 +900,7 @@ si
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -988,8 +964,7 @@ si
           
             <p>
               描述给一个无向无环图(n个节点, n - 1条边, 每条边权重相同). 找到不相交(没有共同节点)的两条路径, 使得这两条路径长度之积最大, 输出这个最大值.
-思路枚举所有边, 在本轮断开这条边, 得到两棵树. 分别对两棵树求最大直径. 类似leetcode-124.
-代码import collectionsdef do():    n = int(input())    g = collections.defaultdict(set)    edges = set()    for _ in range(n - 1):        x, y = map(int, input().split
+思路枚举所有边, 在本轮断开这条边, 得
               ...
             </p>
           <!--noindex-->
@@ -1035,7 +1010,7 @@ si
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -1145,7 +1120,7 @@ si
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -1218,8 +1193,7 @@ si
       
           
             <p>
-              描述有一个nodes个节点edges条边的无向无环图. 每条边权重相同(可以认为都是1). 我们关心节点s和节点t. 现在需要建一条(之前不存在的)边, 问一共有多少种方案. 要求添加新边之后的s和t之间的最短距离不变.
-思路依旧是floyd中间点的思想, 不过本题中间点有两个(i, j), 其中一个可以是s或t. 分别以s和t为起点做bfs, 求出s点到任意点i的最短路数组ds[i], 和t点到任意点i的最短路数组dt[i].对于任意的中间节点i和j, 只要满足ds[i] + 1 + dt[j] &gt;= ds[t]和ds[j] + 1 + dt[i] &gt;= ds[t], 说明经过新
+              描述有一个nodes个节点edges条边的无向无环图. 每条边权重相同(可以认为都是1). 我们关心节点s和节点t. 现在需要建一条(之前不存在的)边, 问一共有多少种方案. 要求添加新边之后的s和t
               ...
             </p>
           <!--noindex-->
@@ -1265,7 +1239,7 @@ si
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Nagato's blog">
+      <meta itemprop="name" content="Nagato at sea">
     </span>
       <header class="post-header">
 
@@ -1339,8 +1313,7 @@ si
           
             <p>
               描述给一个任意的树(任意的无向无环图), 和一个节点序列. 判断这个序列是否是一种以节点1为入口的BFS序列. 
-思路层序BFS模拟一遍. 有趣的一点是, 本题我们不记录节点的childen, 而是记录他们的parent(s). 对于当前层中的每个点, 检查他们的parents(last)是不是有序的. 如果parents(last)一直有序并且走到头, 那么另起一层, 上层的节点们作为新的parents(last). 如果提前失配, last会是空的, 直接return.
-代码import collectionsdef do():    nodes = int(input())    par
+思路层序BFS模拟一遍. 有趣的一点是, 本题我们不记录节点的childen, 而是记
               ...
             </p>
           <!--noindex-->
