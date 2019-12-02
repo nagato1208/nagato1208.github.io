@@ -58,19 +58,19 @@
   };
 </script>
 
-  <meta name="description" content="描述有一个nodes个节点edges条边的无向无环图. 每条边权重相同(可以认为都是1). 我们关心节点s和节点t. 现在需要建一条(之前不存在的)边, 问一共有多少种方案. 要求添加新边之后的s和t之间的最短距离不变. 思路依旧是floyd中间点的思想, 不过本题中间点有两个(i, j), 其中一个可以是s或t. 分别以s和t为起点做bfs, 求出s点到任意点i的最短路数组ds[i], 和t点到">
-<meta name="keywords" content="graph,bfs,shortest path">
+  <meta name="description" content="描述On the sea represented by a cartesian plane, each ship is located at an integer point, and each integer point may contain at most 1 ship. You have a function Sea.hasShips(topRight, bottomLeft) which">
+<meta name="keywords" content="interact,divide and conquer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="codeforces-954D-Fight Against Traffic">
-<meta property="og:url" content="http://yoursite.com/2019/09/08/codeforces-954D-Fight-Against-Traffic/index.html">
+<meta property="og:title" content="leetcode-1274-Number of Ships in a Rectangle">
+<meta property="og:url" content="http://yoursite.com/2019/12/01/leetcode-1274-Number-of-Ships-in-a-Rectangle/index.html">
 <meta property="og:site_name" content="Nagato at sea">
-<meta property="og:description" content="描述有一个nodes个节点edges条边的无向无环图. 每条边权重相同(可以认为都是1). 我们关心节点s和节点t. 现在需要建一条(之前不存在的)边, 问一共有多少种方案. 要求添加新边之后的s和t之间的最短距离不变. 思路依旧是floyd中间点的思想, 不过本题中间点有两个(i, j), 其中一个可以是s或t. 分别以s和t为起点做bfs, 求出s点到任意点i的最短路数组ds[i], 和t点到">
+<meta property="og:description" content="描述On the sea represented by a cartesian plane, each ship is located at an integer point, and each integer point may contain at most 1 ship. You have a function Sea.hasShips(topRight, bottomLeft) which">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-09T06:03:25.225Z">
+<meta property="og:updated_time" content="2019-12-02T02:31:00.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="codeforces-954D-Fight Against Traffic">
-<meta name="twitter:description" content="描述有一个nodes个节点edges条边的无向无环图. 每条边权重相同(可以认为都是1). 我们关心节点s和节点t. 现在需要建一条(之前不存在的)边, 问一共有多少种方案. 要求添加新边之后的s和t之间的最短距离不变. 思路依旧是floyd中间点的思想, 不过本题中间点有两个(i, j), 其中一个可以是s或t. 分别以s和t为起点做bfs, 求出s点到任意点i的最短路数组ds[i], 和t点到">
-  <link rel="canonical" href="http://yoursite.com/2019/09/08/codeforces-954D-Fight-Against-Traffic/">
+<meta name="twitter:title" content="leetcode-1274-Number of Ships in a Rectangle">
+<meta name="twitter:description" content="描述On the sea represented by a cartesian plane, each ship is located at an integer point, and each integer point may contain at most 1 ship. You have a function Sea.hasShips(topRight, bottomLeft) which">
+  <link rel="canonical" href="http://yoursite.com/2019/12/01/leetcode-1274-Number-of-Ships-in-a-Rectangle/">
 
 
 <script id="page.configurations">
@@ -79,7 +79,7 @@
   };
 </script>
 
-  <title>codeforces-954D-Fight Against Traffic | Nagato at sea</title>
+  <title>leetcode-1274-Number of Ships in a Rectangle | Nagato at sea</title>
   
 
 
@@ -228,7 +228,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/08/codeforces-954D-Fight-Against-Traffic/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/leetcode-1274-Number-of-Ships-in-a-Rectangle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Z">
@@ -242,7 +242,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">codeforces-954D-Fight Against Traffic
+          <h1 class="post-title" itemprop="name headline">leetcode-1274-Number of Ships in a Rectangle
 
               
             
@@ -262,21 +262,11 @@
                 
               
 
-              <time title="创建时间：2019-09-08 22:51:34" itemprop="dateCreated datePublished" datetime="2019-09-08T22:51:34-04:00">2019-09-08</time>
+              <time title="创建时间：2019-12-01 17:56:57 / 修改时间：21:31:00" itemprop="dateCreated datePublished" datetime="2019-12-01T17:56:57-05:00">2019-12-01</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-09-09 02:03:25" itemprop="dateModified" datetime="2019-09-09T02:03:25-04:00">2019-09-09</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -287,7 +277,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode-premium/" itemprop="url" rel="index"><span itemprop="name">Leetcode_premium</span></a></span>
 
                 
                 
@@ -315,9 +305,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>有一个<code>nodes</code>个节点<code>edges</code>条边的无向无环图. 每条边权重相同(可以认为都是<code>1</code>). 我们关心节点<code>s</code>和节点<code>t</code>. 现在需要建一条(之前不存在的)边, 问一共有多少种方案. 要求添加新边之后的<code>s</code>和<code>t</code>之间的最短距离不变.</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>依旧是<code>floyd</code>中间点的思想, 不过本题中间点有两个(<code>i</code>, <code>j</code>), 其中一个可以是<code>s</code>或<code>t</code>. 分别以<code>s</code>和<code>t</code>为起点做bfs, 求出<code>s</code>点到任意点<code>i</code>的最短路数组<code>ds[i]</code>, 和<code>t</code>点到任意点<code>i</code>的最短路数组<code>dt[i]</code>.<br>对于任意的中间节点<code>i</code>和<code>j</code>, 只要满足<code>ds[i] + 1 + dt[j] &gt;= ds[t]</code>和<code>ds[j] + 1 + dt[i] &gt;= ds[t]</code>, 说明经过新修建的边从<code>s</code>到<code>t</code>的距离并没有变短, <code>i</code>和<code>j</code>之间允许建一条直接相连的边.</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    nodes, edges, s, t = map(int, input().split(<span class="string">" "</span>))</span><br><span class="line">    s -= <span class="number">1</span></span><br><span class="line">    t -= <span class="number">1</span></span><br><span class="line">    g = collections.defaultdict(set)</span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(edges):</span><br><span class="line">        x, y = map(int, input().split(<span class="string">" "</span>))</span><br><span class="line">        x -= <span class="number">1</span></span><br><span class="line">        y -= <span class="number">1</span></span><br><span class="line">        g[x].add(y)</span><br><span class="line">        g[y].add(x)</span><br><span class="line">    ds = [<span class="number">0</span>] * nodes</span><br><span class="line">    dt = [<span class="number">0</span>] * nodes</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bfs1</span><span class="params">(node)</span>:</span></span><br><span class="line">        q = collections.deque()</span><br><span class="line">        q.append((node, <span class="number">0</span>))</span><br><span class="line">        seen = [<span class="number">0</span>] * nodes</span><br><span class="line">        seen[node] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            cur, cost = q.popleft()</span><br><span class="line">            ds[cur] = cost</span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> g[cur]:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> seen[nei]:</span><br><span class="line">                    seen[nei] = <span class="number">1</span></span><br><span class="line">                    q.append((nei, cost + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bfs2</span><span class="params">(node)</span>:</span></span><br><span class="line">        q = collections.deque()</span><br><span class="line">        q.append((node, <span class="number">0</span>))</span><br><span class="line">        seen = [<span class="number">0</span>] * nodes</span><br><span class="line">        seen[node] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            cur, cost = q.popleft()</span><br><span class="line">            dt[cur] = cost</span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> g[cur]:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> seen[nei]:</span><br><span class="line">                    seen[nei] = <span class="number">1</span></span><br><span class="line">                    q.append((nei, cost + <span class="number">1</span>))</span><br><span class="line">    bfs1(s)</span><br><span class="line">    bfs2(t)</span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(nodes):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">            <span class="keyword">if</span> ds[i] + <span class="number">1</span> + dt[j] &gt;= ds[t] <span class="keyword">and</span> ds[j] + <span class="number">1</span> + dt[i] &gt;= ds[t]:</span><br><span class="line">                res += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> res - edges</span><br><span class="line"></span><br><span class="line">print(do())</span><br></pre></td></tr></table></figure>
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>On the sea represented by a cartesian plane, each ship is located at an integer point, and each integer point may contain at most 1 ship.</p>
+<p>You have a function <code>Sea.hasShips(topRight, bottomLeft)</code> which takes two points as arguments and returns true if and only if there is at least one ship in the rectangle represented by the two points, including on the boundary.</p>
+<p>Given two points, which are the top right and bottom left corners of a rectangle, return the number of ships present in that rectangle.  It is guaranteed that there are <strong>at most 10 ships in that rectangle</strong>.</p>
+<p>Submissions making more than 400 calls to <code>hasShips</code> will be judged Wrong Answer.  Also, any solutions that attempt to circumvent the judge will result in disqualification.</p>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">ships = [[1,1],[2,2],[3,3],[5,5]], topRight = [4,4], bottomLeft = [0,0]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: From [0,0] to [4,4] we can count 3 ships within the range.</span><br></pre></td></tr></table></figure>
+
+<p>Constraints:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">On the input ships is only given to initialize the map internally. You must solve this problem &quot;blindfolded&quot;. In other words, you must find the answer using the given hasShips API, without knowing the ships position.</span><br><span class="line">0 &lt;= bottomLeft[0] &lt;= topRight[0] &lt;= 1000</span><br><span class="line">0 &lt;= bottomLeft[1] &lt;= topRight[1] &lt;= 1000</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li>每次按照中心点分成4块(左上, 左下, 右上, 右下), 然后递归检查这四块, 如果<code>hasShips</code>返回<code>false</code>就直接跳过.</li>
+<li>hack: Python的话可以用<code>print sea.__dict__</code>直接打印出<code>sea</code>这个class的所有属性, 对于样例来说, 结果是<code>{&#39;_Sea__guesses&#39;: 400, &#39;_Sea__ans&#39;: [[1, 1], [2, 2], [3, 3], [5, 5]]}</code>. 相当于保存答案的字典已经拿到了. 直接用<code>sea._Sea__ans</code>可以access到.</li>
+</ol>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># """</span></span><br><span class="line"><span class="comment"># This is Sea's API interface.</span></span><br><span class="line"><span class="comment"># You should not implement it, or speculate about its implementation</span></span><br><span class="line"><span class="comment"># """</span></span><br><span class="line"><span class="comment">#class Sea(object):</span></span><br><span class="line"><span class="comment">#    def hasShips(self, topRight, bottomLeft):</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#        :type topRight: Point</span></span><br><span class="line"><span class="comment">#		 :type bottomLeft: Point</span></span><br><span class="line"><span class="comment">#        :rtype bool</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#class Point(object):</span></span><br><span class="line"><span class="comment">#	def __init__(self, x, y):</span></span><br><span class="line"><span class="comment">#		self.x = x</span></span><br><span class="line"><span class="comment">#		self.y = y</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countShips</span><span class="params">(self, sea, tr, bl)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type sea: Sea</span></span><br><span class="line"><span class="string">        :type topRight: Point</span></span><br><span class="line"><span class="string">        :type bottomLeft: Point</span></span><br><span class="line"><span class="string">        :rtype: integer</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> tr.x==bl.x <span class="keyword">and</span> tr.y==bl.y:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> <span class="keyword">if</span> sea.hasShips(tr, bl) <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">        mx = (tr.x + bl.x) / <span class="number">2</span></span><br><span class="line">        my = (tr.y + bl.y) / <span class="number">2</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> mx&gt;=bl.x <span class="keyword">and</span> my&gt;=bl.y <span class="keyword">and</span> sea.hasShips(Point(mx, my), bl):</span><br><span class="line">            res += self.countShips(sea, Point(mx, my), bl)</span><br><span class="line">        <span class="keyword">if</span> mx&gt;=bl.x <span class="keyword">and</span> tr.y&gt;=my+<span class="number">1</span> <span class="keyword">and</span> my+<span class="number">1</span>&lt;=<span class="number">1000</span> <span class="keyword">and</span> sea.hasShips(Point(mx, tr.y), Point(bl.x, my+<span class="number">1</span>)):</span><br><span class="line">            res += self.countShips(sea, Point(mx, tr.y), Point(bl.x, my+<span class="number">1</span>))</span><br><span class="line">        <span class="keyword">if</span> tr.x&gt;=mx+<span class="number">1</span> <span class="keyword">and</span> my&gt;=bl.y <span class="keyword">and</span> my+<span class="number">1</span>&lt;=<span class="number">1000</span> <span class="keyword">and</span> sea.hasShips(Point(tr.x, my), Point(mx+<span class="number">1</span>, bl.y)):</span><br><span class="line">            res += self.countShips(sea, Point(tr.x, my), Point(mx+<span class="number">1</span>, bl.y))</span><br><span class="line">        <span class="keyword">if</span> tr.x&gt;=mx+<span class="number">1</span> <span class="keyword">and</span> tr.y&gt;=my+<span class="number">1</span> <span class="keyword">and</span> mx+<span class="number">1</span>&lt;=<span class="number">1000</span> <span class="keyword">and</span> my+<span class="number">1</span>&lt;=<span class="number">1000</span> <span class="keyword">and</span> sea.hasShips(tr, Point(mx+<span class="number">1</span>, my+<span class="number">1</span>)):</span><br><span class="line">            res += self.countShips(sea, tr, Point(mx+<span class="number">1</span>, my+<span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countShips</span><span class="params">(self, sea, tr, bl)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type sea: Sea</span></span><br><span class="line"><span class="string">        :type topRight: Point</span></span><br><span class="line"><span class="string">        :type bottomLeft: Point</span></span><br><span class="line"><span class="string">        :rtype: integer</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> sum(bl.x &lt;= x &lt;= tr.x <span class="keyword">and</span> bl.y &lt;= y &lt;= tr.y <span class="keyword">for</span> x, y <span class="keyword">in</span> sea._Sea__ans)</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -330,11 +334,9 @@
           
         
         <div class="post-tags">
-            <a href="/tags/graph/" rel="tag"># graph</a>
+            <a href="/tags/interact/" rel="tag"># interact</a>
           
-            <a href="/tags/bfs/" rel="tag"># bfs</a>
-          
-            <a href="/tags/shortest-path/" rel="tag"># shortest path</a>
+            <a href="/tags/divide-and-conquer/" rel="tag"># divide and conquer</a>
           
         </div>
         <div class="post-widgets">
@@ -358,8 +360,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/09/08/codeforces-1037D-Valid-BFS/" rel="next" title="codeforces-1037D-Valid-BFS">
-                <i class="fa fa-chevron-left"></i> codeforces-1037D-Valid-BFS
+              <a href="/2019/11/26/leetcode-369-Plus-One-Linked-List/" rel="next" title="leetcode-369-Plus-One-Linked-List">
+                <i class="fa fa-chevron-left"></i> leetcode-369-Plus-One-Linked-List
               </a>
             
           </div>
@@ -367,10 +369,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-              <a href="/2019/09/10/leetcode-状态压缩DP-1066-691-943-1125/" rel="prev" title="leetcode-状态压缩DP-1066-691-943-1125">
-                leetcode-状态压缩DP-1066-691-943-1125 <i class="fa fa-chevron-right"></i>
-              </a>
-            
           </div>
         </div>
     </footer>
