@@ -59,7 +59,7 @@
 </script>
 
   <meta name="description" content="描述有一个nodes个节点edges条边的无向无环图. 每条边权重相同(可以认为都是1). 我们关心节点s和节点t. 现在需要建一条(之前不存在的)边, 问一共有多少种方案. 要求添加新边之后的s和t之间的最短距离不变. 思路依旧是floyd中间点的思想, 不过本题中间点有两个(i, j), 其中一个可以是s或t. 分别以s和t为起点做bfs, 求出s点到任意点i的最短路数组ds[i], 和t点到">
-<meta name="keywords" content="graph,bfs,shortest path">
+<meta name="keywords" content="bfs,graph,shortest path">
 <meta property="og:type" content="article">
 <meta property="og:title" content="codeforces-954D-Fight Against Traffic">
 <meta property="og:url" content="http://yoursite.com/2019/09/08/codeforces-954D-Fight-Against-Traffic/index.html">
@@ -330,9 +330,9 @@
           
         
         <div class="post-tags">
-            <a href="/tags/graph/" rel="tag"># graph</a>
-          
             <a href="/tags/bfs/" rel="tag"># bfs</a>
+          
+            <a href="/tags/graph/" rel="tag"># graph</a>
           
             <a href="/tags/shortest-path/" rel="tag"># shortest path</a>
           
@@ -428,7 +428,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -665,7 +665,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
