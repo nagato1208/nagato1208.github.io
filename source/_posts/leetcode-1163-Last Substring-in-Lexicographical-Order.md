@@ -2,7 +2,7 @@
 title: leetcode-1163 Last Substring in Lexicographical Order
 date: 2019-08-24 00:12:32
 categories: Leetcode
-tags: ['String', '最小表示法']
+tags: ['string', '最小表示法']
 ---
 ## 描述
 给一个字符串,返回字典序最大的substring.

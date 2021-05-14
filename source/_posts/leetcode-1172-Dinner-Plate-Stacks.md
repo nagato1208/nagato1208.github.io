@@ -2,7 +2,7 @@
 title: leetcode-1172 Dinner Plate Stacks
 date: 2019-08-25 01:15:32
 categories: Leetcode
-tags: ['Data Structure Design', 'Stack']
+tags: ['design', 'stack']
 keywords: ['stack']
 ---
 ## 描述

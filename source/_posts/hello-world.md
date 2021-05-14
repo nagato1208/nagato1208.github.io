@@ -1,8 +1,7 @@
 ---
 title: Hello World
-categories: front-end
-tags: ['hello']
-keywords: 'theme-next,hexo'
+categories: random-notes
+tags: ['career']
 ---
 
 ### 对hexo还不是很熟,这个过几天再删

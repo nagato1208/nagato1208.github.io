@@ -189,11 +189,12 @@ site_state: true
 # Value before `||` delimiter is the target permalink.
 # Value after `||` delimiter is the name of Font Awesome icon. If icon (with or without delimiter) is not specified, globe icon will be loaded.
 social:
-  GitHub: https://github.com/yourname || github
-  E-Mail: mailto:yourname@gmail.com || envelope
-  Weibo: https://weibo.com/yourname || weibo
-  Google: https://plus.google.com/yourname || google
-  Twitter: https://twitter.com/yourname || twitter
+  GitHub: https://github.com/nagato1208 || github
+  E-Mail: mailto:ren.ziq@husky.neu.edu || envelope
+  Weibo: https://weibo.com/ || weibo
+  Google: https://plus.google.com/ || google
+  Twitter: https://twitter.com/ || twitter
+  Leetcode: https://leetcode.com/nagato1208 || leetcode
   #FB Page: https://www.facebook.com/yourname || facebook
   #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
@@ -294,7 +295,7 @@ excerpt_description: true
 # Use <!-- more --> in the post to control excerpt accurately.
 auto_excerpt:
   enable: true
-  length: 300
+  length: 100
 
 # Read more button
 # If true, the read more button would be displayed in excerpt section.
@@ -658,17 +659,17 @@ livere_uid: # <your_uid>
 # Demo: https://gitalk.github.io
 # For more information: https://github.com/gitalk/gitalk, https://github.com/emn178/js-md5
 gitalk:
-  enable: false
-  github_id: # GitHub repo owner
-  repo: # Repository name to store issues
-  client_id: # GitHub Application Client ID
-  client_secret: # GitHub Application Client Secret
-  admin_user: # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
+  enable: true
+  github_id: nagato1208 # GitHub repo owner
+  repo: nagato1208.github.io # Repository name to store issues
+  client_id: 60d19c0c9d847e353658 # GitHub Application Client ID
+  client_secret: 338814f8681c6c1c6151f82e093b595cc21e0f4c # GitHub Application Client Secret
+  admin_user: nagato1208  # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # Gitalk's display language depends on user's browser or system environment
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
-  language:
+  language: zh-CN
 
 
 # ---------------------------------------------------------------
@@ -1149,3 +1150,17 @@ vendors:
 css: css
 js: js
 images: images
+
+gitment:
+  enable: true
+  mint: true
+  count: true
+  lazy: false  						#评论懒加载，如果true，则默认不展示评论，点击按钮查看评论
+  cleanly: false
+  language: zh-CN
+  github_user: nagato1208						#github名称
+  github_repo: nagato1208.github.io			#上一步新建存放评论的仓库名
+  client_id: 60d19c0c9d847e353658			#上面注册 OAuth Application 的 Client ID
+  client_secret: 338814f8681c6c1c6151f82e093b595cc21e0f4c		#上面注册 OAuth Application 申请的 Client Secret
+  proxy_gateway:
+  redirect_protocol: # Protocol of redirect_uri with force_redirect_protocol when mint

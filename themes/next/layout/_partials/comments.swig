@@ -3,6 +3,8 @@
     {%- set inject_item = theme.injects.comment[0] %}
     {{ partial(inject_item.layout, inject_item.locals, inject_item.options) }}
   {%- endif %}
+  {% elseif theme.gitalk.enable %}
+   <div id="gitalk-container"></div>
 {# {%- for inject_item in theme.injects.comment %}
   {{ partial(inject_item.layout, inject_item.locals, inject_item.options) }}
 {%- endfor %} #}

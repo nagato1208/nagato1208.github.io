@@ -2,7 +2,7 @@
 title: leetcode-1168 Optimize Water Distribution in a Village
 date: 2019-08-25 01:47:14
 categories: Leetcode
-tags: ['Graph', 'MST']
+tags: ['graph', 'MST']
 keywords: ['Graph']
 ---
 ## 描述
