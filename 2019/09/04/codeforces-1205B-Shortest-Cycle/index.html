@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    search: {
+      root: '/',
+      path: ''
+    },
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="描述给一个数组nums, 对于里面的任意两个数字a和b, 如果a &amp;amp; b != 0, 说明a和b是连通的. (每个数字可以看做一个节点) 求这些数字组成的图中, 最小环的长度. 如果没有环, 返回-1.数组长度最大100000. 思路如果所有节点两两判断是否连通, 复杂度肯定吃不消. 考虑所有数字(都是64位), 每一位可以看做是用来和其他数字连通的接口,   比如第一位(最低位), 如果">
+<meta name="keywords" content="graph,math,shortest path,floyd,brute force">
+<meta property="og:type" content="article">
+<meta property="og:title" content="codeforces-1205B-Shortest Cycle题解">
+<meta property="og:url" content="http://yoursite.com/2019/09/04/codeforces-1205B-Shortest-Cycle/index.html">
+<meta property="og:site_name" content="Nagato at sea">
+<meta property="og:description" content="描述给一个数组nums, 对于里面的任意两个数字a和b, 如果a &amp;amp; b != 0, 说明a和b是连通的. (每个数字可以看做一个节点) 求这些数字组成的图中, 最小环的长度. 如果没有环, 返回-1.数组长度最大100000. 思路如果所有节点两两判断是否连通, 复杂度肯定吃不消. 考虑所有数字(都是64位), 每一位可以看做是用来和其他数字连通的接口,   比如第一位(最低位), 如果">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-05-15T05:39:29.429Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="codeforces-1205B-Shortest Cycle题解">
+<meta name="twitter:description" content="描述给一个数组nums, 对于里面的任意两个数字a和b, 如果a &amp;amp; b != 0, 说明a和b是连通的. (每个数字可以看做一个节点) 求这些数字组成的图中, 最小环的长度. 如果没有环, 返回-1.数组长度最大100000. 思路如果所有节点两两判断是否连通, 复杂度肯定吃不消. 考虑所有数字(都是64位), 每一位可以看做是用来和其他数字连通的接口,   比如第一位(最低位), 如果">
+  <link rel="canonical" href="http://yoursite.com/2019/09/04/codeforces-1205B-Shortest-Cycle/">
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>codeforces-1205B-Shortest Cycle题解 | Nagato at sea</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nagato at sea</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于Z</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+    </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    <div class="reading-progress-bar"></div>
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/04/codeforces-1205B-Shortest-Cycle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Z">
+      <meta itemprop="description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+      <meta itemprop="image" content="/images/selfie.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nagato at sea">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">codeforces-1205B-Shortest Cycle题解
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-04 12:39:15" itemprop="dateCreated datePublished" datetime="2019-09-04T12:39:15-04:00">2019-09-04</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-05-15 01:39:29" itemprop="dateModified" datetime="2021-05-15T01:39:29-04:00">2021-05-15</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon"
+              >
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给一个数组<code>nums</code>, 对于里面的任意两个数字<code>a</code>和<code>b</code>, 如果<code>a &amp; b != 0</code>, 说明<code>a</code>和<code>b</code>是连通的. (每个数字可以看做一个节点) 求这些数字组成的图中, 最小环的长度. 如果没有环, 返回<code>-1</code>.<br>数组长度最大<code>100000</code>.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果所有节点两两判断是否连通, 复杂度肯定吃不消. 考虑所有数字(都是64位), <strong>每一位可以看做是用来和其他数字连通的接口</strong>, </p>
+<ul>
+<li>比如第一位(最低位), 如果所有数字中, 有<code>&gt;=3</code>个数字在这一位是<code>1</code>, 那么最小环的长度一定是<code>3</code>. </li>
+<li>如果对于某一位, 所有数字中, 这一位全是<code>0</code>, 那么相当于这个接口没有被用到. 两个数字<code>a</code>和<code>b</code>就算连通, 也不是因为这一位的贡献. </li>
+<li>如果对于某一位, 所有数字中, 只有一个数字在这一位是<code>1</code>, 其他全是<code>0</code>, 那么也相当于这个接口没有被用到(没有和它匹配的数字).</li>
+<li>所以, 真正有价值的信息是出现了正好<code>2</code>次的位中. 64位中, 就算出现<code>2</code>次bit<code>1</code>的位置完全分散开, 也只有<code>64*2=128</code>个数字. 对于这最多<code>128</code>个数字, 可以用floyd算法找最小环. 复杂度<code>O(n**3)</code>可以接受.</li>
+</ul>
+<h2 id="关于WA了一次的floyd"><a href="#关于WA了一次的floyd" class="headerlink" title="关于WA了一次的floyd"></a>关于WA了一次的floyd</h2><p>为什么要写成下面这样, 而不能更新完多源最短路径, 再求最小环呢? </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> range(nv): <span class="comment"># k是中间点, 相当于[i]-----[k]-----[j]~[i](成环)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(k):</span><br><span class="line">            <span class="keyword">if</span> i != j:</span><br><span class="line">                res = min(res, dis[i][j] + mp[j][k] + mp[k][i])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(nv):</span><br><span class="line">        <span class="keyword">if</span> k != i:</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(nv):</span><br><span class="line">                dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j])</span><br></pre></td></tr></table></figure>
+
+<p>最内层每一次更新<code>res</code>和<code>dis[i][j]</code>都是针对上一层<code>k-1</code>的值来说的. 也就是对于环内节点最大是<code>k</code>的环来说, <code>i</code>和<code>j</code>的距离, 以及最小环长度. 如果完全更新完<code>dis</code>矩阵, 那么<code>dis[i][j]</code>这条最短路可能包含了当前的<code>k</code>, 再和<code>dis[i][k]</code>, <code>dis[k][j]</code>相加没有意义.</p>
+<p>上面其实也是floyd算法求(无向图)最小环的模板代码. (<code>k</code>为什么写在最外面?: <a href="https://www.zhihu.com/question/30955032" target="_blank" rel="noopener">https://www.zhihu.com/question/30955032</a>)</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">do</span><span class="params">()</span>:</span></span><br><span class="line">    n = int(input())</span><br><span class="line">    nums = [int(c) <span class="keyword">for</span> c <span class="keyword">in</span> input().split(<span class="string">" "</span>)]</span><br><span class="line">    valid = set()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">64</span>):</span><br><span class="line">        count = []</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> (<span class="number">1</span> &lt;&lt; i) &amp; nums[j]:</span><br><span class="line">                count.append(nums[j])</span><br><span class="line">            <span class="keyword">if</span> len(count) == <span class="number">3</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">        <span class="keyword">if</span> len(count) == <span class="number">2</span>:</span><br><span class="line">            valid.add(count[<span class="number">0</span>])</span><br><span class="line">            valid.add(count[<span class="number">1</span>])</span><br><span class="line">    <span class="comment"># valid won't be that large hahaha at most 64*2</span></span><br><span class="line">    nv = len(valid)</span><br><span class="line">    valid = list(valid)</span><br><span class="line">    dis = [[float(<span class="string">'inf'</span>)] * nv <span class="keyword">for</span> _ <span class="keyword">in</span> range(nv)]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(nv):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(nv):</span><br><span class="line">            <span class="keyword">if</span> i == j:</span><br><span class="line">                dis[i][j] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">elif</span> valid[i] &amp; valid[j]:</span><br><span class="line">                dis[i][j] = <span class="number">1</span></span><br><span class="line">    mp = [[_ <span class="keyword">for</span> _ <span class="keyword">in</span> dis[i]] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(dis))] <span class="comment"># 原始的邻接矩阵</span></span><br><span class="line">    res = nv + <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(nv):   </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(k):</span><br><span class="line">                <span class="keyword">if</span> i != j:</span><br><span class="line">                    res = min(res, dis[i][j] + mp[j][k] + mp[k][i])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(nv):</span><br><span class="line">            <span class="keyword">if</span> k != i:</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(nv):</span><br><span class="line">                    dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j])</span><br><span class="line">    <span class="keyword">return</span> res <span class="keyword">if</span> res &lt;= nv <span class="keyword">else</span> <span class="number">-1</span></span><br><span class="line"> </span><br><span class="line">print(do())</span><br></pre></td></tr></table></figure>
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+        
+        <div class="post-tags">
+            <a href="/tags/graph/" rel="tag"># graph</a>
+          
+            <a href="/tags/math/" rel="tag"># math</a>
+          
+            <a href="/tags/shortest-path/" rel="tag"># shortest path</a>
+          
+            <a href="/tags/floyd/" rel="tag"># floyd</a>
+          
+            <a href="/tags/brute-force/" rel="tag"># brute force</a>
+          
+        </div>
+        <div class="post-widgets">
+        
+
+        
+
+        
+          <div class="social-share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+          </div>
+        
+        </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+              <a href="/2019/09/04/codeforces-221D-Little-Elephant-and-Array/" rel="next" title="codeforces-221D Little Elephant and Array题解">
+                <i class="fa fa-chevron-left"></i> codeforces-221D Little Elephant and Array题解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+              <a href="/2019/09/04/codeforces-1204C-Anna-Svyatoslav-and-Maps题解-压缩路径/" rel="prev" title="codeforces-1204C-Anna, Svyatoslav and Maps题解[压缩路径]">
+                codeforces-1204C-Anna, Svyatoslav and Maps题解[压缩路径] <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/selfie.png"
+      alt="Z">
+  <p class="site-author-name" itemprop="name">Z</p>
+  <div class="site-description motion-element" itemprop="description">~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">49</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/nagato1208" title="GitHub &rarr; https://github.com/nagato1208" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:ren.ziq@husky.neu.edu" title="E-Mail &rarr; mailto:ren.ziq@husky.neu.edu" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://weibo.com/" title="Weibo &rarr; https://weibo.com/" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://plus.google.com/" title="Google &rarr; https://plus.google.com/" rel="noopener" target="_blank"><i class="fa fa-fw fa-google"></i>Google</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://twitter.com/" title="Twitter &rarr; https://twitter.com/" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://leetcode.com/nagato1208" title="Leetcode &rarr; https://leetcode.com/nagato1208" rel="noopener" target="_blank"><i class="fa fa-fw fa-leetcode"></i>Leetcode</a>
+      </span>
+    
+  </div>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">1.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于WA了一次的floyd"><span class="nav-number">3.</span> <span class="nav-text">关于WA了一次的floyd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Z</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+  
+  <div id="needsharebutton-float">
+    <span class="btn">
+      <i class="fa fa-share-alt" aria-hidden="true"></i>
+    </span>
+  </div>
+<script src="/lib/needsharebutton/needsharebutton.js"></script>
+<script>
+    pbOptions = {};
+      pbOptions.iconStyle = "box";
+    
+      pbOptions.boxForm = "horizontal";
+    
+      pbOptions.position = "bottomCenter";
+    
+      pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+    flOptions = {};
+      flOptions.iconStyle = "box";
+    
+      flOptions.boxForm = "horizontal";
+    
+      flOptions.position = "middleRight";
+    
+      flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    
+    new needShareButton('#needsharebutton-float', flOptions);
+</script>
+
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+  <script src="/js/utils.js?v=7.3.0"></script>
+
+  
+  <script src="/js/affix.js?v=7.3.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.3.0"></script>
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.3.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '60d19c0c9d847e353658',
+    clientSecret: '338814f8681c6c1c6151f82e093b595cc21e0f4c',
+    repo: 'nagato1208.github.io',
+    owner: 'nagato1208',
+    admin: ['nagato1208'],
+    id: md5(location.pathname),
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+
+</body>
+</html>
