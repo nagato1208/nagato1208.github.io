@@ -58,17 +58,17 @@
   };
 </script>
 
-  <meta name="description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+  <meta name="description" content="TreeSet的floor和ceiling用法：leetcode 1847: 解法是把输入排序后，rooms按照size从大到小排序，queries按照required size从大到小排序（同时记录一下query的index，因为result生成的顺序不是实际query的顺序，有种离线算法的思想）两个输入都排序后，使用双指针，保证每次在TreeSet里的都是可以拿来用的valid room，这样">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java TreeSet&#x2F;TreeMap系列">
 <meta property="og:url" content="http://yoursite.com/2021/05/14/Java-TreeSet-TreeMap系列/index.html">
 <meta property="og:site_name" content="Nagato at sea">
-<meta property="og:description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+<meta property="og:description" content="TreeSet的floor和ceiling用法：leetcode 1847: 解法是把输入排序后，rooms按照size从大到小排序，queries按照required size从大到小排序（同时记录一下query的index，因为result生成的顺序不是实际query的顺序，有种离线算法的思想）两个输入都排序后，使用双指针，保证每次在TreeSet里的都是可以拿来用的valid room，这样">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-05-15T05:51:58.480Z">
+<meta property="og:updated_time" content="2021-05-15T07:12:30.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java TreeSet&#x2F;TreeMap系列">
-<meta name="twitter:description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+<meta name="twitter:description" content="TreeSet的floor和ceiling用法：leetcode 1847: 解法是把输入排序后，rooms按照size从大到小排序，queries按照required size从大到小排序（同时记录一下query的index，因为result生成的顺序不是实际query的顺序，有种离线算法的思想）两个输入都排序后，使用双指针，保证每次在TreeSet里的都是可以拿来用的valid room，这样">
   <link rel="canonical" href="http://yoursite.com/2021/05/14/Java-TreeSet-TreeMap系列/">
 
 
@@ -274,7 +274,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2021-05-15 01:51:58" itemprop="dateModified" datetime="2021-05-15T01:51:58-04:00">2021-05-15</time>
+                <time title="修改时间：2021-05-15 03:12:30" itemprop="dateModified" datetime="2021-05-15T03:12:30-04:00">2021-05-15</time>
               </span>
             
           
@@ -299,7 +299,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="TreeSet的floor和ceiling用法："><a href="#TreeSet的floor和ceiling用法：" class="headerlink" title="TreeSet的floor和ceiling用法："></a>TreeSet的floor和ceiling用法：</h2><p>leetcode 1847: 解法是把输入排序后，rooms按照size从大到小排序，<br>queries按照required size从大到小排序（同时记录一下query的index，<br>因为result生成的顺序不是实际query的顺序，有种离线算法的思想）<br>两个输入都排序后，使用双指针，保证每次在TreeSet里的都是可以拿来用的valid room，<br>这样通过两次查找，可以找到可能的左右两个结果，取最近即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">treeset.floor(preferred_room_id) <span class="comment">//search the first item &lt;= target</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">treeset.ceiling(preferred_room_id) <span class="comment">//search the first item &gt;= target`</span></span><br></pre></td></tr></table></figure>
+
+<p>Java的AC代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] closestRoom(<span class="keyword">int</span>[][] rooms, <span class="keyword">int</span>[][] queries) &#123;</span><br><span class="line">            Arrays.sort(rooms, <span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>[]&gt;() &#123;</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span>[] b)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> -Integer.compare(a[<span class="number">1</span>], b[<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">int</span>[][] nqueries = <span class="keyword">new</span> <span class="keyword">int</span>[queries.length][<span class="number">3</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;queries.length; i++)&#123;</span><br><span class="line">                nqueries[i][<span class="number">0</span>] = queries[i][<span class="number">0</span>];</span><br><span class="line">                nqueries[i][<span class="number">1</span>] = queries[i][<span class="number">1</span>];</span><br><span class="line">                nqueries[i][<span class="number">2</span>] = i;</span><br><span class="line">            &#125;</span><br><span class="line">            Arrays.sort(nqueries, <span class="keyword">new</span> Comparator&lt;<span class="keyword">int</span>[]&gt;() &#123;</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span>[] b)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> -Integer.compare(a[<span class="number">1</span>], b[<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);     </span><br><span class="line">        TreeSet&lt;Integer&gt; valid = <span class="keyword">new</span> TreeSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> i =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[queries.length];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;nqueries.length; j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> pid = nqueries[j][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> size = nqueries[j][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> res_i = nqueries[j][<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">while</span>(i &lt; rooms.length &amp;&amp; rooms[i][<span class="number">1</span>] &gt;= size)&#123;</span><br><span class="line">                valid.add(rooms[i][<span class="number">0</span>]);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            Integer left = valid.floor(pid);</span><br><span class="line">            Integer right = valid.ceiling(pid);</span><br><span class="line">            <span class="keyword">if</span>(left==<span class="keyword">null</span> &amp;&amp; right == <span class="keyword">null</span>)&#123;</span><br><span class="line">                res[res_i] = -<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(left == <span class="keyword">null</span>)&#123;</span><br><span class="line">                res[res_i] = right;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(right == <span class="keyword">null</span>)&#123;</span><br><span class="line">                res[res_i] = left;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                res[res_i] = Math.abs(right - pid) &gt;= Math.abs(left - pid) ? left : right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="TreeSet的自定义排序："><a href="#TreeSet的自定义排序：" class="headerlink" title="TreeSet的自定义排序："></a>TreeSet的自定义排序：</h2>
     </div>
 
     
@@ -373,8 +381,17 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -596,6 +613,23 @@
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#TreeSet的floor和ceiling用法："><span class="nav-number">1.</span> <span class="nav-text">TreeSet的floor和ceiling用法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TreeSet的自定义排序："><span class="nav-number">2.</span> <span class="nav-text">TreeSet的自定义排序：</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
