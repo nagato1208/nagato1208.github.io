@@ -62,15 +62,15 @@
 <meta name="keywords" content="dp,monotonous-queue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode-[单调队列]-[239,1425]">
-<meta property="og:url" content="http://yoursite.com/2020/04/26/leetcode-单调队列-239-1425/index.html">
+<meta property="og:url" content="http://yoursite.com/2022/11/20/leetcode-单调队列-239-1425/index.html">
 <meta property="og:site_name" content="Nagato at sea">
 <meta property="og:description" content="239. Sliding Window Maximum思路类似这种在某个valid value set里面取最值的题目其实很多, 比如218 city skyline问题的heap解法, 也是把当前有效(可用)的高度维护在堆中,每次取最值.  同理, 本题我们用双端队列来维护当前所有的valid值. 每次检查队列内最早的元素坐标, 是否和当前坐标的距离大于k, 如果大于, (根据题意)需要扔掉(q">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-27T07:15:29.499Z">
+<meta property="og:updated_time" content="2022-11-21T04:38:23.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode-[单调队列]-[239,1425]">
 <meta name="twitter:description" content="239. Sliding Window Maximum思路类似这种在某个valid value set里面取最值的题目其实很多, 比如218 city skyline问题的heap解法, 也是把当前有效(可用)的高度维护在堆中,每次取最值.  同理, 本题我们用双端队列来维护当前所有的valid值. 每次检查队列内最早的元素坐标, 是否和当前坐标的距离大于k, 如果大于, (根据题意)需要扔掉(q">
-  <link rel="canonical" href="http://yoursite.com/2020/04/26/leetcode-单调队列-239-1425/">
+  <link rel="canonical" href="http://yoursite.com/2022/11/20/leetcode-单调队列-239-1425/">
 
 
 <script id="page.configurations">
@@ -228,11 +228,11 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/leetcode-单调队列-239-1425/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/11/20/leetcode-单调队列-239-1425/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Z">
-      <meta itemprop="description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+      <meta itemprop="description" content="一些题目笔记。">
       <meta itemprop="image" content="/images/selfie.png">
     </span>
 
@@ -262,12 +262,8 @@
                 
               
 
-              <time title="创建时间：2020-04-27 02:14:09 / 修改时间：03:15:29" itemprop="dateCreated datePublished" datetime="2020-04-27T02:14:09-04:00">2020-04-27</time>
+              <time title="创建时间：2022-11-20 23:38:23" itemprop="dateCreated datePublished" datetime="2022-11-20T23:38:23-05:00">2022-11-20</time>
             </span>
-          
-            
-
-            
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -305,7 +301,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="239-Sliding-Window-Maximum"><a href="#239-Sliding-Window-Maximum" class="headerlink" title="239. Sliding Window Maximum"></a>239. Sliding Window Maximum</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>类似这种<em>在某个valid value set</em>里面取最值的题目其实很多, 比如218 city skyline问题的heap解法, 也是把当前有效(可用)的高度维护在堆中,<br>每次取最值. </p>
+        <h2 id="239-Sliding-Window-Maximum"><a href="#239-Sliding-Window-Maximum" class="headerlink" title="239. Sliding Window Maximum"></a>239. Sliding Window Maximum</h2><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>类似这种<strong><em>在某个valid value set</em></strong>里面取最值的题目其实很多, 比如218 city skyline问题的heap解法, 也是把当前有效(可用)的高度维护在堆中,<br>每次取最值. </p>
 <p>同理, 本题我们用双端队列来维护当前所有的valid值. 每次检查队列内最早的元素坐标, 是否和当前坐标的距离大于k, 如果大于, (根据题意)需要扔掉(<code>q.popleft()</code>).<br>然后要把已经在队列里的, 并且值比当前值小的也扔掉(<code>q.pop()</code>), 因为当前的坐标的有效期(生命周期)肯定大于之前的, 所以如果当前值更大, 之前出现的比较小的值就没有存在于候选队列的必要了.<br>这样我们维护一个单调递减的队列, 每次可以<code>O(1)</code>复杂度从队首<code>q[0]</code>取最大值.</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSlidingWindow</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type nums: List[int]</span></span><br><span class="line"><span class="string">        :type k: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        q = collections.deque()</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> q <span class="keyword">and</span> i - q[<span class="number">0</span>] &gt;= k:</span><br><span class="line">                q.popleft()</span><br><span class="line">            <span class="keyword">while</span> q <span class="keyword">and</span> nums[q[<span class="number">-1</span>]] &lt;= nums[i]:</span><br><span class="line">                q.pop()</span><br><span class="line">            q.append(i)</span><br><span class="line">            <span class="keyword">if</span> i &gt;= k - <span class="number">1</span>:</span><br><span class="line">                res.append(nums[q[<span class="number">0</span>]])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
@@ -357,8 +353,8 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/12/01/leetcode-1274-Number-of-Ships-in-a-Rectangle/" rel="next" title="leetcode-1274-Number of Ships in a Rectangle">
-                <i class="fa fa-chevron-left"></i> leetcode-1274-Number of Ships in a Rectangle
+              <a href="/2022/11/20/first2022/" rel="next" title="不知道起什么标题">
+                <i class="fa fa-chevron-left"></i> 不知道起什么标题
               </a>
             
           </div>
@@ -366,6 +362,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+              <a href="/2022/11/20/leetcode-word八兄弟-79-212-126-127-139-140-290-291/" rel="prev" title="leetcode-[word系列]-[79,212,126,127,139,140,290,291]">
+                leetcode-[word系列]-[79,212,126,127,139,140,290,291] <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
     </footer>
@@ -416,14 +416,14 @@
       src="/images/selfie.png"
       alt="Z">
   <p class="site-author-name" itemprop="name">Z</p>
-  <div class="site-description motion-element" itemprop="description">~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~</div>
+  <div class="site-description motion-element" itemprop="description">一些题目笔记。</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -662,7 +662,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

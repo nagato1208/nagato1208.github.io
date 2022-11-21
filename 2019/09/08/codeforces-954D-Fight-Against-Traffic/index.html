@@ -59,14 +59,14 @@
 </script>
 
   <meta name="description" content="描述有一个nodes个节点edges条边的无向无环图. 每条边权重相同(可以认为都是1). 我们关心节点s和节点t. 现在需要建一条(之前不存在的)边, 问一共有多少种方案. 要求添加新边之后的s和t之间的最短距离不变. 思路依旧是floyd中间点的思想, 不过本题中间点有两个(i, j), 其中一个可以是s或t. 分别以s和t为起点做bfs, 求出s点到任意点i的最短路数组ds[i], 和t点到">
-<meta name="keywords" content="graph,bfs,shortest path">
+<meta name="keywords" content="shortest path,graph,bfs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="codeforces-954D-Fight Against Traffic">
 <meta property="og:url" content="http://yoursite.com/2019/09/08/codeforces-954D-Fight-Against-Traffic/index.html">
 <meta property="og:site_name" content="Nagato at sea">
 <meta property="og:description" content="描述有一个nodes个节点edges条边的无向无环图. 每条边权重相同(可以认为都是1). 我们关心节点s和节点t. 现在需要建一条(之前不存在的)边, 问一共有多少种方案. 要求添加新边之后的s和t之间的最短距离不变. 思路依旧是floyd中间点的思想, 不过本题中间点有两个(i, j), 其中一个可以是s或t. 分别以s和t为起点做bfs, 求出s点到任意点i的最短路数组ds[i], 和t点到">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-09T06:03:25.225Z">
+<meta property="og:updated_time" content="2022-11-21T04:38:23.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="codeforces-954D-Fight Against Traffic">
 <meta name="twitter:description" content="描述有一个nodes个节点edges条边的无向无环图. 每条边权重相同(可以认为都是1). 我们关心节点s和节点t. 现在需要建一条(之前不存在的)边, 问一共有多少种方案. 要求添加新边之后的s和t之间的最短距离不变. 思路依旧是floyd中间点的思想, 不过本题中间点有两个(i, j), 其中一个可以是s或t. 分别以s和t为起点做bfs, 求出s点到任意点i的最短路数组ds[i], 和t点到">
@@ -232,7 +232,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Z">
-      <meta itemprop="description" content="~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~">
+      <meta itemprop="description" content="一些题目笔记。">
       <meta itemprop="image" content="/images/selfie.png">
     </span>
 
@@ -275,7 +275,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-09-09 02:03:25" itemprop="dateModified" datetime="2019-09-09T02:03:25-04:00">2019-09-09</time>
+                <time title="修改时间：2022-11-20 23:38:23" itemprop="dateModified" datetime="2022-11-20T23:38:23-05:00">2022-11-20</time>
               </span>
             
           
@@ -330,11 +330,11 @@
           
         
         <div class="post-tags">
+            <a href="/tags/shortest-path/" rel="tag"># shortest path</a>
+          
             <a href="/tags/graph/" rel="tag"># graph</a>
           
             <a href="/tags/bfs/" rel="tag"># bfs</a>
-          
-            <a href="/tags/shortest-path/" rel="tag"># shortest path</a>
           
         </div>
         <div class="post-widgets">
@@ -421,14 +421,14 @@
       src="/images/selfie.png"
       alt="Z">
   <p class="site-author-name" itemprop="name">Z</p>
-  <div class="site-description motion-element" itemprop="description">~赤い夕陽が 波間に沈む 果ては何処ぞ マーシャル群島~</div>
+  <div class="site-description motion-element" itemprop="description">一些题目笔记。</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -667,7 +667,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
