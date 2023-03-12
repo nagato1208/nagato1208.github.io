@@ -1,0 +1,155 @@
+[{
+    "id": "00",
+    "product": "root",
+    "parent": null
+}, {
+    "parent": "00",
+    "id": "01",
+    "product": "Uber AI",
+    "value": 692000
+}, {
+    "parent": "00",
+    "id": "02",
+    "product": "Uber Delivery",
+    "value": 597000
+}, {
+    "parent": "00",
+    "id": "03",
+    "product": "Uber Freight",
+    "value": 1359000
+}, {
+    "parent": "00",
+    "id": "04",
+    "product": "Uber Rides",
+    "value": 596000
+}, {
+    "parent": "01",
+    "id": "11",
+    "product": "hdfs-bytes",
+    "value": 138000
+}, {
+    "parent": "01",
+    "id": "12",
+    "product": "mesos-cores",
+    "value": 22000
+}, {
+    "parent": "01",
+    "id": "13",
+    "product": "cassandra-cores",
+    "value": 88000
+}, {
+    "parent": "01",
+    "id": "14",
+    "product": "mysql-bytes",
+    "value": 77000
+}, {
+    "parent": "01",
+    "id": "15",
+    "product": "aws",
+    "value": 48000
+}, {
+    "parent": "01",
+    "id": "16",
+    "product": "gcp",
+    "value": 48000
+}, {
+    "parent": "01",
+    "id": "17",
+    "product": "terrablob",
+    "value": 41000
+}, {
+    "parent": "01",
+    "id": "18",
+    "product": "yarn-cores",
+    "value": 39000
+}, {
+    "parent": "01",
+    "id": "19",
+    "product": "hdfs-bytes",
+    "value": 32000
+}, {
+    "parent": "02",
+    "id": "21",
+    "product": "mesos-cores",
+    "value": 189000
+}, {
+    "parent": "02",
+    "id": "22",
+    "product": "cassandra-cores",
+    "value": 94000
+}, {
+    "parent": "02",
+    "id": "23",
+    "product": "mysql-bytes",
+    "value": 63000
+}, {
+    "parent": "02",
+    "id": "24",
+    "product": "aws",
+    "value": 43000
+}, {
+    "parent": "02",
+    "id": "25",
+    "product": "gcp",
+    "value": 30000
+}, {
+    "parent": "02",
+    "id": "26",
+    "product": "terrablob",
+    "value": 29000
+}, {
+    "parent": "02",
+    "id": "27",
+    "product": "yarn-cores",
+    "value": 26000
+}, {
+    "parent": "02",
+    "id": "28",
+    "product": "m3",
+    "value": 23000
+}, {
+    "parent": "03",
+    "id": "31",
+    "product": "hdfs-bytes",
+    "value": 154000
+}, {
+    "parent": "03",
+    "id": "32",
+    "product": "yarn-cores",
+    "value": 142000
+}, {
+    "parent": "03",
+    "id": "33",
+    "product": "m3",
+    "value": 43000
+}, {
+    "parent": "03",
+    "id": "34",
+    "product": "aws",
+    "value": 38000
+}, {
+    "parent": "03",
+    "id": "35",
+    "product": "gcp",
+    "value": 32000
+}, {
+    "parent": "04",
+    "id": "41",
+    "product": "mysql-bytes",
+    "value": 154000
+}, {
+    "parent": "04",
+    "id": "42",
+    "product": "aws",
+    "value": 142000
+}, {
+    "parent": "04",
+    "id": "43",
+    "product": "mesos-cores",
+    "value": 43000
+}, {
+    "parent": "04",
+    "id": "44",
+    "product": "gcp",
+    "value": 38000
+}]
